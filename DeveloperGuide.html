@@ -718,25 +718,25 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <h2 id="use-cases"><a class="link" href="#use-cases">Appendix C: Use Cases</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>(For all use cases below, the <strong>System</strong> is the <code>AddressBook</code> and the <strong>Actor</strong> is the <code>user</code>, unless specified otherwise)</p>
+<p>(For all use cases below, the <strong>System</strong> is the <code>Plan²travel</code> application and the <strong>Actor</strong> is the <code>user</code>, unless specified otherwise)</p>
 </div>
-<h3 id="use-case-delete-person" class="discrete">Use case: Delete person</h3>
+<h3 id="use-case-schedule-activity" class="discrete">Use case: Schedule activity</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User requests to list persons</p>
+<p>User requests to schedule activity</p>
 </li>
 <li>
-<p>AddressBook shows a list of persons</p>
+<p>System shows a list of days and activities</p>
 </li>
 <li>
-<p>User requests to delete a specific person in the list</p>
+<p>User requests to add a specific activity to a specific day</p>
 </li>
 <li>
-<p>AddressBook deletes the person</p>
+<p>System adds activity under selected day</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -749,20 +749,118 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>2a. The list is empty.</p>
+<p>2a. The list of days is empty.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Use case ends.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>2b. The list of activities is empty.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Use case ends.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>3a. The day number is invalid.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>3a1. System shows an error message.</p>
+<div class="paragraph">
+<p>Use case resumes at step 2.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>3b. The activity index is invalid.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>3b1. System shows an error message.</p>
+<div class="paragraph">
+<p>Use case resumes at step 2.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-add-contact" class="discrete">Use case: Add Contact</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to add a new Contact</p>
+</li>
+<li>
+<p>System adds the new Contact into the database</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
 </li>
-<li>
-<p>3a. The given index is invalid.</p>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>3a1. AddressBook shows an error message.</p>
-<div class="paragraph">
-<p>Use case resumes at step 2.</p>
+<p>1a. The new Contact&#8217;s syntax is not entered correctly.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a1. System shows a feedback to the user that the Contact was not entered correctly.</p>
+</li>
+<li>
+<p>Use case ends.</p>
+</li>
+</ul>
 </div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-undo-command" class="discrete">Use case: Undo command</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to undo last possible command</p>
+</li>
+<li>
+<p>System reverts to state before the last possible command</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. There is no last possible command.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Use case ends.</p>
 </li>
 </ul>
 </div>
@@ -803,10 +901,6 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <dt class="hdlist1"><a id="mainstream-os"></a> Mainstream OS</dt>
 <dd>
 <p>Windows, Linux, Unix, OS-X</p>
-</dd>
-<dt class="hdlist1"><a id="private-contact-detail"></a> Private contact detail</dt>
-<dd>
-<p>A contact detail that is not meant to be shared with others</p>
 </dd>
 </dl>
 </div>
@@ -958,4 +1052,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-02 09:39:00 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-02 11:00:57 UTC</div></div></div></body></html>
