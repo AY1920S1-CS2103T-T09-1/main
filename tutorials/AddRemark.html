@@ -526,13 +526,13 @@ Since all fields in a <code>Person</code> are immutable, we create a new instanc
         }
 
         Person personToEdit = lastShownList.get(index.getZeroBased());
-        Person editedPerson = <span class="keyword">new</span> Person(personToEdit.getName(), personToEdit.getPhone(), personToEdit.getEmail(),
+        Person editedActivity = <span class="keyword">new</span> Person(personToEdit.getName(), personToEdit.getPhone(), personToEdit.getEmail(),
                 personToEdit.getAddress(), remark, personToEdit.getTags());
 
-        model.setPerson(personToEdit, editedPerson);
+        model.setPerson(personToEdit, editedActivity);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
 
-        <span class="keyword">return</span> <span class="keyword">new</span> CommandResult(generateSuccessMessage(editedPerson));
+        <span class="keyword">return</span> <span class="keyword">new</span> CommandResult(generateSuccessMessage(editedActivity));
     }
 
     <span class="comment">/**
@@ -616,4 +616,4 @@ In this case, <code>CommandTestUtil#assertCommandSuccess</code> is the best fit 
 <p>This concludes the tutorial for adding a new <code>Command</code> to AddressBook.</p>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-09 09:56:49 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-09 15:57:42 UTC</div></div></div></body></html>
