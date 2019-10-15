@@ -26,10 +26,10 @@
 </ul>
 </li>
 <li><a href="#add-a-placeholder-element-for-remark-to-the-ui">Add a placeholder element for remark to the UI</a></li>
-<li><a href="#modify-code-person-code-to-support-a-code-remark-code-field">Modify <code>Person</code> to support a <code>Remark</code> field</a>
+<li><a href="#modify-code-contact-code-to-support-a-code-remark-code-field">Modify <code>Contact</code> to support a <code>Remark</code> field</a>
 <ul class="sectlevel2">
-<li><a href="#modify-code-person-code">Modify <code>Person</code></a></li>
-<li><a href="#update-other-usages-of-code-person-code">Update other usages of <code>Person</code></a></li>
+<li><a href="#modify-code-contact-code">Modify <code>Contact</code></a></li>
+<li><a href="#update-other-usages-of-code-contact-code">Update other usages of <code>Contact</code></a></li>
 </ul>
 </li>
 <li><a href="#updating-storage">Updating Storage</a></li>
@@ -88,7 +88,7 @@ We accomplish that by returning a <code>CommandResult</code> with an accompanyin
 <span class="keyword">import</span> <span class="include">seedu.address.model.Model</span>;
 
 <span class="comment">/**
- * Changes the remark of an existing person in the address book.
+ * Changes the remark of an existing contact in the address book.
  */</span>
 <span class="directive">public</span> <span class="type">class</span> <span class="class">RemarkCommand</span> <span class="directive">extends</span> Command {
 
@@ -145,8 +145,8 @@ Let&#8217;s change the command to throw an <code>CommandException</code> to accu
 <div class="listingblock">
 <div class="title">RemarkCommand.java</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java">    <span class="directive">public</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span> MESSAGE_USAGE = COMMAND_WORD + <span class="string"><span class="delimiter">&quot;</span><span class="content">: Edits the remark of the person identified </span><span class="delimiter">&quot;</span></span>
-            + <span class="string"><span class="delimiter">&quot;</span><span class="content">by the index number used in the last person listing. </span><span class="delimiter">&quot;</span></span>
+<pre class="CodeRay highlight"><code data-lang="java">    <span class="directive">public</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span> MESSAGE_USAGE = COMMAND_WORD + <span class="string"><span class="delimiter">&quot;</span><span class="content">: Edits the remark of the contact identified </span><span class="delimiter">&quot;</span></span>
+            + <span class="string"><span class="delimiter">&quot;</span><span class="content">by the index number used in the last contact listing. </span><span class="delimiter">&quot;</span></span>
             + <span class="string"><span class="delimiter">&quot;</span><span class="content">Existing remark will be overwritten by the input.</span><span class="char">\n</span><span class="delimiter">&quot;</span></span>
             + <span class="string"><span class="delimiter">&quot;</span><span class="content">Parameters: INDEX (must be a positive integer) </span><span class="delimiter">&quot;</span></span>
             + <span class="string"><span class="delimiter">&quot;</span><span class="content">r/ [REMARK]</span><span class="char">\n</span><span class="delimiter">&quot;</span></span>
@@ -188,8 +188,8 @@ While this is not a replacement for tests, it is an obvious way to tell if our c
     <span class="directive">private</span> <span class="directive">final</span> <span class="predefined-type">String</span> remark;
 
     <span class="comment">/**
-     * @param index of the person in the filtered person list to edit the remark
-     * @param remark of the person to be updated to
+     * @param index of the contact in the filtered contact list to edit the remark
+     * @param remark of the contact to be updated to
      */</span>
     <span class="directive">public</span> RemarkCommand(Index index, <span class="predefined-type">String</span> remark) {
         requireAllNonNull(index, remark);
@@ -341,14 +341,14 @@ Don&#8217;t forget to update <code>AddressBookParser</code> to use our new <code
 <div class="sectionbody">
 <div class="paragraph">
 <p>Now that we have all the information that we need, let&#8217;s lay the groundwork for some <em>persistent</em> changes.
-We achieve that by working with the <code>Person</code> model.
-Each field in a Person is implemented as a separate class (e.g. a <code>Name</code> object represents the person&#8217;s name).
-That means we should add a <code>Remark</code> class so that we can use a <code>Remark</code> object to represent a remark given to a person.</p>
+We achieve that by working with the <code>Contact</code> model.
+Each field in a Contact is implemented as a separate class (e.g. a <code>Name</code> object represents the contact&#8217;s name).
+That means we should add a <code>Remark</code> class so that we can use a <code>Remark</code> object to represent a remark given to a contact.</p>
 </div>
 <div class="sect2">
 <h3 id="add-a-new-code-remark-code-class"><a class="link" href="#add-a-new-code-remark-code-class">Add a new <code>Remark</code> class</a></h3>
 <div class="paragraph">
-<p>Create a new <code>Remark</code> in <code>seedu.address.model.person</code>. Since a <code>Remark</code> is a field that is similar to <code>Address</code>, we can reuse a significant bit of code.</p>
+<p>Create a new <code>Remark</code> in <code>seedu.address.model.contacts</code>. Since a <code>Remark</code> is a field that is similar to <code>Address</code>, we can reuse a significant bit of code.</p>
 </div>
 <div class="paragraph">
 <p>A copy-paste and search-replace later, you should have something like <a href="https://github.com/nus-cs2103-AY1920S1/addressbook-level3/commit/b7a47c50c8e5f0430d343a23d2863446b6ce9298#diff-af2f075d24dfcd333876f0fbce321f25">this</a>.
@@ -368,20 +368,20 @@ These should be relatively simple changes.</p>
 <h2 id="add-a-placeholder-element-for-remark-to-the-ui"><a class="link" href="#add-a-placeholder-element-for-remark-to-the-ui">Add a placeholder element for remark to the UI</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Without getting too deep into <code>fxml</code>, let&#8217;s go on a 5 minute adventure to get some placeholder text to show up for each person.</p>
+<p>Without getting too deep into <code>fxml</code>, let&#8217;s go on a 5 minute adventure to get some placeholder text to show up for each contact.</p>
 </div>
 <div class="paragraph">
 <p>Simply add</p>
 </div>
 <div class="listingblock">
-<div class="title">PersonCard.java</div>
+<div class="title">ContactCard.java</div>
 <div class="content">
 <pre class="CodeRay highlight"><code>@FXML
 private Label remark;</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>to <a href="https://github.com/nus-cs2103-AY1920S1/addressbook-level3/commit/2758455583f0101ed918a318fc75679270843a0d#diff-0c6b6abcfac8c205e075294f25e851fe"><code>seedu.address.ui.PersonCard</code></a>.
+<p>to <a href="https://github.com/nus-cs2103-AY1920S1/addressbook-level3/commit/2758455583f0101ed918a318fc75679270843a0d#diff-0c6b6abcfac8c205e075294f25e851fe"><code>seedu.address.ui.ContactCard</code></a>.
 <code>@FXML</code> is an annotation that marks a private or protected field and makes it accessible to FXML.
 It might sound like Greek to you right now, don&#8217;t worry&#8201;&#8212;&#8201;we will get back to it later.</p>
 </div>
@@ -394,7 +394,7 @@ It might sound like Greek to you right now, don&#8217;t worry&#8201;&#8212;&#820
 </div>
 </div>
 <div class="paragraph">
-<p>into <a href="https://github.com/nus-cs2103-AY1920S1/addressbook-level3/commit/2758455583f0101ed918a318fc75679270843a0d#diff-12580431f55d7880578aa4c16f249e71"><code>main/resources/view/PersonListCard.fxml</code></a>.</p>
+<p>into <a href="https://github.com/nus-cs2103-AY1920S1/addressbook-level3/commit/2758455583f0101ed918a318fc75679270843a0d#diff-12580431f55d7880578aa4c16f249e71"><code>main/resources/view/ContactListCard.fxml</code></a>.</p>
 </div>
 <div class="paragraph">
 <p>That&#8217;s it! Fire up the application again and you should see something like this:</p>
@@ -408,22 +408,22 @@ It might sound like Greek to you right now, don&#8217;t worry&#8201;&#8212;&#820
 </div>
 </div>
 <div class="sect1">
-<h2 id="modify-code-person-code-to-support-a-code-remark-code-field"><a class="link" href="#modify-code-person-code-to-support-a-code-remark-code-field">Modify <code>Person</code> to support a <code>Remark</code> field</a></h2>
+<h2 id="modify-code-contact-code-to-support-a-code-remark-code-field"><a class="link" href="#modify-code-contact-code-to-support-a-code-remark-code-field">Modify <code>Contact</code> to support a <code>Remark</code> field</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Since <code>PersonCard</code> displays data from a <code>Person</code>, we need to update <code>Person</code> to get our <code>Remark</code> displayed!</p>
+<p>Since <code>ContactCard</code> displays data from a <code>Contact</code>, we need to update <code>Contact</code> to get our <code>Remark</code> displayed!</p>
 </div>
 <div class="sect2">
-<h3 id="modify-code-person-code"><a class="link" href="#modify-code-person-code">Modify <code>Person</code></a></h3>
+<h3 id="modify-code-contact-code"><a class="link" href="#modify-code-contact-code">Modify <code>Contact</code></a></h3>
 <div class="paragraph">
-<p>We change the constructor of <code>Person</code> to take a <code>Remark</code>.
+<p>We change the constructor of <code>Contact</code> to take a <code>Remark</code>.
 We will also need to define new fields and accessors accordingly to store our new addition.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="update-other-usages-of-code-person-code"><a class="link" href="#update-other-usages-of-code-person-code">Update other usages of <code>Person</code></a></h3>
+<h3 id="update-other-usages-of-code-contact-code"><a class="link" href="#update-other-usages-of-code-contact-code">Update other usages of <code>Contact</code></a></h3>
 <div class="paragraph">
-<p>Unfortunately, a change to <code>Person</code> will cause other commands to break, you will have to modify these commands to use the updated <code>Person</code>!</p>
+<p>Unfortunately, a change to <code>Contact</code> will cause other commands to break, you will have to modify these commands to use the updated <code>Contact</code>!</p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -432,7 +432,7 @@ We will also need to define new fields and accessors accordingly to store our ne
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-Use the <code>Find Usages</code> feature in IntelliJ IDEA on the <code>Person</code> class to find these commands.
+Use the <code>Find Usages</code> feature in IntelliJ IDEA on the <code>Contact</code> class to find these commands.
 </td>
 </tr>
 </table>
@@ -447,8 +447,8 @@ Use the <code>Find Usages</code> feature in IntelliJ IDEA on the <code>Person</c
 <h2 id="updating-storage"><a class="link" href="#updating-storage">Updating Storage</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>AddressBook stores data by serializing <code>JsonAdaptedPerson</code> into <code>json</code> with the help of an external library&#8201;&#8212;&#8201;Jackson.
-Let&#8217;s update <code>JsonAdaptedPerson</code> to work with our new <code>Person</code>!</p>
+<p>AddressBook stores data by serializing <code>JsonAdaptedContact</code> into <code>json</code> with the help of an external library&#8201;&#8212;&#8201;Jackson.
+Let&#8217;s update <code>JsonAdaptedContact</code> to work with our new <code>Contact</code>!</p>
 </div>
 <div class="paragraph">
 <p>While the changes to code may be minimal, the test data will have to be updated as well.</p>
@@ -475,17 +475,17 @@ Not doing so will cause AddressBook to default to an empty address book!
 <h2 id="finalizing-the-ui"><a class="link" href="#finalizing-the-ui">Finalizing the UI</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Now that we have finalized the <code>Person</code> class and its dependencies, we can now bind the <code>Remark</code> field to the UI.</p>
+<p>Now that we have finalized the <code>Contact</code> class and its dependencies, we can now bind the <code>Remark</code> field to the UI.</p>
 </div>
 <div class="paragraph">
 <p>Just add <a href="https://github.com/nus-cs2103-AY1920S1/addressbook-level3/commit/56d5cb662c31dd38b02f6a5301ba6ab3c667d6a3#diff-0c6b6abcfac8c205e075294f25e851fe">this one line of code!</a></p>
 </div>
 <div class="listingblock">
-<div class="title">PersonCard.java</div>
+<div class="title">ContactCard.java</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> PersonCard(Person person, <span class="type">int</span> displayedIndex) {
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> ContactCard(Contact contact, <span class="type">int</span> displayedIndex) {
     <span class="comment">//...</span>
-    remark.setText(person.getRemark().value);
+    remark.setText(contact.getRemark().value);
 }</code></pre>
 </div>
 </div>
@@ -507,41 +507,41 @@ However, this is expected behavior as we have never changed <code>RemarkCommand<
 <div class="sect2">
 <h3 id="update-code-remarkcommand-code-and-code-remarkcommandparser-code"><a class="link" href="#update-code-remarkcommand-code-and-code-remarkcommandparser-code">Update <code>RemarkCommand</code> and <code>RemarkCommandParser</code></a></h3>
 <div class="paragraph">
-<p>In this last step, we modify <code>RemarkCommand#execute()</code> to change the <code>Remark</code> of a <code>Person</code>.
-Since all fields in a <code>Person</code> are immutable, we create a new instance of a <code>Person</code> with the values that we want and save it with <code>Model#setPerson()</code>.</p>
+<p>In this last step, we modify <code>RemarkCommand#execute()</code> to change the <code>Remark</code> of a <code>Contact</code>.
+Since all fields in a <code>Contact</code> are immutable, we create a new instance of a <code>Contact</code> with the values that we want and save it with <code>Model#setContact()</code>.</p>
 </div>
 <div class="listingblock">
 <div class="title">RemarkCommand.java</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="java"><span class="comment">//...</span>
-    <span class="directive">public</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span> MESSAGE_ADD_REMARK_SUCCESS = <span class="string"><span class="delimiter">&quot;</span><span class="content">Added remark to Person: %1$s</span><span class="delimiter">&quot;</span></span>;
-    <span class="directive">public</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span> MESSAGE_DELETE_REMARK_SUCCESS = <span class="string"><span class="delimiter">&quot;</span><span class="content">Removed remark from Person: %1$s</span><span class="delimiter">&quot;</span></span>;
+    <span class="directive">public</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span> MESSAGE_ADD_REMARK_SUCCESS = <span class="string"><span class="delimiter">&quot;</span><span class="content">Added remark to Contact: %1$s</span><span class="delimiter">&quot;</span></span>;
+    <span class="directive">public</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span> MESSAGE_DELETE_REMARK_SUCCESS = <span class="string"><span class="delimiter">&quot;</span><span class="content">Removed remark from Contact: %1$s</span><span class="delimiter">&quot;</span></span>;
 <span class="comment">//...</span>
     <span class="annotation">@Override</span>
     <span class="directive">public</span> CommandResult execute(Model model) <span class="directive">throws</span> CommandException {
-        <span class="predefined-type">List</span>&lt;Person&gt; lastShownList = model.getFilteredPersonList();
+        <span class="predefined-type">List</span>&lt;Contact&gt; lastShownList = model.getFilteredContactList();
 
         <span class="keyword">if</span> (index.getZeroBased() &gt;= lastShownList.size()) {
-            <span class="keyword">throw</span> <span class="keyword">new</span> CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+            <span class="keyword">throw</span> <span class="keyword">new</span> CommandException(Messages.MESSAGE_INVALID_Contact_DISPLAYED_INDEX);
         }
 
-        Person personToEdit = lastShownList.get(index.getZeroBased());
-        Person editedActivity = <span class="keyword">new</span> Person(personToEdit.getName(), personToEdit.getPhone(), personToEdit.getEmail(),
-                personToEdit.getAddress(), remark, personToEdit.getTags());
+        Contact contactToEdit = lastShownList.get(index.getZeroBased());
+        Contact editedAccommodation = <span class="keyword">new</span> Contact(contactToEdit.getName(), contactToEdit.getPhone(), contactToEdit.getEmail(),
+                contactToEdit.getAddress(), remark, contactToEdit.getTags());
 
-        model.setPerson(personToEdit, editedActivity);
-        model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+        model.setContact(contactToEdit, editedAccommodation);
+        model.updateFilteredContactList(PREDICATE_SHOW_ALL_ContactS);
 
-        <span class="keyword">return</span> <span class="keyword">new</span> CommandResult(generateSuccessMessage(editedActivity));
+        <span class="keyword">return</span> <span class="keyword">new</span> CommandResult(generateSuccessMessage(editedAccommodation));
     }
 
     <span class="comment">/**
      * Generates a command execution success message based on whether the remark is added to or removed from
-     * {@code personToEdit}.
+     * {@code contactToEdit}.
      */</span>
-    <span class="directive">private</span> <span class="predefined-type">String</span> generateSuccessMessage(Person personToEdit) {
+    <span class="directive">private</span> <span class="predefined-type">String</span> generateSuccessMessage(Contact contactToEdit) {
         <span class="predefined-type">String</span> message = !remark.value.isEmpty() ? MESSAGE_ADD_REMARK_SUCCESS : MESSAGE_DELETE_REMARK_SUCCESS;
-        <span class="keyword">return</span> <span class="predefined-type">String</span>.format(message, personToEdit);
+        <span class="keyword">return</span> <span class="predefined-type">String</span>.format(message, contactToEdit);
     }</code></pre>
 </div>
 </div>
@@ -616,4 +616,4 @@ In this case, <code>CommandTestUtil#assertCommandSuccess</code> is the best fit 
 <p>This concludes the tutorial for adding a new <code>Command</code> to AddressBook.</p>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-09 17:57:57 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-15 19:27:58 UTC</div></div></div></body></html>
