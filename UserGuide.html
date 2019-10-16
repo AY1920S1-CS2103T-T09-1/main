@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="seedu-header"><nav class="navbar navbar-lg navbar-light bg-lighter"><div class="container"><a class="navbar-brand" href="https://se-edu.github.io/"><img src="images/SeEduLogo.png" alt="SE-EDU"></a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level1">AB-1</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level2">AB-2</a></li><li class="nav-item"><a class="nav-link active" href="index.html">AB-3</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level4">AB-4</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/collate">Collate</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/se-book">Book</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/learningresources">Resources</a></li></ul></div></nav></div><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="index.html">AddressBook-Level3</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link active" href="UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="LearningOutcomes.html">LOs</a></li><li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/se-edu/addressbook-level3"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>Plan<sup>2</sup>Travel - User Guide</h1></div><div id="content"><div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>By: <code>Team CS2103T T09-1</code>      Since: <code>MMM 2019</code>      License: <code>MIT</code></p>
+<p>By: <code>Team CS2103T T09-1</code>      Since: <code>Aug 2019</code>      License: <code>MIT</code></p>
 </div>
 </div>
 <div id="toc" class="toc">
@@ -14,28 +14,32 @@
 <li><a href="#Features">3. Features</a>
 <ul class="sectlevel2">
 <li><a href="#viewing-help-code-help-code">3.1. Viewing help : <code>help</code></a></li>
-<li><a href="#creating-an-activity-code-create-activity-code">3.2. Creating an activity: <code>create activity</code></a></li>
-<li><a href="#editing-an-activity-code-edit-activity-code">3.3. Editing an activity: <code>edit activity</code></a></li>
-<li><a href="#deleting-an-activity-code-delete-activity-code">3.4. Deleting an activity: <code>delete activity</code></a></li>
-<li><a href="#listing-all-activities-code-list-activity-code">3.5. Listing all activities: <code>list activity</code></a></li>
-<li><a href="#creating-a-contact-code-create-contact-code">3.6. Creating a contact: <code>create contact</code></a></li>
-<li><a href="#deleting-a-contact-code-delete-contact-code">3.7. Deleting a contact: <code>delete contact</code></a></li>
-<li><a href="#editing-a-contact-code-edit-contact-code">3.8. Editing a contact: <code>edit contact</code></a></li>
-<li><a href="#listing-all-contacts-code-list-contact-code">3.9. Listing all contacts: <code>list contact</code></a></li>
-<li><a href="#adds-days-to-the-schedule-code-add-day-code">3.10. Adds days to the schedule: <code>add day</code></a></li>
-<li><a href="#deleting-days-code-delete-day-code">3.11. Deleting days: <code>delete day</code></a></li>
-<li><a href="#scheduling-activities-to-a-day-code-schedule-code">3.12. Scheduling activities to a day: <code>schedule</code></a></li>
-<li><a href="#unscheduling-activities-from-a-day-code-unschedule-activity-code">3.13. Unscheduling activities from a day: <code>unschedule activity</code></a></li>
-<li><a href="#unscheduling-activities-from-a-day-code-unschedule-time-code">3.14. Unscheduling activities from a day: <code>unschedule time</code></a></li>
-<li><a href="#list-the-activities-in-a-day-code-list-day-code">3.15. List the activities in a day: <code>list day</code></a></li>
-<li><a href="#undo-code-undo-code">3.16. Undo: <code>undo</code></a></li>
-<li><a href="#redo-code-redo-code">3.17. Redo: <code>redo</code></a></li>
-<li><a href="#look-up-history-of-inputs-code-history-code">3.18. Look up history of inputs: <code>history</code></a></li>
-<li><a href="#saving-the-data-code-save-code">3.19. Saving the data: <code>save</code></a></li>
-<li><a href="#loading-the-data-code-load-code">3.20. Loading the data: <code>load</code></a></li>
-<li><a href="#export-schedule-code-export-code">3.21. Export schedule: <code>export</code></a></li>
-<li><a href="#auto-correct">3.22. Auto-correct</a></li>
-<li><a href="#exiting-the-program-code-exit-code">3.23. Exiting the program : <code>exit</code></a></li>
+<li><a href="#adding-an-accommodation-code-add-acc-code">3.2. Adding an accommodation: <code>add acc</code></a></li>
+<li><a href="#editing-an-accommodation-code-edit-acc-code">3.3. Editing an accommodation: <code>edit acc</code></a></li>
+<li><a href="#deleting-an-accommodation-code-delete-acc-code">3.4. Deleting an accommodation: <code>delete acc</code></a></li>
+<li><a href="#listing-all-accommodation-code-list-acc-code">3.5. Listing all accommodation: <code>list acc</code></a></li>
+<li><a href="#adding-an-activity-code-add-act-code">3.6. Adding an activity: <code>add act</code></a></li>
+<li><a href="#editing-an-activity-code-edit-act-code">3.7. Editing an activity: <code>edit act</code></a></li>
+<li><a href="#deleting-an-activity-code-delete-act-code">3.8. Deleting an activity: <code>delete act</code></a></li>
+<li><a href="#listing-all-activities-code-list-act-code">3.9. Listing all activities: <code>list act</code></a></li>
+<li><a href="#adding-a-contact-code-add-con-code">3.10. Adding a contact: <code>add con</code></a></li>
+<li><a href="#editing-a-contact-code-edit-con-code">3.11. Editing a contact: <code>edit con</code></a></li>
+<li><a href="#deleting-a-contact-code-delete-con-code">3.12. Deleting a contact: <code>delete con</code></a></li>
+<li><a href="#listing-all-contacts-code-list-con-code">3.13. Listing all contacts: <code>list con</code></a></li>
+<li><a href="#adds-days-to-the-schedule-code-add-day-code">3.14. Adds days to the schedule: <code>add day</code></a></li>
+<li><a href="#deleting-days-code-delete-day-code">3.15. Deleting days: <code>delete day</code></a></li>
+<li><a href="#scheduling-activities-to-a-day-code-schedule-code">3.16. Scheduling activities to a day: <code>schedule</code></a></li>
+<li><a href="#unscheduling-activities-from-a-day-code-unschedule-activity-code">3.17. Unscheduling activities from a day: <code>unschedule activity</code></a></li>
+<li><a href="#unscheduling-activities-from-a-day-code-unschedule-time-code">3.18. Unscheduling activities from a day: <code>unschedule time</code></a></li>
+<li><a href="#list-the-activities-in-a-day-code-list-day-code">3.19. List the activities in a day: <code>list day</code></a></li>
+<li><a href="#undo-code-undo-code">3.20. Undo: <code>undo</code></a></li>
+<li><a href="#redo-code-redo-code">3.21. Redo: <code>redo</code></a></li>
+<li><a href="#look-up-history-of-inputs-code-history-code">3.22. Look up history of inputs: <code>history</code></a></li>
+<li><a href="#saving-the-data-code-save-code">3.23. Saving the data: <code>save</code></a></li>
+<li><a href="#loading-the-data-code-load-code">3.24. Loading the data: <code>load</code></a></li>
+<li><a href="#export-schedule-code-export-code">3.25. Export schedule: <code>export</code></a></li>
+<li><a href="#auto-correct">3.26. Auto-correct</a></li>
+<li><a href="#exiting-the-program-code-exit-code">3.27. Exiting the program : <code>exit</code></a></li>
 </ul>
 </li>
 <li><a href="#faq">4. FAQ</a></li>
@@ -60,7 +64,7 @@
 <p>Ensure you have Java <code>11</code> or above installed in your Computer.</p>
 </li>
 <li>
-<p>Download the latest <code>plan2travel.jar</code> <a href="https://github.com/se-edu/addressbook-level3/releases">here</a>.</p>
+<p>Download the latest <code>plan2travel.jar</code> <a href="https://github.com/AY1920S1-CS2103T-T09-1/main/releases">here</a>.</p>
 </li>
 <li>
 <p>Copy the file to the folder you want to use as the home folder for your Plan<sup>2</sup>Travel.</p>
@@ -85,7 +89,7 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <p><strong><code>help</code></strong> : a list of commands available on Plan<sup>2</sup>Travel</p>
 </li>
 <li>
-<p><strong><code>create activity</code></strong><code>n/Ernest d/1 l/Tokyo dt/18/9/2019 0900</code> : adds an activity named <code>Ernest</code> at location <code>Tokyo</code> from <code>18/9/2019 0900</code> to the activity list.</p>
+<p><strong><code>add act</code></strong><code>n/Visit Gundam Museum a/Tokyo p/65543221</code> : adds an activity named <code>Visit Gundam Museum</code> at location <code>Tokyo</code> with contact number <code>65543221</code> to the activity list.</p>
 </li>
 <li>
 <p><strong><code>exit</code></strong> : exits the app</p>
@@ -111,10 +115,10 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <div class="ulist">
 <ul>
 <li>
-<p>Words in <code>UPPER_CASE</code> are the parameters to be supplied by the user e.g. in <code>add n/NAME</code>, <code>NAME</code> is a parameter which can be used as <code>add n/John Doe</code>.</p>
+<p>Words in <code>UPPER_CASE</code> are the parameters to be supplied by the user e.g. in <code>add n/NAME</code>, <code>NAME</code> is a parameter which can be used as <code>add n/Eat lunch</code>.</p>
 </li>
 <li>
-<p>Items in square brackets are optional e.g <code>n/NAME [t/TAG]</code> can be used as <code>n/John Doe t/friend</code> or as <code>n/John Doe</code>.</p>
+<p>Items in square brackets are optional e.g <code>n/NAME [t/TAG]</code> can be used as <code>n/Eat lunch t/Western</code> or as <code>n/Eat lunch</code>.</p>
 </li>
 <li>
 <p>Items with <code>…</code>​ after them can be used multiple times including zero times e.g. <code>[t/TAG]&#8230;&#8203;</code> can be used as <code>&#160;</code> (i.e. 0 times), <code>t/friend</code>, <code>t/friend t/family</code> etc.</p>
@@ -134,18 +138,41 @@ Format: <code>help</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="creating-an-activity-code-create-activity-code"><a class="link" href="#creating-an-activity-code-create-activity-code">3.2. Creating an activity: <code>create activity</code></a></h3>
+<h3 id="adding-an-accommodation-code-add-acc-code"><a class="link" href="#adding-an-accommodation-code-add-acc-code">3.2. Adding an accommodation: <code>add acc</code></a></h3>
 <div class="paragraph">
-<p>Creates an activity to the activity list<br>
-Format: <code>create activity n/NAME d/DURATION [l/LOCATION] [dt/DATE_TIME]</code></p>
+<p>Creates an accommodation to the accommodation list<br>
+Format: <code>add acc n/NAME a/ADDRESS [p/PHONE_NUMBER][e/EMAIL][t/TAGS]</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>DURATION is in hours. Shortest acceptable duration is 0.5 hours.</p>
+<p><code>add acc n/Hotel 81 a/Orchard /p67555312</code></p>
 </li>
 <li>
-<p>DATE_TIME is in dd/mm/yyyy HHHH format.</p>
+<p><code>add acc n/Mandarin Oriental a/Ang Mo Kio</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="editing-an-accommodation-code-edit-acc-code"><a class="link" href="#editing-an-accommodation-code-edit-acc-code">3.3. Editing an accommodation: <code>edit acc</code></a></h3>
+<div class="paragraph">
+<p>Edits an accommodation<br>
+Format: <code>edit act INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [t/TAGS]</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Edits the accommodation with the specified INDEX. The index refers to the index number shown in the displayed accommodation list. The index must be a positive integer 1, 2, 3, &#8230;&#8203;</p>
+</li>
+<li>
+<p>At least one of the optional fields must be provided.</p>
+</li>
+<li>
+<p>Existing values will be updated to the input values.</p>
 </li>
 </ul>
 </div>
@@ -155,19 +182,79 @@ Format: <code>create activity n/NAME d/DURATION [l/LOCATION] [dt/DATE_TIME]</cod
 <div class="ulist">
 <ul>
 <li>
-<p><code>create activity n/Oscar d/21</code></p>
+<p><code>edit acc 1 n/MBS a/Marina Bay t/Atas</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Edits the name, address and tag of the 1st accommodation to be MBS, Marina Bay and Atas respectively.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="deleting-an-accommodation-code-delete-acc-code"><a class="link" href="#deleting-an-accommodation-code-delete-acc-code">3.4. Deleting an accommodation: <code>delete acc</code></a></h3>
+<div class="paragraph">
+<p>Delete one or more accommodation from the accommodation list<br>
+Format: <code>delete acc INDEX&#8230;&#8203;</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Deletes the accommodation at the specified INDEX.</p>
 </li>
 <li>
-<p><code>create activity n/Ernest d/1 l/Tokyo dt/18/9/2019 0900</code></p>
+<p>The index refers to the index number shown in the displayed accommodation list.</p>
+</li>
+<li>
+<p>The index must be a positive integer 1, 2, 3, …</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>delete acc 2</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Deletes the 2nd accommodation in the accommodation list.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="listing-all-accommodation-code-list-acc-code"><a class="link" href="#listing-all-accommodation-code-list-acc-code">3.5. Listing all accommodation: <code>list acc</code></a></h3>
+<div class="paragraph">
+<p>Displays a list view of all the accommodation<br>
+Format: <code>list acc</code></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="adding-an-activity-code-add-act-code"><a class="link" href="#adding-an-activity-code-add-act-code">3.6. Adding an activity: <code>add act</code></a></h3>
+<div class="paragraph">
+<p>Creates an activity to the activity list<br>
+Format: <code>add act n/NAME a/ADDRESS [p/PHONE_NUMBER][e/EMAIL][t/TAGS]</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>add act n/Visit Gundam Museum a/Tokyo /p67521312</code></p>
+</li>
+<li>
+<p><code>add act n/Ski a/Mount Sinai</code></p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="editing-an-activity-code-edit-activity-code"><a class="link" href="#editing-an-activity-code-edit-activity-code">3.3. Editing an activity: <code>edit activity</code></a></h3>
+<h3 id="editing-an-activity-code-edit-act-code"><a class="link" href="#editing-an-activity-code-edit-act-code">3.7. Editing an activity: <code>edit act</code></a></h3>
 <div class="paragraph">
 <p>Edits an activity<br>
-Format: <code>edit activity INDEX [n/NAME] [d/DURATION] [l/LOCATION]</code></p>
+Format: <code>edit act INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [t/TAGS]</code></p>
 </div>
 <div class="ulist">
 <ul>
@@ -188,19 +275,19 @@ Format: <code>edit activity INDEX [n/NAME] [d/DURATION] [l/LOCATION]</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>edit activity 1 n/Dinner d/0.5 l/Hotel</code></p>
+<p><code>edit activity 1 n/Dinner a/Hotel t/Western</code></p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>Edits the name, duration and location of the 1st activity to be Dinner, 0.5 and Hotel respectively.</p>
+<p>Edits the name, address and tag of the 1st activity to be Dinner, Hotel and Western respectively.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="deleting-an-activity-code-delete-activity-code"><a class="link" href="#deleting-an-activity-code-delete-activity-code">3.4. Deleting an activity: <code>delete activity</code></a></h3>
+<h3 id="deleting-an-activity-code-delete-act-code"><a class="link" href="#deleting-an-activity-code-delete-act-code">3.8. Deleting an activity: <code>delete act</code></a></h3>
 <div class="paragraph">
 <p>Delete one or more activities from the activity list<br>
-Format: <code>delete activity INDEX&#8230;&#8203;</code></p>
+Format: <code>delete act INDEX&#8230;&#8203;</code></p>
 </div>
 <div class="ulist">
 <ul>
@@ -221,7 +308,7 @@ Format: <code>delete activity INDEX&#8230;&#8203;</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>delete activity 2</code></p>
+<p><code>delete act 2</code></p>
 </li>
 </ul>
 </div>
@@ -230,24 +317,17 @@ Format: <code>delete activity INDEX&#8230;&#8203;</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="listing-all-activities-code-list-activity-code"><a class="link" href="#listing-all-activities-code-list-activity-code">3.5. Listing all activities: <code>list activity</code></a></h3>
+<h3 id="listing-all-activities-code-list-act-code"><a class="link" href="#listing-all-activities-code-list-act-code">3.9. Listing all activities: <code>list act</code></a></h3>
 <div class="paragraph">
 <p>Displays a list view of all the activities<br>
-Format: <code>list activity</code></p>
+Format: <code>list act</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="creating-a-contact-code-create-contact-code"><a class="link" href="#creating-a-contact-code-create-contact-code">3.6. Creating a contact: <code>create contact</code></a></h3>
+<h3 id="adding-a-contact-code-add-con-code"><a class="link" href="#adding-a-contact-code-add-con-code">3.10. Adding a contact: <code>add con</code></a></h3>
 <div class="paragraph">
 <p>Creates a contact to the contact list<br>
-Format: <code>create contact n/NAME p/PHONE_NUMBER t/IS_EMERGENCY</code></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>IS_EMERGENCY specifies whether the contact is for emergency purposes.</p>
-</li>
-</ul>
+Format: <code>add con n/NAME p/PHONE_NUMBER [e/EMAIL] [a/ADDRESS] [t/TAGS]</code></p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -255,49 +335,16 @@ Format: <code>create contact n/NAME p/PHONE_NUMBER t/IS_EMERGENCY</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>create contact n/Bob p/83746658 t/false</code></p>
+<p><code>add con n/Bob p/83746658 t/false</code></p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="deleting-a-contact-code-delete-contact-code"><a class="link" href="#deleting-a-contact-code-delete-contact-code">3.7. Deleting a contact: <code>delete contact</code></a></h3>
-<div class="paragraph">
-<p>Deletes a contact from the contact list<br>
-Format: <code>delete contact INDEX&#8230;&#8203;</code></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Deletes the contact at the specified INDEX.</p>
-</li>
-<li>
-<p>The index refers to the index number shown in the displayed contact list.</p>
-</li>
-<li>
-<p>The index must be a positive integer 1, 2, 3, …</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>delete activity 3</code></p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Deletes the 3rd contact in the contact list.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="editing-a-contact-code-edit-contact-code"><a class="link" href="#editing-a-contact-code-edit-contact-code">3.8. Editing a contact: <code>edit contact</code></a></h3>
+<h3 id="editing-a-contact-code-edit-con-code"><a class="link" href="#editing-a-contact-code-edit-con-code">3.11. Editing a contact: <code>edit con</code></a></h3>
 <div class="paragraph">
 <p>Edits an existing contact in the contact list<br>
-Format: <code>edit contact INDEX [p/PHONE_NUMBER] [t/IS_EMERGENCY]</code></p>
+Format: <code>edit con INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/IS_EMERGENCY]</code></p>
 </div>
 <div class="ulist">
 <ul>
@@ -318,26 +365,59 @@ Format: <code>edit contact INDEX [p/PHONE_NUMBER] [t/IS_EMERGENCY]</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>edit contact 1 p/93746658 t/true</code></p>
+<p><code>edit con 1 p/93746658 t/true</code></p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>Edits the phone number and emergency field of the 1st contact to be 93746658 and true respectively.</p>
+<p>Edits the phone number and tag of the 1st contact to be 93746658 and true respectively.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="listing-all-contacts-code-list-contact-code"><a class="link" href="#listing-all-contacts-code-list-contact-code">3.9. Listing all contacts: <code>list contact</code></a></h3>
+<h3 id="deleting-a-contact-code-delete-con-code"><a class="link" href="#deleting-a-contact-code-delete-con-code">3.12. Deleting a contact: <code>delete con</code></a></h3>
+<div class="paragraph">
+<p>Deletes a contact from the contact list<br>
+Format: <code>delete con INDEX&#8230;&#8203;</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Deletes the contact at the specified INDEX.</p>
+</li>
+<li>
+<p>The index refers to the index number shown in the displayed contact list.</p>
+</li>
+<li>
+<p>The index must be a positive integer 1, 2, 3, …</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>delete con 3</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Deletes the 3rd contact in the contact list.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="listing-all-contacts-code-list-con-code"><a class="link" href="#listing-all-contacts-code-list-con-code">3.13. Listing all contacts: <code>list con</code></a></h3>
 <div class="paragraph">
 <p>Displays a list view of all the contact list<br>
-Format: <code>list contact</code></p>
+Format: <code>list con</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="adds-days-to-the-schedule-code-add-day-code"><a class="link" href="#adds-days-to-the-schedule-code-add-day-code">3.10. Adds days to the schedule: <code>add day</code></a></h3>
+<h3 id="adds-days-to-the-schedule-code-add-day-code"><a class="link" href="#adds-days-to-the-schedule-code-add-day-code">3.14. Adds days to the schedule: <code>add day</code></a></h3>
 <div class="paragraph">
-<p>Adds DAY_NUMBER amount of days to the schedule<br>
-Format: <code>create day DAY_NUMBER</code></p>
+<p>Adds DAY_NUMBER amount of days to the itinerary<br>
+Format: <code>add day DAY_NUMBER</code></p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -350,13 +430,13 @@ Format: <code>create day DAY_NUMBER</code></p>
 </ul>
 </div>
 <div class="paragraph">
-<p>Adds 7 days to the back of the schedule.</p>
+<p>Adds 7 days to the back of the itinerary.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="deleting-days-code-delete-day-code"><a class="link" href="#deleting-days-code-delete-day-code">3.11. Deleting days: <code>delete day</code></a></h3>
+<h3 id="deleting-days-code-delete-day-code"><a class="link" href="#deleting-days-code-delete-day-code">3.15. Deleting days: <code>delete day</code></a></h3>
 <div class="paragraph">
-<p>Deletes DAY_NUMBER th day of the schedule.<br>
+<p>Deletes DAY_NUMBER th day of the itinerary.<br>
 Format: <code>delete day DAY_NUMBER</code></p>
 </div>
 <div class="paragraph">
@@ -370,11 +450,11 @@ Format: <code>delete day DAY_NUMBER</code></p>
 </ul>
 </div>
 <div class="paragraph">
-<p>Deletes the day 2 from the schedule.</p>
+<p>Deletes the day 2 from the itinery.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="scheduling-activities-to-a-day-code-schedule-code"><a class="link" href="#scheduling-activities-to-a-day-code-schedule-code">3.12. Scheduling activities to a day: <code>schedule</code></a></h3>
+<h3 id="scheduling-activities-to-a-day-code-schedule-code"><a class="link" href="#scheduling-activities-to-a-day-code-schedule-code">3.16. Scheduling activities to a day: <code>schedule</code></a></h3>
 <div class="paragraph">
 <p>Schedules activities to a day<br>
 Format: <code>schedule DAY_NUMBER ACTIVITY_INDEX…</code></p>
@@ -394,7 +474,7 @@ Format: <code>schedule DAY_NUMBER ACTIVITY_INDEX…</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="unscheduling-activities-from-a-day-code-unschedule-activity-code"><a class="link" href="#unscheduling-activities-from-a-day-code-unschedule-activity-code">3.13. Unscheduling activities from a day: <code>unschedule activity</code></a></h3>
+<h3 id="unscheduling-activities-from-a-day-code-unschedule-activity-code"><a class="link" href="#unscheduling-activities-from-a-day-code-unschedule-activity-code">3.17. Unscheduling activities from a day: <code>unschedule activity</code></a></h3>
 <div class="paragraph">
 <p>Unschedule activities from a day<br>
 Format: <code>unschedule activity ACTIVITY_INDEX&#8230;&#8203; DAY_NUMBER</code></p>
@@ -414,7 +494,7 @@ Format: <code>unschedule activity ACTIVITY_INDEX&#8230;&#8203; DAY_NUMBER</code>
 </div>
 </div>
 <div class="sect2">
-<h3 id="unscheduling-activities-from-a-day-code-unschedule-time-code"><a class="link" href="#unscheduling-activities-from-a-day-code-unschedule-time-code">3.14. Unscheduling activities from a day: <code>unschedule time</code></a></h3>
+<h3 id="unscheduling-activities-from-a-day-code-unschedule-time-code"><a class="link" href="#unscheduling-activities-from-a-day-code-unschedule-time-code">3.18. Unscheduling activities from a day: <code>unschedule time</code></a></h3>
 <div class="paragraph">
 <p>Unschedule activities from a day<br>
 Format: <code>unschedule time TIME_BY_24HR_CLOCK day DAY_NUMBER</code></p>
@@ -430,11 +510,11 @@ Format: <code>unschedule time TIME_BY_24HR_CLOCK day DAY_NUMBER</code></p>
 </ul>
 </div>
 <div class="paragraph">
-<p>This removes the activity at 2300 from day 1 of the schedule.</p>
+<p>This removes the activity at 2300 from day 1 of the itinerary.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="list-the-activities-in-a-day-code-list-day-code"><a class="link" href="#list-the-activities-in-a-day-code-list-day-code">3.15. List the activities in a day: <code>list day</code></a></h3>
+<h3 id="list-the-activities-in-a-day-code-list-day-code"><a class="link" href="#list-the-activities-in-a-day-code-list-day-code">3.19. List the activities in a day: <code>list day</code></a></h3>
 <div class="paragraph">
 <p>List the activities in a day<br>
 Format: <code>list day DAY_NUMBER</code></p>
@@ -454,30 +534,30 @@ Format: <code>list day DAY_NUMBER</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="undo-code-undo-code"><a class="link" href="#undo-code-undo-code">3.16. Undo: <code>undo</code></a></h3>
+<h3 id="undo-code-undo-code"><a class="link" href="#undo-code-undo-code">3.20. Undo: <code>undo</code></a></h3>
 <div class="paragraph">
 <p>Undo by one action<br>
 Format: <code>undo</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="redo-code-redo-code"><a class="link" href="#redo-code-redo-code">3.17. Redo: <code>redo</code></a></h3>
+<h3 id="redo-code-redo-code"><a class="link" href="#redo-code-redo-code">3.21. Redo: <code>redo</code></a></h3>
 <div class="paragraph">
 <p>Redo by one action<br>
 Format: <code>redo</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="look-up-history-of-inputs-code-history-code"><a class="link" href="#look-up-history-of-inputs-code-history-code">3.18. Look up history of inputs: <code>history</code></a></h3>
+<h3 id="look-up-history-of-inputs-code-history-code"><a class="link" href="#look-up-history-of-inputs-code-history-code">3.22. Look up history of inputs: <code>history</code></a></h3>
 <div class="paragraph">
 <p>Lists the inputs that have been entered<br>
 Format: <code>history</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-the-data-code-save-code"><a class="link" href="#saving-the-data-code-save-code">3.19. Saving the data: <code>save</code></a></h3>
+<h3 id="saving-the-data-code-save-code"><a class="link" href="#saving-the-data-code-save-code">3.23. Saving the data: <code>save</code></a></h3>
 <div class="paragraph">
-<p>Saves the state of the program. If provided with a schedule name, it will create a new file with the schedule name. Else, it will simply save it to the current save file<br>
+<p>Saves the state of the program. If provided with a schedule name, it will add a new file with the schedule name. Else, it will simply save it to the current save file<br>
 Format: <code>save [SCHEDULE_NAME]</code></p>
 </div>
 <div class="paragraph">
@@ -492,9 +572,9 @@ Format: <code>save [SCHEDULE_NAME]</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="loading-the-data-code-load-code"><a class="link" href="#loading-the-data-code-load-code">3.20. Loading the data: <code>load</code></a></h3>
+<h3 id="loading-the-data-code-load-code"><a class="link" href="#loading-the-data-code-load-code">3.24. Loading the data: <code>load</code></a></h3>
 <div class="paragraph">
-<p>The user can load the desired schedule with the schedule name. Else, the user can create a new schedule<br>
+<p>The user can load the desired schedule with the schedule name. Else, the user can add a new schedule<br>
 Format: <code>load SCHEDULE_NAME</code></p>
 </div>
 <div class="paragraph">
@@ -509,14 +589,14 @@ Format: <code>load SCHEDULE_NAME</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="export-schedule-code-export-code"><a class="link" href="#export-schedule-code-export-code">3.21. Export schedule: <code>export</code></a></h3>
+<h3 id="export-schedule-code-export-code"><a class="link" href="#export-schedule-code-export-code">3.25. Export schedule: <code>export</code></a></h3>
 <div class="paragraph">
 <p>Exports the schedule into a pdf<br>
 Format: <code>export</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="auto-correct"><a class="link" href="#auto-correct">3.22. Auto-correct</a></h3>
+<h3 id="auto-correct"><a class="link" href="#auto-correct">3.26. Auto-correct</a></h3>
 <div class="paragraph">
 <p>When there is an invalid command, the input command is checked against the known command list for similarity and the user will be prompted with the closest command match</p>
 </div>
@@ -535,7 +615,7 @@ Format: <code>export</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.23. Exiting the program : <code>exit</code></a></h3>
+<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.27. Exiting the program : <code>exit</code></a></h3>
 <div class="paragraph">
 <p>Exits the program.<br>
 Format: <code>exit</code></p>
@@ -548,7 +628,7 @@ Format: <code>exit</code></p>
 <div class="sectionbody">
 <div class="paragraph">
 <p><strong>Q</strong>: How do I transfer my data to another Computer?<br>
-<strong>A</strong>: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous Address Book folder.</p>
+<strong>A</strong>: Install the app in the other computer and overwrite the empty data file it adds with the file that contains the data of your previous Plan<sup>2</sup>Travel folder.</p>
 </div>
 </div>
 </div>
@@ -558,26 +638,88 @@ Format: <code>exit</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Add</strong> <code>add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]&#8230;&#8203;</code><br>
-e.g. <code>add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague</code></p>
+<p><strong>Add</strong> :</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>add acc n/NAME a/ADDRESS [p/PHONE_NUMBER] [e/EMAIL] [t/TAG]&#8230;&#8203;</code><br>
+e.g. <code>add acc n/Paradise Hotel a/23 Amoy Quee Road p/22224444</code></p>
+</li>
+<li>
+<p><code>add act n/NAME a/ADDRESS [p/PHONE_NUMBER] [e/EMAIL] [t/TAG]&#8230;&#8203;</code><br>
+e.g. <code>add act n/Skiing a/Mount Kurabaki</code></p>
+</li>
+<li>
+<p><code>add con n/NAME p/PHONE_NUMBER [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code><br>
+e.g. <code>add act n/James Ho a/123, Clementi Rd, 1234665 p/22224444 e/jamesho@example.com t/friend t/colleague</code></p>
+</li>
+</ul>
+</div>
 </li>
 <li>
 <p><strong>Clear</strong> : <code>clear</code></p>
 </li>
 <li>
-<p><strong>Delete</strong> : <code>delete INDEX</code><br>
-e.g. <code>delete 3</code></p>
+<p><strong>Delete</strong> :<br></p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>delete acc INDEX</code></p>
 </li>
 <li>
-<p><strong>Edit</strong> : <code>edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code><br>
-e.g. <code>edit 2 n/James Lee e/jameslee@example.com</code></p>
+<p><code>delete act INDEX</code></p>
 </li>
 <li>
-<p><strong>Find</strong> : <code>find KEYWORD [MORE_KEYWORDS]</code><br>
+<p><code>delete con INDEX</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Edit</strong> :</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>edit acc INDEX [n/NAME] [a/ADDRESS] [p/PHONE_NUMBER] [e/EMAIL] [t/TAG]&#8230;&#8203;</code><br>
+e.g. <code>edit acc 3 n/Kent Ridge Hotel a/Clementi</code></p>
+</li>
+<li>
+<p><code>edit act INDEX [n/NAME] [a/ADDRESS] [p/PHONE_NUMBER] [e/EMAIL] [t/TAG]&#8230;&#8203;</code><br>
+e.g. `edit act 5 n/Go Disneyland `</p>
+</li>
+<li>
+<p><code>edit con INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code><br>
+e.g. <code>edit con 2 n/James Lee e/jameslee@example.com</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Find</strong> :</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>find KEYWORD [MORE_KEYWORDS]</code><br>
 e.g. <code>find James Jake</code></p>
 </li>
+</ul>
+</div>
+</li>
 <li>
-<p><strong>List</strong> : <code>list</code></p>
+<p><strong>List</strong> :</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>list acc</code></p>
+</li>
+<li>
+<p><code>list act</code></p>
+</li>
+<li>
+<p><code>list con</code></p>
+</li>
+</ul>
+</div>
 </li>
 <li>
 <p><strong>Help</strong> : <code>help</code></p>
@@ -585,4 +727,4 @@ e.g. <code>find James Jake</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-16 14:39:30 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-16 14:42:13 UTC</div></div></div></body></html>
