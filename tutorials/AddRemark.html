@@ -71,7 +71,7 @@ An example of the command is <code>remark 2 r/Likes baseball</code>.</p>
 <div class="paragraph">
 <p>Looking in the <code>logic.command</code> package, you will notice that each existing command have their own class.
 All the commands inherit from the abstract class <code>Command</code> which means that they must override <code>execute()</code>.
-Each <code>Command</code> returns an instance of <code>CommandResult</code> upon success and <code>CommandResult#feedbackToUser</code> is printed to the <code>ResultDisplay</code>.</p>
+Each <code>Command</code> returns an instance of <code>CommandResult</code> upon success and <code>CommandResult#feedbackToUser</code> is printed to the <code>FeedbackDisplay</code>.</p>
 </div>
 <div class="paragraph">
 <p>Let&#8217;s start by creating a new <code>RemarkCommand</code> class in the <code>src/main/java/seedu/address/logic/command</code> directory.</p>
@@ -130,7 +130,7 @@ If everything went well, you should see something like this:</p>
 <h2 id="change-code-remarkcommand-code-to-throw-an-exception"><a class="link" href="#change-code-remarkcommand-code-to-throw-an-exception">Change <code>RemarkCommand</code> to throw an exception</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>While we have successfully printed a message to <code>ResultDisplay</code>, the command does not do what it is supposed to do.
+<p>While we have successfully printed a message to <code>FeedbackDisplay</code>, the command does not do what it is supposed to do.
 Let&#8217;s change the command to throw an <code>CommandException</code> to accurately reflect that our command is still a work in progress.</p>
 </div>
 <div class="imageblock">
@@ -616,4 +616,4 @@ In this case, <code>CommandTestUtil#assertCommandSuccess</code> is the best fit 
 <p>This concludes the tutorial for adding a new <code>Command</code> to AddressBook.</p>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-30 14:43:58 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-31 08:25:22 UTC</div></div></div></body></html>

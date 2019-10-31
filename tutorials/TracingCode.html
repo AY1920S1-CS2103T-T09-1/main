@@ -325,13 +325,13 @@ constructor.</p>
 <p>We can continue to step through until we return to <code>MainWindow#executeCommand()</code>.</p>
 </li>
 <li>
-<p>Stepping into <code>resultDisplay.setFeedbackToUser(commandResult.getFeedbackToUser());</code>, we end up in:</p>
+<p>Stepping into <code>feedbackDisplay.setFeedbackToUser(commandResult.getFeedbackToUser());</code>, we end up in:</p>
 <div class="listingblock">
-<div class="title">ResultDisplay#setFeedbackToUser()</div>
+<div class="title">FeedbackDisplay#setFeedbackToUser()</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">void</span> setFeedbackToUser(<span class="predefined-type">String</span> feedbackToUser) {
     requireNonNull(feedbackToUser);
-    resultDisplay.setText(feedbackToUser);
+    feedbackDisplay.setText(feedbackToUser);
 }</code></pre>
 </div>
 </div>
@@ -417,4 +417,4 @@ handled?</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-30 14:43:58 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-31 08:25:22 UTC</div></div></div></body></html>
