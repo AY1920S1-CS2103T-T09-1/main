@@ -753,7 +753,8 @@ You may wish to input the location of the activities so that we schedule activit
 <div class="sect2">
 <h3 id="optimising-by-budget-code-optimise-code"><a class="link" href="#optimising-by-budget-code-optimise-code">3.23. Optimising by budget: <code>optimise</code></a></h3>
 <div class="paragraph">
-<p>Choose the most optimum activities in a day based on the total cost of activities in a day. This will remove conflicting activities and pick only those that will lead to an optimum budget for that particular day.</p>
+<p>Optimises a day&#8217;s schedule by finding all possible combinations of activities. The resulting combination would have the lowest total cost. If there are multiple combinations with the same cost,
+the combination with the most activities would be chosen.</p>
 </div>
 <div class="paragraph">
 <p>Format: <code>optimise DAY_INDEX</code></p>
@@ -767,6 +768,18 @@ You may wish to input the location of the activities so that we schedule activit
 <p><code>optimise 3</code></p>
 </li>
 </ul>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+This command would not work if there are no activities scheduled in the day.
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect2">
@@ -1076,4 +1089,4 @@ e.g. <code>autoschedule t/Dining 1000 t/Attraction 1200 n/Disneyland 1400 t/Dini
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-06 04:34:55 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-06 10:34:21 UTC</div></div></div></body></html>
