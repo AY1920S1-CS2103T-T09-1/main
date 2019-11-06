@@ -10,7 +10,10 @@
 <h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Plan²travel is a desktop travel planning application. It has a GUI but most of the user interactions happen using a CLI (Command Line Interface) and it has a GUI created with JavaFX. It is a Java sample application intended for students who students who are infrequent travelers while using Java as the main programming language.</p>
+<p><strong><em>Plan²travel</em></strong> is a desktop travel planning application for student who are planning for an overseas trip.
+It has a GUI created with JavaFX and user would interacts with it through a CLI (Command Line Interface). The application is written in Java.
+<strong><em>Plan²travel</em></strong> allows students to better organise their trip information by providing them with a template with these three main list: accommodation, contact and activity list.
+Also, <strong><em>Plan²travel</em></strong> is able to generate a best suited schedule based on the student&#8217;s requirement and optimise their budget spending for a trip.</p>
 </div>
 </div>
 </div>
@@ -20,106 +23,93 @@
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Major enhancement</strong>: added <strong>the ability to undo/redo previous commands</strong></p>
+<p><strong>Major enhancement</strong>: added <strong>the ability to generate a suitable schedule based on user&#8217;s requirement</strong></p>
 <div class="ulist">
 <ul>
 <li>
-<p>What it does: allows the user to undo all previous commands one at a time. Preceding undo commands can be reversed by using the redo command.</p>
+<p>What it does: Generate a schedule for specified day(s) based on the type of activities users want for those day(s). Activities scheduled for those day(s) depends on the level on importance they indicated for each activity and whether it has been scheduled.</p>
 </li>
 <li>
-<p>Justification: This feature improves the product significantly because a user can make mistakes in commands and the app should provide a convenient way to rectify them.</p>
+<p>Justification: This feature improves the product significantly because it is able to generate a schedule that are non-overlapping and is to the best interest of the user.</p>
 </li>
 <li>
-<p>Highlights: This enhancement affects existing commands and commands to be added in future. It required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to existing commands.</p>
+<p>Highlights:</p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Current implementation of using Hashmap to store prefix and their arguments does not maintain the order of the prefixes that are being added. As the new enhancement require information of the order of activities to schedule as specified by the user, I have to implement a new way to store those prefixes to maintain their insertion order.</p>
 </li>
 <li>
-<p>Credits: <em>{mention here if you reused any code/ideas from elsewhere or if a third-party library is heavily used in the feature so that a reader can make a more accurate judgement of how much effort went into the feature}</em></p>
+<p>This enhancement can easily be extended to schedule multiple activities at one time.</p>
+</li>
+<li>
+<p>There were many cases to consider to ensure that there were no overlap of activity but still provide a schedule that best suit the requirement of the user.</p>
+</li>
+</ol>
+</div>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Minor enhancement</strong>: added a history command that allows the user to navigate to previous commands using up/down keys.</p>
+<p><strong>Minor enhancement</strong>: added <strong>the ability to schedule an activity to a day</strong>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: Schedule the specified activity from the activity list to the specified day.</p>
 </li>
 <li>
-<p><strong>Code contributed</strong>: [<a href="https://github.com">Functional code</a>] [<a href="https://github.com">Test code</a>] <em>{give links to collated code files}</em></p>
+<p>Justification:
+<strong><em>Plan²travel</em></strong> is designed for students to organise their trip information and plan their itinerary.
+Therefore, this command is crucial in allowing user to input activity into a particular day so that they can plan their itinerary.</p>
 </li>
+<li>
+<p>Highlights:</p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>This enhancement requires an understanding of how the activity list and the days list are stored and I would need to understand how the parser works so that I could retrieve the relevant information and schedule the activity for specified day.</p>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Minor enhancement</strong>: added the model for <strong>Activity</strong>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: Forms the backbone of most commands which require activity.</p>
+</li>
+<li>
+<p>Justification: Our application is designed for students to plan their activities, and therefore this enhancement would later be involved in most of any other enhancements that take place in future.</p>
+</li>
+<li>
+<p>Highlights:</p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>This enhancement requires an understanding of how a typical activity should consist of so that it does not violate the law of demeter.</p>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Code contributed</strong>: [<a href="https://nus-cs2103-ay1920s1.github.io/tp-dashboard/#=undefined&amp;search=oscarsu97">RepoSense Report</a>]</p>
+</li>
+</ul>
+</div>
+<div class="ulist">
+<ul>
 <li>
 <p><strong>Other contributions</strong>:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Project management:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Managed releases <code>v1.3</code> - <code>v1.5rc</code> (3 releases) on GitHub</p>
 </li>
 </ul>
-</div>
-</li>
-<li>
-<p>Enhancements to existing features:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Updated the GUI color scheme (Pull requests <a href="https://github.com">#33</a>, <a href="https://github.com">#34</a>)</p>
-</li>
-<li>
-<p>Wrote additional tests for existing features to increase coverage from 88% to 92% (Pull requests <a href="https://github.com">#36</a>, <a href="https://github.com">#38</a>)</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Documentation:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Did cosmetic tweaks to existing contents of the User Guide: <a href="https://github.com">#14</a></p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Community:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>PRs reviewed (with non-trivial review comments): <a href="https://github.com">#12</a>, <a href="https://github.com">#32</a>, <a href="https://github.com">#19</a>, <a href="https://github.com">#42</a></p>
-</li>
-<li>
-<p>Contributed to forum discussions (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>, <a href="https://github.com">4</a>)</p>
-</li>
-<li>
-<p>Reported bugs and suggestions for other teams in the class (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>)</p>
-</li>
-<li>
-<p>Some parts of the history feature I added was adopted by several other class mates (<a href="https://github.com">1</a>, <a href="https://github.com">2</a>)</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Tools:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Integrated a third party library (Natty) to the project (<a href="https://github.com">#42</a>)</p>
-</li>
-<li>
-<p>Integrated a new Github plugin (CircleCI) to the team repo</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p><em>{you can add/remove categories in the list above}</em></p>
 </div>
 </div>
 </div>
@@ -136,6 +126,109 @@
 </tr>
 </tbody>
 </table>
+<div class="sect2">
+<h3 id="scheduling-an-activity-to-a-day-code-schedule-code"><a class="link" href="#scheduling-an-activity-to-a-day-code-schedule-code">Scheduling an activity to a day: <code>schedule</code></a></h3>
+<div class="paragraph">
+<p>Schedules an activity to a day<br>
+Format: <code>schedule ACTIVITY_INDEX st/START_TIME d/DAY_INDEX</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>schedule 2 st/1000 d/2</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Schedules the second activity in the activity list under day 2.</p>
+</div>
+<hr>
+</div>
+<div class="sect2">
+<h3 id="auto-schedule-code-autoschedule-code"><a class="link" href="#auto-schedule-code-autoschedule-code">Auto Schedule: <code>autoschedule</code></a></h3>
+<div class="paragraph">
+<p>Generates a list of activities for the specified days based on the <code>highest priority</code> and the <code>least number of times it
+appears on the timetable.</code><br></p>
+</div>
+<div class="paragraph">
+<p>If the end time of the activity chosen overlaps with the next activity&#8217;s start time, the
+next activity with the <code>next highest priority</code> and <code>least number of count in the timetable</code> are chosen.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Timing can be specified if there is an activity that is confirmed to do at that timing.</p>
+</li>
+<li>
+<p>An <code>activity name</code> can be specified if there is an activity that has been confirmed to do.</p>
+</li>
+<li>
+<p>Location for that <code>day</code> can be specified, otherwise it is assumed to be any location.</p>
+</li>
+<li>
+<p>The <code>Day</code> to schedule for can be specified, otherwise it is assumed to be scheduled for all days.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+Ensure that activity with the specified name or tag is present in the activity list.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+You may use <code>n/</code> to denote a specific activity name and specify the start time if you have confirmed to do an activity at a specific time.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+You may wish to input the location of the activities so that we schedule activities that are in the same location together for the specified day to reduce your travelling time.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Format: <code>autoschedule (t/TAG [START_TIME]|| n/ACTIVITY_NAME [START_TIME])&#8230;&#8203; [a/LOCATION_OF_ACTIVITIES] [d/DAY_INDEX&#8230;&#8203;]</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>autoschedule t/Breakfast t/Sightseeing t/Dinner</code></p>
+</li>
+<li>
+<p><code>autoschedule t/Breakfast t/Sightseeing t/Dinner a/Kyoto d/1</code></p>
+</li>
+<li>
+<p><code>autoschedule t/Breakfast 1000 n/DisneyLand t/Dinner a/Kyoto d/1 2 3 4</code></p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -152,227 +245,137 @@
 </tbody>
 </table>
 <div class="sect2">
-<h3 id="proposed-undo-redo-feature"><a class="link" href="#proposed-undo-redo-feature">[Proposed] Undo/Redo feature</a></h3>
-<div class="sect3">
-<h4 id="proposed-implementation"><a class="link" href="#proposed-implementation">Proposed Implementation</a></h4>
+<h3 id="Design-Ui"><a class="link" href="#Design-Ui">UI component</a></h3>
+<div class="imageblock">
+<div class="content">
+<img src="../images/UiComponent.png" alt="UiComponent">
+</div>
+<div class="title">Figure 1. Structure of the UI Component</div>
+</div>
 <div class="paragraph">
-<p>The undo/redo mechanism is facilitated by <code>VersionedAddressBook</code>.
-It extends <code>AddressBook</code> with an undo/redo history, stored internally as an <code>addressBookStateList</code> and <code>currentStatePointer</code>.
-Additionally, it implements the following operations:</p>
+<p><strong>API</strong> : <a href="{repoURL}/blob/master/src/main/java/seedu/address/ui/Ui.java"><code>Ui.java</code></a></p>
+</div>
+<div class="paragraph">
+<p>The UI consists of a <code>MainWindow</code> that is made up of parts e.g.<code>CommandBox</code>, <code>FeedbackDisplay</code>, <code>ContactListPanel</code>, <code>ActivityListPanel</code>, <code>AccomodationListPanel</code>, <code>StatusBarFooter</code>, <code>HelpWindow</code> etc. All these, including the <code>MainWindow</code>, inherit from the abstract <code>UiPart</code> class.</p>
+</div>
+<div class="paragraph">
+<p>The <code>UI</code> component uses JavaFx UI framework. The layout of these UI parts are defined in matching <code>.fxml</code> files that are in the <code>src/main/resources/view</code> folder. For example, the layout of the <a href="{repoURL}/src/main/java/seedu/address/ui/MainWindow.java"><code>MainWindow</code></a> is specified in <a href="{repoURL}/src/main/resources/view/MainWindow.fxml"><code>MainWindow.fxml</code></a></p>
+</div>
+<div class="paragraph">
+<p>The <code>UI</code> component,</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>VersionedAddressBook#commit()</code>&#8201;&#8212;&#8201;Saves the current address book state in its history.</p>
+<p>Executes user commands using the <code>Logic</code> component.</p>
 </li>
 <li>
-<p><code>VersionedAddressBook#undo()</code>&#8201;&#8212;&#8201;Restores the previous address book state from its history.</p>
-</li>
-<li>
-<p><code>VersionedAddressBook#redo()</code>&#8201;&#8212;&#8201;Restores a previously undone address book state from its history.</p>
+<p>Listens for changes to <code>Model</code> data so that the UI can be updated with the modified data.</p>
 </li>
 </ul>
 </div>
+<hr>
+</div>
+<div class="sect2">
+<h3 id="proposed-schedule-activity-feature"><a class="link" href="#proposed-schedule-activity-feature">[Proposed] Schedule Activity feature</a></h3>
 <div class="paragraph">
-<p>These operations are exposed in the <code>Model</code> interface as <code>Model#commitAddressBook()</code>, <code>Model#undoAddressBook()</code> and <code>Model#redoAddressBook()</code> respectively.</p>
+<p><strong><em>Plan²travel</em></strong> allows user to schedule an activity from the activity list to a specified time of a day.
+This is accomplished by executing the Schedule Command using <code>activity index</code>, <code>day index</code>, <code>start time</code> and <code>end time</code> of the activity.</p>
 </div>
 <div class="paragraph">
-<p>Given below is an example usage scenario and how the undo/redo mechanism behaves at each step.</p>
+<p>Eg. <code>schedule activity ACTIVITY_INDEX st/START_TIME et/END_TIME d/DAY_INDEX</code></p>
+</div>
+<div class="sect3">
+<h4 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h4>
+<div class="paragraph">
+<p>The keywords from the command given by the user is parsed using <code>ScheduleCommandParser</code> which converts the string variable of start time and end time into a LocalTime format and wraps activity index and day index  with an Index class.
+These are then passed to the <code>ScheduleActivityCommand</code> for execution later on.</p>
 </div>
 <div class="paragraph">
-<p>Step 1. The user launches the application for the first time. The <code>VersionedAddressBook</code> will be initialized with the initial address book state, and the <code>currentStatePointer</code> pointing to that single address book state.</p>
+<p>Given below is a sequence diagram showing the creation of <code>ScheduleActivityCommand</code>:</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/UndoRedoState0.png" alt="UndoRedoState0">
+<img src="../images/ScheduleActivityCommandCreation.png" alt="ScheduleActivityCommandCreation">
 </div>
+<div class="title">Figure 2. Sequence diagram showing how ScheduleActivityCommand is created.</div>
 </div>
 <div class="paragraph">
-<p>Step 2. The user executes <code>delete contact 5</code> command to delete the 5th contact in the address book. The <code>delete</code> command calls <code>Model#commitAddressBook()</code>, causing the modified state of the address book after the <code>delete 5</code> command executes to be saved in the <code>addressBookStateList</code>, and the <code>currentStatePointer</code> is shifted to the newly inserted address book state.</p>
+<p>After the creation of <code>ScheduleActivityCommand</code>, <code>LogicManager</code> will proceed to call the <code>execute()</code> method of <code>ScheduleActivityCommand</code>.</p>
+</div>
+<div class="paragraph">
+<p>Below are the steps taken during the execution of <code>ScheduleActivityCommand</code>:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>Model</code> will retrieve the list of days from the <code>Itinerary</code> and the list of activities from  <code>UniqueActivityList</code>.</p>
+</li>
+<li>
+<p>The <code>activityIndex</code> and <code>dayIndex</code> will then be used to obtain the target <code>Activity</code> from activity list
+and target <code>Day</code> from list of days.</p>
+</li>
+<li>
+<p><code>Activity</code> will be converted to <code>ActivityWithTime</code> using the start time and time given.</p>
+</li>
+<li>
+<p>This <code>ActivityWithTime</code> is then added to the list of <code>ActivityWithTime</code> for the target <code>Day</code>.</p>
+</li>
+<li>
+<p>A new <code>Day</code> is created with the updated list of <code>ActivityWithTime</code>.</p>
+</li>
+<li>
+<p><code>Model</code> will replace the old <code>Day</code> with the new <code>Day</code> created in the <code>Itinerary</code>.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Given below is a sequence diagram showing the execution of <code>ScheduleActivityCommand</code>:</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/UndoRedoState1.png" alt="UndoRedoState1">
+<img src="../images/ScheduleActivityExecution.png" alt="ScheduleActivityExecution">
 </div>
-</div>
-<div class="paragraph">
-<p>Step 3. The user executes <code>add contact n/David &#8230;&#8203;</code> to add a new contact. The <code>add</code> command also calls <code>Model#commitAddressBook()</code>, causing another modified address book state to be saved into the <code>addressBookStateList</code>.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoState2.png" alt="UndoRedoState2">
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If a command fails its execution, it will not call <code>Model#commitAddressBook()</code>, so the address book state will not be saved into the <code>addressBookStateList</code>.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Step 4. The user now decides that adding the contact was a mistake, and decides to undo that action by executing the <code>undo</code> command. The <code>undo</code> command will call <code>Model#undoAddressBook()</code>, which will shift the <code>currentStatePointer</code> once to the left, pointing it to the previous address book state, and restores the address book to that state.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoState3.png" alt="UndoRedoState3">
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If the <code>currentStatePointer</code> is at index 0, pointing to the initial address book state, then there are no previous address book states to restore. The <code>undo</code> command uses <code>Model#canUndoAddressBook()</code> to check if this is the case. If so, it will return an error to the user rather than attempting to perform the undo.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>The following sequence diagram shows how the undo operation works:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoSequenceDiagram.png" alt="UndoSequenceDiagram">
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-The lifeline for <code>UndoCommand</code> should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>The <code>redo</code> command does the opposite&#8201;&#8212;&#8201;it calls <code>Model#redoAddressBook()</code>, which shifts the <code>currentStatePointer</code> once to the right, pointing to the previously undone state, and restores the address book to that state.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If the <code>currentStatePointer</code> is at index <code>addressBookStateList.size() - 1</code>, pointing to the latest address book state, then there are no undone address book states to restore. The <code>redo</code> command uses <code>Model#canRedoAddressBook()</code> to check if this is the case. If so, it will return an error to the user rather than attempting to perform the redo.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Step 5. The user then decides to execute the command <code>list</code>. Commands that do not modify the address book, such as <code>list</code>, will usually not call <code>Model#commitAddressBook()</code>, <code>Model#undoAddressBook()</code> or <code>Model#redoAddressBook()</code>. Thus, the <code>addressBookStateList</code> remains unchanged.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoState4.png" alt="UndoRedoState4">
-</div>
-</div>
-<div class="paragraph">
-<p>Step 6. The user executes <code>clear</code>, which calls <code>Model#commitAddressBook()</code>. Since the <code>currentStatePointer</code> is not pointing at the end of the <code>addressBookStateList</code>, all address book states after the <code>currentStatePointer</code> will be purged. We designed it this way because it no longer makes sense to redo the <code>add n/David &#8230;&#8203;</code> command. This is the behavior that most modern desktop applications follow.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoState5.png" alt="UndoRedoState5">
-</div>
-</div>
-<div class="paragraph">
-<p>The following accommodation diagram summarizes what happens when a user executes a new command:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/CommitActivityDiagram.png" alt="CommitActivityDiagram">
-</div>
+<div class="title">Figure 3. Sequence diagram showing how ScheduleActivityCommand executes.</div>
 </div>
 </div>
 <div class="sect3">
 <h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
 <div class="sect4">
-<h5 id="aspect-how-undo-redo-executes"><a class="link" href="#aspect-how-undo-redo-executes">Aspect: How undo &amp; redo executes</a></h5>
+<h5 id="aspect-update-activities-for-that-particular-day"><a class="link" href="#aspect-update-activities-for-that-particular-day">Aspect: Update activities for that particular day</a></h5>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Saves the entire address book.</p>
+<p><strong>Alternative 1 (current choice):</strong> Create a new <code>Day</code> class with updated activity list for that day.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Easy to implement.</p>
+<p>Pros: Easier for developer to test the code.</p>
 </li>
 <li>
-<p>Cons: May have performance issues in terms of memory usage.</p>
+<p>Cons: Might create unnecessary overheads in the code by creating new object every time we schedule an activity.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Alternative 2:</strong> Individual command knows how to undo/redo by itself.</p>
+<p><strong>Alternative 2:</strong> Directly updates the activity list in the current <code>Day</code> class.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Will use less memory (e.g. for <code>delete</code>, just save the contact being deleted).</p>
+<p>Pros: Seem more intuitive and simple to implement.</p>
 </li>
 <li>
-<p>Cons: We must ensure that the implementation of each individual command are correct.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect4">
-<h5 id="aspect-data-structure-to-support-the-undo-redo-commands"><a class="link" href="#aspect-data-structure-to-support-the-undo-redo-commands">Aspect: Data structure to support the undo/redo commands</a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice):</strong> Use a list to store the history of address book states.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Easy for new Computer Science student undergraduates to understand, who are likely to be the new incoming developers of our project.</p>
-</li>
-<li>
-<p>Cons: Logic is duplicated twice. For example, when a new command is executed, we must remember to update both <code>HistoryManager</code> and <code>VersionedAddressBook</code>.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Use <code>HistoryManager</code> for undo/redo</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: We do not need to maintain a separate list, and just reuse what is already in the codebase.</p>
-</li>
-<li>
-<p>Cons: Requires dealing with commands that have already been undone: We must remember to skip these commands. Violates Single Responsibility Principle and Separation of Concerns as <code>HistoryManager</code> now needs to do two different things.</p>
+<p>Cons: Might make it harder to debug if other functions/classes also depends on the same <code>Day</code> class.</p>
 </li>
 </ul>
 </div>
 </li>
 </ul>
 </div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="project-powerpointlabs"><a class="link" href="#project-powerpointlabs">PROJECT: PowerPointLabs</a></h2>
-<div class="sectionbody">
 <hr>
-<div class="paragraph">
-<p><em>{Optionally, you may include other projects in your portfolio.}</em></p>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-06 15:11:20 UTC</div></div></div></body></html>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-06 15:34:17 UTC</div></div></div></body></html>
