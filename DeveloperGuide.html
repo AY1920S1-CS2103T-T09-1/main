@@ -23,12 +23,11 @@
 <li><a href="#implementation">3. Implementation</a>
 <ul class="sectlevel2">
 <li><a href="#proposed-undo-redo-feature">3.1. [Proposed] Undo/Redo feature</a></li>
-<li><a href="#proposed-data-encryption">3.2. [Proposed] Data Encryption</a></li>
-<li><a href="#proposed-schedule-optimisation">3.3. [Proposed] Schedule optimisation</a></li>
-<li><a href="#proposed-schedule-activity-feature">3.4. [Proposed] Schedule Activity feature</a></li>
-<li><a href="#logging">3.5. Logging</a></li>
-<li><a href="#Implementation-Configuration">3.6. Configuration</a></li>
-<li><a href="#timetable">3.7. Timetable</a></li>
+<li><a href="#schedule-optimisation">3.2. Schedule optimisation</a></li>
+<li><a href="#proposed-schedule-activity-feature">3.3. [Proposed] Schedule Activity feature</a></li>
+<li><a href="#logging">3.4. Logging</a></li>
+<li><a href="#Implementation-Configuration">3.5. Configuration</a></li>
+<li><a href="#timetable">3.6. Timetable</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a></li>
@@ -559,70 +558,27 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect2">
-<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">3.2. [Proposed] Data Encryption</a></h3>
-<div class="paragraph">
-<p><em>{Explain here how the data encryption feature will be implemented}</em></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="proposed-schedule-optimisation"><a class="link" href="#proposed-schedule-optimisation">3.3. [Proposed] Schedule optimisation</a></h3>
+<h3 id="schedule-optimisation"><a class="link" href="#schedule-optimisation">3.2. Schedule optimisation</a></h3>
 <div class="sect3">
-<h4 id="proposed-implementation-2"><a class="link" href="#proposed-implementation-2">3.3.1. Proposed Implementation</a></h4>
+<h4 id="implementation-2"><a class="link" href="#implementation-2">3.2.1. Implementation</a></h4>
 <div class="paragraph">
-<p>The proposed schedule optimisation feature utilises <code>TimeTable</code> and allows the user to schedule multiple activities within the same time slot. The following command is supported:</p>
+<p>The schedule optimisation feature utilises <code>TimeTable</code> and allows the user to resolve any overlapping activities. Resulting in a schedule with the
+lowest overall cost and the most number of activities such that the user&#8217;s time is maximised. The following command is supported:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>optimise budget INDEX_OF_DAY&#8201;&#8212;&#8201;optimises and brings activities with the lowest cost into focus. This operation supports activities with or without a cost. Activities without a cost has a default cost of $0.00.</p>
+<p>optimise INDEX_OF_DAY&#8201;&#8212;&#8201;optimises and de-conflicts the schedule. This operation supports activities with or without
+a cost. Activities without a cost have a default cost of $0.00.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>Given below is a sample usage of the proposed feature:</p>
+<p>Given below is a sample usage of the feature:</p>
 </div>
 <div class="paragraph">
-<p>Step 1. User adds an activity with a cost:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>add activity n/lunch a/KFC c/5.00</code></p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Step 2. User adds another activity without a cost:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>add activity n/go for a walk a/park</code></p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Step 3. User schedules the first activity into a day:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>schedule activity 1 st/1300 et/1400 d/1</code></p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Step 4. User schedules the second activity into the same day:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>schedule activity 2 st/1300 et/1400 d/1</code></p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Step 6. User executes <code>optimise budget</code> command. The activities in that day would be shown in a way such that the activities with the lowest costs are in focus.</p>
+<p>The scheduled activities in a day can be viewed as a Directed Acyclic Graph (DAG), where a path represents a possible schedule. When a user executes the <code>Optimise</code> command on a day with conflicting activities, a utility method creates an adjacency list.
+Another utility method then traverses the adjacency list to create all possible paths. The paths are then sorted to obtain the one with the lowest total cost and most number of activities (nodes).</p>
 </div>
 <div class="paragraph">
 <p>Shown below is a summary of the execution of the command.</p>
@@ -634,34 +590,65 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.3.2. Design considerations</a></h4>
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.2.2. Design considerations</a></h4>
 <div class="paragraph">
-<p>Aspect: How version comparison is executed:</p>
+<p>Aspect: Execution</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Alternative 1(current choice): user overload each time slot.</p>
+<p>Alternative 1 (current): Find all paths</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: User can save time by overloading a single day&#8217;s schedule.</p>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Able to compare both budget and number of activities.</p>
 </li>
 <li>
-<p>Cons: UI might get very cluttered when a single time slot has too many activities.</p>
+<p>Can reuse to find different methods of optimisation besides cost, by replacing comparator.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p>Alternative 2: user create copies of each day and choose which they prefer.</p>
+<p>Cons:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: UI is neater, each day would not look too crammed.</p>
+<p>Slow runtime.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
 </li>
 <li>
-<p>Cons: May have a lot of permutations which is tedious for user to optimise.</p>
+<p>Alternative 2: Find shortest path</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Faster runtime.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Cons:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Less flexible optimisation.</p>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
@@ -671,7 +658,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect2">
-<h3 id="proposed-schedule-activity-feature"><a class="link" href="#proposed-schedule-activity-feature">3.4. [Proposed] Schedule Activity feature</a></h3>
+<h3 id="proposed-schedule-activity-feature"><a class="link" href="#proposed-schedule-activity-feature">3.3. [Proposed] Schedule Activity feature</a></h3>
 <div class="paragraph">
 <p><strong><em>Plan²travel</em></strong> allows user to schedule an activity from the activity list to a specified time of a day.
 This is accomplished by executing the Schedule Command using <code>activity index</code>, <code>day index</code>, <code>start time</code> and <code>end time</code> of the activity.</p>
@@ -680,7 +667,7 @@ This is accomplished by executing the Schedule Command using <code>activity inde
 <p>Eg. <code>schedule activity ACTIVITY_INDEX st/START_TIME et/END_TIME d/DAY_INDEX</code></p>
 </div>
 <div class="sect3">
-<h4 id="current-implementation"><a class="link" href="#current-implementation">3.4.1. Current Implementation</a></h4>
+<h4 id="current-implementation"><a class="link" href="#current-implementation">3.3.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The keywords from the command given by the user is parsed using <code>ScheduleCommandParser</code> which converts the string variable of start time and end time into a LocalTime format and wraps activity index and day index  with an Index class.
 These are then passed to the <code>ScheduleActivityCommand</code> for execution later on.</p>
@@ -734,7 +721,7 @@ and target <code>Day</code> from list of days.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.4.2. Design Considerations</a></h4>
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.3.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-update-activities-for-that-particular-day"><a class="link" href="#aspect-update-activities-for-that-particular-day">Aspect: Update activities for that particular day</a></h5>
 <div class="ulist">
@@ -771,14 +758,14 @@ and target <code>Day</code> from list of days.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.5. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">3.4. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.6, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.5, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -809,15 +796,15 @@ and target <code>Day</code> from list of days.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.6. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.5. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g user prefs file location, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="timetable"><a class="link" href="#timetable">3.7. Timetable</a></h3>
+<h3 id="timetable"><a class="link" href="#timetable">3.6. Timetable</a></h3>
 <div class="sect3">
-<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">3.7.1. Current Implementation</a></h4>
+<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">3.6.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>Internally, Timetable is a TreeSet of ActivityWithTime. This allows fast access of ActivityWithTime stored in Timetable as well as giving Timetable the flexibility to accept Activities that start and end at any time instead of fixed intervals (e.g. 30 minute intervals).</p>
 </div>
@@ -826,7 +813,7 @@ and target <code>Day</code> from list of days.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">3.7.2. Design considerations</a></h4>
+<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">3.6.2. Design considerations</a></h4>
 <div class="ulist">
 <ul>
 <li>
@@ -1443,4 +1430,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-06 10:34:21 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-06 10:51:23 UTC</div></div></div></body></html>
