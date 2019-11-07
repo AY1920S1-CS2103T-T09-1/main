@@ -296,12 +296,12 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>Address Book<
 <h3 id="Design-Storage"><a class="link" href="#Design-Storage">2.5. Storage component</a></h3>
 <div class="imageblock">
 <div class="content">
-<img src="images/StorageClassDiagram.png" alt="StorageClassDiagram">
+<img src="images/StorageUML.png" alt="StorageUML">
 </div>
 <div class="title">Figure 8. Structure of the Storage Component</div>
 </div>
 <div class="paragraph">
-<p><strong>API</strong> : <a href="https://github.com/AY1920S1-CS2103T-T09-1/main/tree/master/src/main/java/seedu/address/storage/Storage.java"><code>Storage.java</code></a></p>
+<p><strong>API</strong> : <a href="https://github.com/AY1920S1-CS2103T-T09-1/main/tree/master/src/main/java/seedu/planner/storage/Storage.java"><code>Storage.java</code></a></p>
 </div>
 <div class="paragraph">
 <p>The <code>Storage</code> component,</p>
@@ -314,19 +314,114 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>Address Book<
 <li>
 <p>application data is split into 4 different components, <code>Accommodation</code>, <code>Activity</code>, <code>Contact</code>, <code>Itinerary</code>.</p>
 </li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="accommodation-storage-component"><a class="link" href="#accommodation-storage-component">2.5.1. Accommodation Storage component</a></h4>
+<div class="imageblock">
+<div class="content">
+<img src="images/AccommodationStorageUML.png" alt="AccommodationStorageUML">
+</div>
+<div class="title">Figure 9. Structure of Accommodation Storage component</div>
+</div>
+<div class="paragraph">
+<p><strong>API</strong> : <a href="https://github.com/AY1920S1-CS2103T-T09-1/main/tree/master/src/main/java/seedu/planner/storage/accommodation/AccommodationStorage.java"><code>AccommodationStorage.java</code></a></p>
+</div>
+<div class="paragraph">
+<p>The <code>Accommodation Storage</code> component,</p>
+</div>
+<div class="ulist">
+<ul>
 <li>
 <p>can save <code>Accommodation</code> objects in json format and read it back.</p>
 </li>
 <li>
+<p>as <code>Tag is a field in Accommodation</code>, similarly JsonAdaptedTag is a field within JsonAdaptedAccommodation. Hence
+the association as shown in the diagram above.</p>
+</li>
+<li>
+<p>as <code>Contact is a field in Accommodation</code>, similarly JsonAdaptedContact is a field within JsonAdaptedAccommodation. Hence
+the association as shown in the diagram above.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="activity-storage-component"><a class="link" href="#activity-storage-component">2.5.2. Activity Storage component</a></h4>
+<div class="imageblock">
+<div class="content">
+<img src="images/ActivityStorageUML.png" alt="ActivityStorageUML">
+</div>
+<div class="title">Figure 10. Structure of Activity Storage component</div>
+</div>
+<div class="paragraph">
+<p><strong>API</strong> : <a href="https://github.com/AY1920S1-CS2103T-T09-1/main/tree/master/src/main/java/seedu/planner/storage/activity/ActivityStorage.java"><code>ActivityStorage.java</code></a></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
 <p>can save <code>Activity</code> objects in json format and read it back.</p>
 </li>
+<li>
+<p>as <code>Tag is a field in Activity</code>, similarly JsonAdaptedTag is a field within JsonAdaptedActivity. Hence
+the association as shown in the diagram above.</p>
+</li>
+<li>
+<p>as <code>Contact is a field in Activity</code>, similarly JsonAdaptedContact is a field within JsonAdaptedActivity. Hence
+the association as shown in the diagram above.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="contact-storage-component"><a class="link" href="#contact-storage-component">2.5.3. Contact Storage component</a></h4>
+<div class="imageblock">
+<div class="content">
+<img src="images/ContactStorageUML.png" alt="ContactStorageUML">
+</div>
+<div class="title">Figure 11. Structure of Contact Storage component</div>
+</div>
+<div class="paragraph">
+<p><strong>API</strong> : <a href="https://github.com/AY1920S1-CS2103T-T09-1/main/tree/master/src/main/java/seedu/planner/storage/contact/ContactStorage.java"><code>ContactStorage.java</code></a></p>
+</div>
+<div class="ulist">
+<ul>
 <li>
 <p>can save <code>Contact</code> objects in json format and read it back.</p>
 </li>
 <li>
-<p>can save <code>Itinerary</code> objects in json format and read it back.</p>
+<p>as <code>Tag is a field in Contact</code>, similarly JsonAdaptedTag is a field within JsonAdaptedContact. Hence
+the association as shown in the diagram above.</p>
 </li>
 </ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="itinerary-storage-component"><a class="link" href="#itinerary-storage-component">2.5.4. Itinerary Storage component</a></h4>
+<div class="imageblock">
+<div class="content">
+<img src="images/ItineraryStorageUML.png" alt="ItineraryStorageUML">
+</div>
+<div class="title">Figure 12. Structure of Itinerary Storage component</div>
+</div>
+<div class="paragraph">
+<p><strong>API</strong> : <a href="https://github.com/AY1920S1-CS2103T-T09-1/main/tree/master/src/main/java/seedu/planner/storage/day/ItineraryStorage.java"><code>ItineraryStorage.java</code></a></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>can save <code>Itinerary</code> objects in json format and read it back.</p>
+</li>
+<li>
+<p>as <code>ActivityWithTime is a field in Day</code>, similarly JsonAdaptedActivityWithTime is a field within JsonAdaptedDay. Hence
+the association as shown in the diagram above.</p>
+</li>
+<li>
+<p>as <code>Activity is a field in ActivityWithTime</code>, similarly JsonAdaptedActivity is a field within JsonAdaptedActivityWithTime.
+Hence the association as shown in the diagram above.</p>
+</li>
+</ul>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -679,7 +774,7 @@ These are then passed to the <code>ScheduleActivityCommand</code> for execution 
 <div class="content">
 <img src="images/ScheduleActivityCommandCreation.png" alt="ScheduleActivityCommandCreation">
 </div>
-<div class="title">Figure 9. Sequence diagram showing how ScheduleActivityCommand is created.</div>
+<div class="title">Figure 13. Sequence diagram showing how ScheduleActivityCommand is created.</div>
 </div>
 <div class="paragraph">
 <p>After the creation of <code>ScheduleActivityCommand</code>, <code>LogicManager</code> will proceed to call the <code>execute()</code> method of <code>ScheduleActivityCommand</code>.</p>
@@ -717,7 +812,7 @@ and target <code>Day</code> from list of days.</p>
 <div class="content">
 <img src="images/ScheduleActivityExecution.png" alt="ScheduleActivityExecution">
 </div>
-<div class="title">Figure 10. Sequence diagram showing how ScheduleActivityCommand executes.</div>
+<div class="title">Figure 14. Sequence diagram showing how ScheduleActivityCommand executes.</div>
 </div>
 </div>
 <div class="sect3">
@@ -1427,4 +1522,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-07 02:25:53 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-07 02:31:43 UTC</div></div></div></body></html>
