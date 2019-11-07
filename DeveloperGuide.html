@@ -22,7 +22,7 @@
 </li>
 <li><a href="#implementation">3. Implementation</a>
 <ul class="sectlevel2">
-<li><a href="#proposed-undo-redo-feature">3.1. [Proposed] Undo/Redo feature</a></li>
+<li><a href="#undo-redo-feature">3.1. Undo/Redo feature</a></li>
 <li><a href="#schedule-optimisation">3.2. Schedule optimisation</a></li>
 <li><a href="#proposed-schedule-activity-feature">3.3. [Proposed] Schedule Activity feature</a></li>
 <li><a href="#logging">3.4. Logging</a></li>
@@ -285,11 +285,12 @@ The lifeline for <code>AddCommandParser</code> should end at the destroy marker 
 </td>
 <td class="content">
 As a more OOP model, we can store a <code>Tag</code> list in <code>Address Book</code>, which <code>Person</code> can reference. This would allow <code>Address Book</code> to only require one <code>Tag</code> object per unique <code>Tag</code>, instead of each <code>Person</code> needing their own <code>Tag</code> object. An example of how such a model may look like is given below.<br>
-<br>
-<span class="image"><img src="images/BetterModelClassDiagram.png" alt="BetterModelClassDiagram"></span>
 </td>
 </tr>
 </table>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="images/BetterModelClassDiagram.png" alt="BetterModelClassDiagram"></span></p>
 </div>
 </div>
 <div class="sect2">
@@ -439,55 +440,183 @@ Hence the association as shown in the diagram above.</p>
 <p>This section describes some noteworthy details on how certain features are implemented.</p>
 </div>
 <div class="sect2">
-<h3 id="proposed-undo-redo-feature"><a class="link" href="#proposed-undo-redo-feature">3.1. [Proposed] Undo/Redo feature</a></h3>
+<h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">3.1. Undo/Redo feature</a></h3>
+<div class="paragraph">
+<p>The undo command allows user to <code>undo by one command</code> (if the command is <code>undoable</code>).
+The redo command allows user to <code>return to the original state before the latest undo is called</code>.</p>
+</div>
 <div class="sect3">
-<h4 id="proposed-implementation"><a class="link" href="#proposed-implementation">3.1.1. Proposed Implementation</a></h4>
+<h4 id="implementation-2"><a class="link" href="#implementation-2">3.1.1. Implementation</a></h4>
 <div class="paragraph">
-<p>The undo/redo mechanism is facilitated by <code>VersionedAddressBook</code>.
-It extends <code>AddressBook</code> with an undo/redo history, stored internally as an <code>addressBookStateList</code> and <code>currentStatePointer</code>.
-Additionally, it implements the following operations:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>VersionedAddressBook#commit()</code>&#8201;&#8212;&#8201;Saves the current address book state in its history.</p>
-</li>
-<li>
-<p><code>VersionedAddressBook#undo()</code>&#8201;&#8212;&#8201;Restores the previous address book state from its history.</p>
-</li>
-<li>
-<p><code>VersionedAddressBook#redo()</code>&#8201;&#8212;&#8201;Restores a previously undone address book state from its history.</p>
-</li>
-</ul>
+<p>The undo/redo feature utilizes various classes to operate, such as <code>CommandHistory</code> class and the
+classes within the <code>events package</code> in the logic component.</p>
 </div>
 <div class="paragraph">
-<p>These operations are exposed in the <code>Model</code> interface as <code>Model#commitAddressBook()</code>, <code>Model#undoAddressBook()</code> and <code>Model#redoAddressBook()</code> respectively.</p>
+<p><code>CommandHistory</code> is a <code>static</code> class that contains the undoEventStack and redoEventStack, each <code>containing Events</code>.</p>
 </div>
 <div class="paragraph">
-<p>Given below is an example usage scenario and how the undo/redo mechanism behaves at each step.</p>
+<p><strong>KEY IDEA:</strong></p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Event</code>&#8201;&#8212;&#8201;Every UndoableCommand can be wrapped into its own unique Event.<br></p>
+<p class="tableblock"><code>undo/redo</code>&#8201;&#8212;&#8201;Every Event has an undo and redo method.<br></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong>List of UndoableCommand:</strong></p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">add activity/ accommodation/ contact/ days</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">delete activity/ accommodation/ contact/ day</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">edit activity/ accommodation/ contact</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">schedule</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">unschedule</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">autoschedule</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">optimise</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clear</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong>Step 1.</strong> The user executes an <code>UndoableCommand</code>.</p>
 </div>
 <div class="paragraph">
-<p>Step 1. The user launches the application for the first time. The <code>VersionedAddressBook</code> will be initialized with the initial address book state, and the <code>currentStatePointer</code> pointing to that single address book state.</p>
+<p><strong>Step 2.</strong> <code>EventFactory</code> will parse the UndoableCommand to generate an Event.<br>
+(eg. DeleteActivityCommand will result in DeleteActivityEvent generated)</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+EventFactory is a static class that will parse an UndoableCommand and generate the corresponding Event.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><strong>Step 3.</strong> <code>Event</code> is added to <code>undoEventStack</code> stored in CommandHistory. The <code>redoEventStack</code> in
+CommandHistory is also <code>cleared</code> upon generating a new Event.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 4.</strong> The <code>UndoableCommand</code> is executed, generating the <code>CommandResult</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 5.</strong> To <code>undo</code> the previous UndoableCommand, the user executes <code>undo</code> command. An <code>UndoCommand</code> is generated.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 6.</strong> <code>UndoCommand is not an UndoableCommand</code>. Executing the UndoCommand calls the undo method of <code>Event</code>
+stored in the undoEventStack of CommandHistory.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Both UndoCommand and RedoCommand are an UndoableCommands, no Events are generated.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><strong>Step 7.</strong> The <code>Event</code> is popped from the undoEventStack and pushed to redoEventStack in CommandHistory. <code>The Event is undone</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 8.</strong> To redo the command that has been undone, the user executes <code>redo</code> command. A <code>RedoCommand</code> is generated.
+This execution is <code>similar to steps 6 and 7</code>, except Event is popped from redo stack instead and pushed to undo stack.</p>
+</div>
+<div class="paragraph">
+<p>The following two sequence diagram shows how the user&#8217;s input is handled for <code>'delete activity 1'</code>.</p>
+</div>
+<div class="paragraph">
+<p>The first diagram below shows the execution of <code>delete activity 1</code> command. It shows <code>Event</code> generated and how the
+<code>undoEventStack and redoEventStack is updated</code>.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/UndoRedoState0.png" alt="UndoRedoState0">
+<img src="images/DeleteActivitySequenceDiagram.png" alt="DeleteActivitySequenceDiagram">
 </div>
+<div class="title">Figure 13. Executing delete activity</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+When DeleteActivityEvent is executed, it generates the <code>activityToDelete</code> by extracting the <code>Activity</code> to be deleted from
+the Model&#8217;s list of activities based on the index specified in user&#8217;s command input. It then calls the Model&#8217;s
+<code>deleteActivity</code> method.
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
-<p>Step 2. The user executes <code>delete contact 5</code> command to delete the 5th contact in the address book. The <code>delete</code> command calls <code>Model#commitAddressBook()</code>, causing the modified state of the address book after the <code>delete 5</code> command executes to be saved in the <code>addressBookStateList</code>, and the <code>currentStatePointer</code> is shifted to the newly inserted address book state.</p>
+<p>The second diagram below shows the execution of <code>undo</code> command. Executing <code>UndoCommand</code> calls undo of the <code>DeleteActivityEvent</code>,
+which returns an <code>AddActivityCommand</code> with the <code>Activity (initially deleted)</code> to be added back at the <code>correct index</code>.
+Both Activity and Index were stored in <code>DeleteActivityEvent</code>.<br></p>
+</div>
+<div class="paragraph">
+<p>This new <code>AddActivityCommand</code> is executed, and the <code>DeleteActivityCommand</code> is successfully undone.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/UndoRedoState1.png" alt="UndoRedoState1">
+<img src="images/UndoDeleteActivitySequenceDiagram.png" alt="UndoDeleteActivitySequenceDiagram">
 </div>
+<div class="title">Figure 14. Executing undo for 'delete activity'</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Each Event stores the necessary data required by the reverse Command to undo the effects of the initial
+UndoableCommand.<br>
+(eg. AddActivityEvent stores the <code>Activity added</code>, as <code>DeleteActivityCommand</code> requires the Activity to undo
+the initial <code>AddActivityCommand&#8217;s</code> changes)
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
-<p>Step 3. The user executes <code>add contact n/David &#8230;&#8203;</code> to add a new contact. The <code>add</code> command also calls <code>Model#commitAddressBook()</code>, causing another modified address book state to be saved into the <code>addressBookStateList</code>.</p>
+<p>The following activity diagram summarizes what happens when a user executes an UndoableCommand, an UndoCommand,
+a RedoCommand, or any other Commands.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/UndoRedoState2.png" alt="UndoRedoState2">
+<img src="images/UndoRedoActivityDiagram.png" alt="UndoRedoActivityDiagram">
 </div>
 </div>
 <div class="admonitionblock note">
@@ -497,89 +626,11 @@ Additionally, it implements the following operations:</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-If a command fails its execution, it will not call <code>Model#commitAddressBook()</code>, so the address book state will not be saved into the <code>addressBookStateList</code>.
+A Command that is not a UndoableCommand, UndoCommand or RedoCommand will not affect the stack of Events in CommandHistory.<br>
+(eg. view, list commands)
 </td>
 </tr>
 </table>
-</div>
-<div class="paragraph">
-<p>Step 4. The user now decides that adding the contact was a mistake, and decides to undo that action by executing the <code>undo</code> command. The <code>undo</code> command will call <code>Model#undoAddressBook()</code>, which will shift the <code>currentStatePointer</code> once to the left, pointing it to the previous address book state, and restores the address book to that state.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/UndoRedoState3.png" alt="UndoRedoState3">
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If the <code>currentStatePointer</code> is at index 0, pointing to the initial address book state, then there are no previous address book states to restore. The <code>undo</code> command uses <code>Model#canUndoAddressBook()</code> to check if this is the case. If so, it will return an error to the user rather than attempting to perform the undo.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>The following sequence diagram shows how the undo operation works:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/UndoSequenceDiagram.png" alt="UndoSequenceDiagram">
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-The lifeline for <code>UndoCommand</code> should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>The <code>redo</code> command does the opposite&#8201;&#8212;&#8201;it calls <code>Model#redoAddressBook()</code>, which shifts the <code>currentStatePointer</code> once to the right, pointing to the previously undone state, and restores the address book to that state.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If the <code>currentStatePointer</code> is at index <code>addressBookStateList.size() - 1</code>, pointing to the latest address book state, then there are no undone address book states to restore. The <code>redo</code> command uses <code>Model#canRedoAddressBook()</code> to check if this is the case. If so, it will return an error to the user rather than attempting to perform the redo.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Step 5. The user then decides to execute the command <code>list</code>. Commands that do not modify the address book, such as <code>list</code>, will usually not call <code>Model#commitAddressBook()</code>, <code>Model#undoAddressBook()</code> or <code>Model#redoAddressBook()</code>. Thus, the <code>addressBookStateList</code> remains unchanged.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/UndoRedoState4.png" alt="UndoRedoState4">
-</div>
-</div>
-<div class="paragraph">
-<p>Step 6. The user executes <code>clear</code>, which calls <code>Model#commitAddressBook()</code>. Since the <code>currentStatePointer</code> is not pointing at the end of the <code>addressBookStateList</code>, all address book states after the <code>currentStatePointer</code> will be purged. We designed it this way because it no longer makes sense to redo the <code>add n/David &#8230;&#8203;</code> command. This is the behavior that most modern desktop applications follow.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/UndoRedoState5.png" alt="UndoRedoState5">
-</div>
-</div>
-<div class="paragraph">
-<p>The following accommodation diagram summarizes what happens when a user executes a new command:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/CommitActivityDiagram.png" alt="CommitActivityDiagram">
-</div>
 </div>
 </div>
 <div class="sect3">
@@ -589,27 +640,97 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Saves the entire address book.</p>
+<p><strong>Option 1 :</strong> Wrap every UndoableCommand in an Event class, which has undo and redo methods.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Easy to implement.</p>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Uses less memory by storing Event objects rather than storing every state of the Model.</p>
 </li>
 <li>
-<p>Cons: May have performance issues in terms of memory usage.</p>
+<p>Convenient for future extensions for new Commands added. Just need to ensure for every UndoableCommand, there must a Command
+that is able to revert its effects (undo).</p>
+</li>
+<li>
+<p>Command classes obey Single Responsibility Principle, they do not need to know how to undo or redo itself, as it is
+abstracted to their corresponding Event classes.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Alternative 2:</strong> Individual command knows how to undo/redo by itself.</p>
+<p>Cons:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Will use less memory (e.g. for <code>delete</code>, just save the contact being deleted).</p>
+<p>Every UndoableCommand requires a Command to reverse its effects. Hence some Commands created are not utilized
+by the user, but only used within application.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
 </li>
 <li>
-<p>Cons: We must ensure that the implementation of each individual command are correct.</p>
+<p><strong>Option 2 :</strong> Saves the entire Model data (comprising of accommodations, activities, contacts and days).</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Easy to implement.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Cons:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>May have performance issues in terms of memory usage. Expensive to store the various objects at every state.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Option 3:</strong> Each UndoableCommand knows how to undo/redo by itself.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Will use less memory</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Cons:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>We must ensure that the implementation of each individual command are correct.</p>
+</li>
+<li>
+<p>Commands do not obey Single Responsibility Principle.</p>
+</li>
+<li>
+<p>Commands will also violate Law of Demeter principle in the process of undo implementation.</p>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
@@ -622,27 +743,57 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Use a list to store the history of address book states.</p>
+<p><strong>Option 1 (current choice):</strong> Use of static class CommandHistory to store a stack of Events to undo, and a stack of Events to redo.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Easy for new Computer Science student undergraduates to understand, who are likely to be the new incoming developers of our project.</p>
-</li>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
 <li>
-<p>Cons: Logic is duplicated twice. For example, when a new command is executed, we must remember to update both <code>HistoryManager</code> and <code>VersionedAddressBook</code>.</p>
+<p>Easy to implement and understand. Every Event object is generated through EventFactory and stored in CommandHistory.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Alternative 2:</strong> Use <code>HistoryManager</code> for undo/redo</p>
+<p>Cons:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: We do not need to maintain a separate list, and just reuse what is already in the codebase.</p>
+<p>Static class is used instead of Singleton implementation. No single instance of CommandHistory is created, cannot be
+passed as a parameter to other methods and treated as a normal object, hence might pose a difficulty during extensions.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
 </li>
 <li>
-<p>Cons: Requires dealing with commands that have already been undone: We must remember to skip these commands. Violates Single Responsibility Principle and Separation of Concerns as <code>HistoryManager</code> now needs to do two different things.</p>
+<p><strong>Option 2:</strong> Create a HistoryManager class to store a single list of Model objects for undo/redo</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Straightforward and easy implementation, storing a deep copy of Model whenever an UndoableCommand is executed.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Cons:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Need to keep track of the Model object obtained from the list to set during Undo/Redo. Difficult to manage the pointer
+in the list.</p>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
@@ -655,7 +806,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <div class="sect2">
 <h3 id="schedule-optimisation"><a class="link" href="#schedule-optimisation">3.2. Schedule optimisation</a></h3>
 <div class="sect3">
-<h4 id="implementation-2"><a class="link" href="#implementation-2">3.2.1. Implementation</a></h4>
+<h4 id="implementation-3"><a class="link" href="#implementation-3">3.2.1. Implementation</a></h4>
 <div class="paragraph">
 <p>The schedule optimisation feature utilises <code>TimeTable</code> and allows the user to resolve any overlapping activities. Resulting in a schedule with the
 lowest overall cost and the most number of activities such that the user&#8217;s time is maximised. The following command is supported:</p>
@@ -774,7 +925,7 @@ These are then passed to the <code>ScheduleActivityCommand</code> for execution 
 <div class="content">
 <img src="images/ScheduleActivityCommandCreation.png" alt="ScheduleActivityCommandCreation">
 </div>
-<div class="title">Figure 13. Sequence diagram showing how ScheduleActivityCommand is created.</div>
+<div class="title">Figure 15. Sequence diagram showing how ScheduleActivityCommand is created.</div>
 </div>
 <div class="paragraph">
 <p>After the creation of <code>ScheduleActivityCommand</code>, <code>LogicManager</code> will proceed to call the <code>execute()</code> method of <code>ScheduleActivityCommand</code>.</p>
@@ -812,7 +963,7 @@ and target <code>Day</code> from list of days.</p>
 <div class="content">
 <img src="images/ScheduleActivityExecution.png" alt="ScheduleActivityExecution">
 </div>
-<div class="title">Figure 14. Sequence diagram showing how ScheduleActivityCommand executes.</div>
+<div class="title">Figure 16. Sequence diagram showing how ScheduleActivityCommand executes.</div>
 </div>
 </div>
 <div class="sect3">
@@ -1522,4 +1673,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-07 15:27:45 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-07 18:31:23 UTC</div></div></div></body></html>

@@ -38,16 +38,25 @@
 <li><a href="#optimising-by-budget-code-optimise-code">3.23. Optimising by budget: <code>optimise</code></a></li>
 <li><a href="#undo-code-undo-code">3.24. Undo: <code>undo</code></a></li>
 <li><a href="#redo-code-redo-code">3.25. Redo: <code>redo</code></a></li>
-<li><a href="#look-up-history-of-inputs-code-history-code-work-in-progress">3.26. Look up history of inputs: <code>history</code>[Work in progress]</a></li>
-<li><a href="#saving-the-data-code-save-code-work-in-progress">3.27. Saving the data: <code>save</code>[Work in progress]</a></li>
-<li><a href="#loading-the-data-code-load-code-work-in-progress">3.28. Loading the data: <code>load</code>[Work in progress]</a></li>
-<li><a href="#export-schedule-code-export-code-work-in-progress">3.29. Export schedule: <code>export</code>[Work in progress]</a></li>
-<li><a href="#auto-correct-coming-in-v2-0">3.30. Auto-correct[Coming in v2.0]</a></li>
-<li><a href="#exiting-the-program-code-exit-code">3.31. Exiting the program : <code>exit</code></a></li>
+<li><a href="#loading-the-data-code-load-code-work-in-progress">3.26. Loading the data: <code>load</code>[Work in progress]</a></li>
+<li><a href="#look-up-history-of-inputs-code-history-code-coming-in-v2-0">3.27. Look up history of inputs: <code>history</code>[Coming in v2.0]</a></li>
+<li><a href="#export-schedule-code-export-code-coming-in-v2-0">3.28. Export schedule: <code>export</code>[Coming in v2.0]</a></li>
+<li><a href="#auto-correct-coming-in-v2-0">3.29. Auto-correct[Coming in v2.0]</a></li>
+<li><a href="#exiting-the-program-code-exit-code">3.30. Exiting the program : <code>exit</code></a></li>
 </ul>
 </li>
 <li><a href="#faq">4. FAQ</a></li>
-<li><a href="#command-summary">5. Command Summary</a></li>
+<li><a href="#command-summary">5. Command Summary</a>
+<ul class="sectlevel2">
+<li><a href="#add-commands">5.1. Add Commands</a></li>
+<li><a href="#delete-commands">5.2. Delete Commands</a></li>
+<li><a href="#edit-commands">5.3. Edit Commands</a></li>
+<li><a href="#schedule-commands">5.4. Schedule Commands</a></li>
+<li><a href="#list-commands">5.5. List Commands</a></li>
+<li><a href="#view-commands">5.6. View Commands</a></li>
+<li><a href="#other-commands">5.7. Other Commands</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -786,37 +795,42 @@ This command would not work if there are no activities scheduled in the day.
 <h3 id="undo-code-undo-code"><a class="link" href="#undo-code-undo-code">3.24. Undo: <code>undo</code></a></h3>
 <div class="paragraph">
 <p>Undo by one action<br>
-Format: <code>undo</code><br>
-List of Undoable commands:</p>
+Format: <code>undo</code><br></p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p>add activity/accommodation/contact/day</p>
-</li>
-<li>
-<p>delete activity/accommodation/contact/day</p>
-</li>
-<li>
-<p>edit activity/accommodation/contact</p>
-</li>
-<li>
-<p>schedule</p>
-</li>
-<li>
-<p>unschedule</p>
-</li>
-<li>
-<p>optimise</p>
-</li>
-<li>
-<p>autoschedule</p>
-</li>
-<li>
-<p>clear</p>
-</li>
-</ul>
+<div class="paragraph">
+<p><strong>List of UndoableCommand:</strong></p>
 </div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">add activity/ accommodation/ contact/ days</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">delete activity/ accommodation/ contact/ day</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">edit activity/ accommodation/ contact</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">schedule</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">unschedule</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">autoschedule</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">optimise</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clear</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="sect2">
 <h3 id="redo-code-redo-code"><a class="link" href="#redo-code-redo-code">3.25. Redo: <code>redo</code></a></h3>
@@ -826,31 +840,7 @@ Format: <code>redo</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="look-up-history-of-inputs-code-history-code-work-in-progress"><a class="link" href="#look-up-history-of-inputs-code-history-code-work-in-progress">3.26. Look up history of inputs: <code>history</code>[Work in progress]</a></h3>
-<div class="paragraph">
-<p>Lists the inputs that have been entered<br>
-Format: <code>history</code></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="saving-the-data-code-save-code-work-in-progress"><a class="link" href="#saving-the-data-code-save-code-work-in-progress">3.27. Saving the data: <code>save</code>[Work in progress]</a></h3>
-<div class="paragraph">
-<p>Saves the state of the program. If provided with a schedule name, it will add a new file with the schedule name. Else, it will simply save it to the current save file<br>
-Format: <code>save [SCHEDULE_NAME]</code></p>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>save japan_trip</code></p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="loading-the-data-code-load-code-work-in-progress"><a class="link" href="#loading-the-data-code-load-code-work-in-progress">3.28. Loading the data: <code>load</code>[Work in progress]</a></h3>
+<h3 id="loading-the-data-code-load-code-work-in-progress"><a class="link" href="#loading-the-data-code-load-code-work-in-progress">3.26. Loading the data: <code>load</code>[Work in progress]</a></h3>
 <div class="paragraph">
 <p>The user can load the desired schedule with the schedule name. Else, the user can add a new schedule<br>
 Format: <code>load SCHEDULE_NAME</code></p>
@@ -867,14 +857,21 @@ Format: <code>load SCHEDULE_NAME</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="export-schedule-code-export-code-work-in-progress"><a class="link" href="#export-schedule-code-export-code-work-in-progress">3.29. Export schedule: <code>export</code>[Work in progress]</a></h3>
+<h3 id="look-up-history-of-inputs-code-history-code-coming-in-v2-0"><a class="link" href="#look-up-history-of-inputs-code-history-code-coming-in-v2-0">3.27. Look up history of inputs: <code>history</code>[Coming in v2.0]</a></h3>
+<div class="paragraph">
+<p>Lists the inputs that have been entered<br>
+Format: <code>history</code></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="export-schedule-code-export-code-coming-in-v2-0"><a class="link" href="#export-schedule-code-export-code-coming-in-v2-0">3.28. Export schedule: <code>export</code>[Coming in v2.0]</a></h3>
 <div class="paragraph">
 <p>Exports the schedule into a pdf<br>
 Format: <code>export</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="auto-correct-coming-in-v2-0"><a class="link" href="#auto-correct-coming-in-v2-0">3.30. Auto-correct[Coming in v2.0]</a></h3>
+<h3 id="auto-correct-coming-in-v2-0"><a class="link" href="#auto-correct-coming-in-v2-0">3.29. Auto-correct[Coming in v2.0]</a></h3>
 <div class="paragraph">
 <p>When there is an invalid command, the input command is checked against the known command list for similarity and the user will be prompted with the closest command match</p>
 </div>
@@ -893,7 +890,7 @@ Format: <code>export</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.31. Exiting the program : <code>exit</code></a></h3>
+<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.30. Exiting the program : <code>exit</code></a></h3>
 <div class="paragraph">
 <p>Exits the program.<br>
 Format: <code>exit</code></p>
@@ -913,180 +910,199 @@ Format: <code>exit</code></p>
 <div class="sect1">
 <h2 id="command-summary"><a class="link" href="#command-summary">5. Command Summary</a></h2>
 <div class="sectionbody">
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Add</strong> :</p>
-<div class="ulist">
-<ul>
-<li>
-<p><code>add accommodation n/NAME a/ADDRESS [p/PHONE_NUMBER] [e/EMAIL] [t/TAG]&#8230;&#8203;</code><br>
-e.g. <code>add accommodation n/Paradise Hotel a/23 Amoy Quee Road p/22224444</code></p>
-</li>
-<li>
-<p><code>add activity n/NAME a/ADDRESS du/DURATION [p/PHONE_NUMBER] [e/EMAIL] [pr/PRIORITY] [t/TAG]&#8230;&#8203;</code><br>
-e.g. <code>add activity n/Skiing a/Mount Kurabaki du/120</code></p>
-</li>
-<li>
-<p><code>add contact n/NAME p/PHONE_NUMBER [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code><br>
-e.g. <code>add contact n/James Ho a/123, Clementi Rd, 1234665 p/22224444 e/jamesho@example.com t/friend t/colleague</code></p>
-</li>
-<li>
-<p><code>add days NUMBER</code><br>
-e.g. <code>add days 10</code></p>
-</li>
-</ul>
+<div class="sect2">
+<h3 id="add-commands"><a class="link" href="#add-commands">5.1. Add Commands</a></h3>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Command</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Example</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">add accommodation n/NAME a/ADDRESS [p/Phone_NUMBER] [e/EMAIL] [t/TAG]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">add accommodation n/Paradise Hotel a/23 Amoy Quee Road p/22224444</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">add activity n/NAME a/ADDRESS du/DURATION [p/PHONE_NUMBER] [e/EMAIL] [pr/PRIORITY] [t/TAG]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">add activity n/Skiing a/Mount Kurabaki du/120</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">add contact n/NAME p/PHONE_NUMBER [e/EMAIL] [a/ADDRESS] [t/TAG]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">add contact n/James Ho a/123, Clementi Rd, 1234665 p/22224444 e/jamesho@example.com t/friend t/colleague</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">add days NUMBER</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">add days 10</p></td>
+</tr>
+</tbody>
+</table>
 </div>
-</li>
-<li>
-<p><strong>Clear</strong> : <code>clear</code></p>
-</li>
-<li>
-<p><strong>Delete</strong> :<br></p>
-<div class="ulist">
-<ul>
-<li>
-<p><code>delete accommodation INDEX</code></p>
-</li>
-<li>
-<p><code>delete activity INDEX</code></p>
-</li>
-<li>
-<p><code>delete contact INDEX</code></p>
-</li>
-</ul>
+<div class="sect2">
+<h3 id="delete-commands"><a class="link" href="#delete-commands">5.2. Delete Commands</a></h3>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Command</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">delete accommodation INDEX</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">delete activity INDEX</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">delete contact INDEX</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">delete day INDEX</p></td>
+</tr>
+</tbody>
+</table>
 </div>
-</li>
-<li>
-<p><strong>Edit</strong> :</p>
-<div class="ulist">
-<ul>
-<li>
-<p><code>edit accommodation INDEX [n/NAME] [a/ADDRESS] [p/PHONE_NUMBER] [e/EMAIL] [t/TAG]&#8230;&#8203;</code><br>
-e.g. <code>edit accommodation 3 n/Kent Ridge Hotel a/Clementi</code></p>
-</li>
-<li>
-<p><code>edit activity INDEX [n/NAME] [a/ADDRESS] [du/DURATION] [p/PHONE_NUMBER] [e/EMAIL] [pr/PRIORITY] [t/TAG]&#8230;&#8203;</code><br>
-e.g. <code>edit activity 5 n/Go Disneyland</code></p>
-</li>
-<li>
-<p><code>edit contact INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code><br>
-e.g. <code>edit contact 2 n/James Lee e/jameslee@example.com</code></p>
-</li>
-</ul>
+<div class="sect2">
+<h3 id="edit-commands"><a class="link" href="#edit-commands">5.3. Edit Commands</a></h3>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Command</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Example</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">edit accommodation INDEX [n/NAME] [a/ADDRESS] [p/PHONE_NUMBER] [e/EMAIL] [t/TAG]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">edit accommodation 3 n/Kent Ridge Hotel a/Clementi</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">edit activity INDEX [n/NAME] [a/ADDRESS] [du/DURATION] [p/PHONE_NUMBER] [e/EMAIL] [pr/PRIORITY] [t/TAG]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">edit activity 5 n/Go Disneyland</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">edit contact INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">edit contact 2 n/James Lee e/jameslee@example.com</p></td>
+</tr>
+</tbody>
+</table>
 </div>
-</li>
-<li>
-<p><strong>Schedule</strong> :</p>
-<div class="ulist">
-<ul>
-<li>
-<p><code>schedule ACTIVITY_INDEX st/START_TIME d/DAY_INDEX</code><br>
-e.g. <code>schedule 2 st/1400 d/2</code></p>
-</li>
-</ul>
+<div class="sect2">
+<h3 id="schedule-commands"><a class="link" href="#schedule-commands">5.4. Schedule Commands</a></h3>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Command</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Example</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">schedule ACTIVITY_INDEX st/START_TIME d/DAY_INDEX</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">schedule 2 st/1400 d/2</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">unschedule ACTIVITY_INDEX d/DAY_INDEX</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">unschedule ACTIVITY_INDEX d/DAY_INDEX</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">autoschedule [t/TAG START_TIME] n/ACTIVITY_NAME START_TIME a/LOCATION_OF_ACTIVITIES d/[DAY_INDEX]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">autoschedule t/Dining 1000 t/Attraction 1200 n/Disneyland 1400 t/Dining a/Tokyo d/1 4 5</p></td>
+</tr>
+</tbody>
+</table>
 </div>
-</li>
-<li>
-<p><strong>Unschedule</strong> :</p>
-<div class="ulist">
-<ul>
-<li>
-<p><code>unschedule ACTIVITY_INDEX d/DAY_INDEX</code><br>
-e.g. <code>unschedule 2 d/2</code></p>
-</li>
-</ul>
+<div class="sect2">
+<h3 id="list-commands"><a class="link" href="#list-commands">5.5. List Commands</a></h3>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Command</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">list accommodation</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">list activity</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">list contact</p></td>
+</tr>
+</tbody>
+</table>
 </div>
-</li>
-<li>
-<p><strong>Autoschedule</strong> :</p>
-<div class="ulist">
-<ul>
-<li>
-<p><code>autoschedule [t/TAG START_TIME] n/ACTIVITY_NAME START_TIME a/LOCATION_OF_ACTIVITIES d/[DAY_INDEX]</code><br>
-e.g. <code>autoschedule t/Dining 1000 t/Attraction 1200 n/Disneyland 1400 t/Dining a/Tokyo d/1 4 5</code></p>
-</li>
-</ul>
+<div class="sect2">
+<h3 id="view-commands"><a class="link" href="#view-commands">5.6. View Commands</a></h3>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Command</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">view accommodation ACCOMMODATION_INDEX</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">view activity ACTIVITY_INDEX</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">view contact CONTACT_INDEX</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">view itinerary</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">view info</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">view help</p></td>
+</tr>
+</tbody>
+</table>
 </div>
-</li>
-<li>
-<p><strong>Optimise</strong> :</p>
-<div class="ulist">
-<ul>
-<li>
-<p><code>optimise &lt;DAY_INDEX&gt;</code></p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Undo</strong> :</p>
-<div class="ulist">
-<ul>
-<li>
-<p><code>undo</code></p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Redo</strong> :</p>
-<div class="ulist">
-<ul>
-<li>
-<p><code>redo</code></p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>List</strong> :</p>
-<div class="ulist">
-<ul>
-<li>
-<p><code>list accommodation</code></p>
-</li>
-<li>
-<p><code>list activity</code></p>
-</li>
-<li>
-<p><code>list contact</code></p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>View</strong> :</p>
-<div class="ulist">
-<ul>
-<li>
-<p><code>view accommodation ACCOMMODATION_INDEX</code></p>
-</li>
-<li>
-<p><code>view activity ACTIVITY_INDEX</code></p>
-</li>
-<li>
-<p><code>view contact CONTACT_INDEX</code></p>
-</li>
-<li>
-<p><code>view itinerary</code></p>
-</li>
-<li>
-<p><code>view info</code></p>
-</li>
-<li>
-<p><code>view help</code></p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Help</strong> : <code>help</code></p>
-</li>
-<li>
-<p><strong>Exit</strong> : <code>exit</code></p>
-</li>
-</ul>
+<div class="sect2">
+<h3 id="other-commands"><a class="link" href="#other-commands">5.7. Other Commands</a></h3>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Command</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">optimise DAY_INDEX</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">undo</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">redo</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clear</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">help</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">exit</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-07 15:27:45 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-07 18:31:23 UTC</div></div></div></body></html>
