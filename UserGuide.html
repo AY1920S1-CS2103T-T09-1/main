@@ -528,7 +528,7 @@ Format: <code>edit contact INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS]
 <h3 id="deleting-a-contact-code-delete-contact-code"><a class="link" href="#deleting-a-contact-code-delete-contact-code">3.15. Deleting a contact: <code>delete contact</code></a></h3>
 <div class="paragraph">
 <p>Deletes a contact from the contact list<br>
-Format: <code>delete contact INDEX&#8230;&#8203;</code></p>
+Format: <code>delete contact INDEX</code></p>
 </div>
 <div class="ulist">
 <ul>
@@ -838,6 +838,61 @@ Format: <code>undo</code><br></p>
 <p>Redo by one action. Any undoable command is able to be redone.<br>
 Format: <code>redo</code></p>
 </div>
+<div class="paragraph">
+<p>Examples: Undo/Redo optimise budget command</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Before optimise</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/BeforeOptimise.png" alt="BeforeOptimise">
+</div>
+<div class="title">Figure 1. Day 2 has lots of overlapping activities</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>After optimise 2</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/AfterOptimise.png" alt="AfterOptimise">
+</div>
+<div class="title">Figure 2. Day 2 has been optimised, no overlaps.</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>After undo</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/AfterUndo.png" alt="AfterUndo">
+</div>
+<div class="title">Figure 3. Optimise command successfully undone</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>After redo</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/AfterOptimise.png" alt="AfterOptimise">
+</div>
+<div class="title">Figure 4. Optimise command successfully redone, no overlaps.</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="loading-the-data-code-load-code-work-in-progress"><a class="link" href="#loading-the-data-code-load-code-work-in-progress">3.26. Loading the data: <code>load</code>[Work in progress]</a></h3>
@@ -1105,4 +1160,4 @@ Format: <code>exit</code></p>
 </table>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-07 18:31:23 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-08 09:50:30 UTC</div></div></div></body></html>

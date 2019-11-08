@@ -17,16 +17,22 @@ undertaking the module CS2103T under NUS School of Computing.</p>
 <h2 id="introduction"><a class="link" href="#introduction">1. Introduction</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Plan²travel is a desktop travel planning application. The application is targeted at fellow university students who
-travel infrequently, and would require an application to organize their travelling information when they plan their
-own trip itinerary.<br></p>
+<p><strong>Plan²travel</strong> is a desktop travel planning application. The application is targeted at fellow university students who
+travel infrequently and would greatly benefit from an application that helps organize their travelling information when they plan their own itinerary. Plan²travel has the ability to store and display information such as activities, accommodations, contacts and an itinerary which comprises of a list of day. Each day is displayed with a list of activities that is scheduled.<br></p>
 </div>
 <div class="paragraph">
-<p>It is written in Java and has about 10 kLoC. The user interacts with the application using a
-Command Line Interface (CLI), and it has a Graphical User Interface GUI created with JavaFX.</p>
+<p>The user interacts with the application using a Command Line Interface (CLI), and it has Graphical User Interface GUI created with JavaFX.</p>
 </div>
 <div class="paragraph">
 <p>It is cross-platform and can be compiled for both Windows and Mac OS.</p>
+</div>
+<div class="paragraph">
+<p>Below is a screenshot of our application:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/Plan2TravelSS.png" alt="Plan2TravelSS">
+</div>
 </div>
 </div>
 </div>
@@ -81,7 +87,8 @@ analysis of design alternatives. The implementation too was challenging as it re
 <li>
 <p><strong>Functional Code Contributed</strong>: <a href="https://github.com/AY1920S1-CS2103T-T09-1/main/pull/112">Update 1</a> |
 <a href="https://github.com/AY1920S1-CS2103T-T09-1/main/pull/127">Update 2</a> | <a href="https://github.com/AY1920S1-CS2103T-T09-1/main/pull/133">Update 3</a>
-| <a href="https://github.com/AY1920S1-CS2103T-T09-1/main/pull/194">Update 4</a> | <a href="https://github.com/AY1920S1-CS2103T-T09-1/main/pull/220">Update 5</a></p>
+| <a href="https://github.com/AY1920S1-CS2103T-T09-1/main/pull/194">Update 4</a> | <a href="https://github.com/AY1920S1-CS2103T-T09-1/main/pull/220">Update 5</a>
+| <a href="https://github.com/AY1920S1-CS2103T-T09-1/main/pull/230">Update 6</a></p>
 </li>
 <li>
 <p><strong>Test Code Contributed</strong>:</p>
@@ -160,19 +167,14 @@ implementations when working with these components.</p>
 <p>Over 10 <a href="https://github.com/AY1920S1-CS2103T-T09-1/main/pulls?utf8=%E2%9C%93&amp;q=is%3Apr+commenter%3AOneArmyj">Reviews</a> on Github</p>
 </li>
 <li>
-<p>Overview of Code Contribution <a href="https://nus-cs2103-ay1920s1.github.io/tp-dashboard/#=undefined&amp;search=onearmyj">here</a></p>
+<p>Overview of Code Contribution <a href="https://nus-cs2103-ay1920s1.github.io/tp-dashboard/#=undefined&amp;search=onearmyj">here</a>
+== Contributions to the User Guide</p>
 </li>
 </ul>
 </div>
 </li>
 </ul>
 </div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="contributions-to-the-user-guide"><a class="link" href="#contributions-to-the-user-guide">3. Contributions to the User Guide</a></h2>
-<div class="sectionbody">
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 100%;">
@@ -184,8 +186,9 @@ targeting end-users.</em></p></td>
 </tr>
 </tbody>
 </table>
+</div>
 <div class="sect2">
-<h3 id="undo-code-undo-code"><a class="link" href="#undo-code-undo-code">3.1. Undo: <code>undo</code></a></h3>
+<h3 id="undo-code-undo-code"><a class="link" href="#undo-code-undo-code">2.4. Undo: <code>undo</code></a></h3>
 <div class="paragraph">
 <p>Undo by one action<br>
 Format: <code>undo</code><br></p>
@@ -226,211 +229,71 @@ Format: <code>undo</code><br></p>
 </table>
 </div>
 <div class="sect2">
-<h3 id="redo-code-redo-code"><a class="link" href="#redo-code-redo-code">3.2. Redo: <code>redo</code></a></h3>
+<h3 id="redo-code-redo-code"><a class="link" href="#redo-code-redo-code">2.5. Redo: <code>redo</code></a></h3>
 <div class="paragraph">
 <p>Redo by one action. Any undoable command is able to be redone.<br>
-Format: <code>redo</code>
-== Command Summary</p>
+Format: <code>redo</code></p>
 </div>
+<div class="paragraph">
+<p>Examples: Undo/Redo optimise budget command</p>
 </div>
-<div class="sect2">
-<h3 id="add-commands"><a class="link" href="#add-commands">3.3. Add Commands</a></h3>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Command</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Example</strong></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">add accommodation n/NAME a/ADDRESS [p/Phone_NUMBER] [e/EMAIL] [t/TAG]</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">add accommodation n/Paradise Hotel a/23 Amoy Quee Road p/22224444</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">add activity n/NAME a/ADDRESS du/DURATION [p/PHONE_NUMBER] [e/EMAIL] [pr/PRIORITY] [t/TAG]</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">add activity n/Skiing a/Mount Kurabaki du/120</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">add contact n/NAME p/PHONE_NUMBER [e/EMAIL] [a/ADDRESS] [t/TAG]</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">add contact n/James Ho a/123, Clementi Rd, 1234665 p/22224444 e/jamesho@example.com t/friend t/colleague</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">add days NUMBER</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">add days 10</p></td>
-</tr>
-</tbody>
-</table>
+<div class="ulist">
+<ul>
+<li>
+<p>Before optimise</p>
+</li>
+</ul>
 </div>
-<div class="sect2">
-<h3 id="delete-commands"><a class="link" href="#delete-commands">3.4. Delete Commands</a></h3>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 100%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Command</strong></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">delete accommodation INDEX</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">delete activity INDEX</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">delete contact INDEX</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">delete day INDEX</p></td>
-</tr>
-</tbody>
-</table>
+<div class="imageblock">
+<div class="content">
+<img src="../images/BeforeOptimise.png" alt="BeforeOptimise">
 </div>
-<div class="sect2">
-<h3 id="edit-commands"><a class="link" href="#edit-commands">3.5. Edit Commands</a></h3>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Command</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Example</strong></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">edit accommodation INDEX [n/NAME] [a/ADDRESS] [p/PHONE_NUMBER] [e/EMAIL] [t/TAG]</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">edit accommodation 3 n/Kent Ridge Hotel a/Clementi</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">edit activity INDEX [n/NAME] [a/ADDRESS] [du/DURATION] [p/PHONE_NUMBER] [e/EMAIL] [pr/PRIORITY] [t/TAG]</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">edit activity 5 n/Go Disneyland</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">edit contact INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">edit contact 2 n/James Lee e/jameslee@example.com</p></td>
-</tr>
-</tbody>
-</table>
+<div class="title">Figure 1. Day 2 has lots of overlapping activities</div>
 </div>
-<div class="sect2">
-<h3 id="schedule-commands"><a class="link" href="#schedule-commands">3.6. Schedule Commands</a></h3>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Command</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Example</strong></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">schedule ACTIVITY_INDEX st/START_TIME d/DAY_INDEX</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">schedule 2 st/1400 d/2</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">unschedule ACTIVITY_INDEX d/DAY_INDEX</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">unschedule ACTIVITY_INDEX d/DAY_INDEX</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">autoschedule [t/TAG START_TIME] n/ACTIVITY_NAME START_TIME a/LOCATION_OF_ACTIVITIES d/[DAY_INDEX]</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">autoschedule t/Dining 1000 t/Attraction 1200 n/Disneyland 1400 t/Dining a/Tokyo d/1 4 5</p></td>
-</tr>
-</tbody>
-</table>
+<div class="ulist">
+<ul>
+<li>
+<p>After optimise 2</p>
+</li>
+</ul>
 </div>
-<div class="sect2">
-<h3 id="list-commands"><a class="link" href="#list-commands">3.7. List Commands</a></h3>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 100%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Command</strong></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">list accommodation</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">list activity</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">list contact</p></td>
-</tr>
-</tbody>
-</table>
+<div class="imageblock">
+<div class="content">
+<img src="../images/AfterOptimise.png" alt="AfterOptimise">
 </div>
-<div class="sect2">
-<h3 id="view-commands"><a class="link" href="#view-commands">3.8. View Commands</a></h3>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 100%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Command</strong></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">view accommodation ACCOMMODATION_INDEX</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">view activity ACTIVITY_INDEX</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">view contact CONTACT_INDEX</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">view itinerary</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">view info</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">view help</p></td>
-</tr>
-</tbody>
-</table>
+<div class="title">Figure 2. Day 2 has been optimised, no overlaps.</div>
 </div>
-<div class="sect2">
-<h3 id="other-commands"><a class="link" href="#other-commands">3.9. Other Commands</a></h3>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 100%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Command</strong></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">optimise DAY_INDEX</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">undo</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">redo</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">clear</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">help</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">exit</p></td>
-</tr>
-</tbody>
-</table>
+<div class="ulist">
+<ul>
+<li>
+<p>After undo</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/AfterUndo.png" alt="AfterUndo">
+</div>
+<div class="title">Figure 3. Optimise command successfully undone</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>After redo</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/AfterOptimise.png" alt="AfterOptimise">
+</div>
+<div class="title">Figure 4. Optimise command successfully redone, no overlaps.</div>
+</div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="contributions-to-the-developer-guide"><a class="link" href="#contributions-to-the-developer-guide">4. Contributions to the Developer Guide</a></h2>
+<h2 id="contributions-to-the-developer-guide"><a class="link" href="#contributions-to-the-developer-guide">3. Contributions to the Developer Guide</a></h2>
 <div class="sectionbody">
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
@@ -443,145 +306,13 @@ Format: <code>redo</code>
 </tbody>
 </table>
 <div class="sect2">
-<h3 id="Design-Storage"><a class="link" href="#Design-Storage">4.1. Storage component</a></h3>
-<div class="imageblock">
-<div class="content">
-<img src="../images/StorageUML.png" alt="StorageUML">
-</div>
-<div class="title">Figure 1. Structure of the Storage Component</div>
-</div>
-<div class="paragraph">
-<p><strong>API</strong> : <a href="{repoURL}/src/main/java/seedu/planner/storage/Storage.java"><code>Storage.java</code></a></p>
-</div>
-<div class="paragraph">
-<p>The <code>Storage</code> component,</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>can save <code>UserPref</code> objects in json format and read it back.</p>
-</li>
-<li>
-<p>application data is split into 4 different components, <code>Accommodation</code>, <code>Activity</code>, <code>Contact</code>, <code>Itinerary</code>.</p>
-</li>
-</ul>
-</div>
-<div class="sect3">
-<h4 id="accommodation-storage-component"><a class="link" href="#accommodation-storage-component">4.1.1. Accommodation Storage component</a></h4>
-<div class="imageblock">
-<div class="content">
-<img src="../images/AccommodationStorageUML.png" alt="AccommodationStorageUML">
-</div>
-<div class="title">Figure 2. Structure of Accommodation Storage component</div>
-</div>
-<div class="paragraph">
-<p><strong>API</strong> : <a href="{repoURL}/src/main/java/seedu/planner/storage/accommodation/AccommodationStorage.java"><code>AccommodationStorage.java</code></a></p>
-</div>
-<div class="paragraph">
-<p>The <code>Accommodation Storage</code> component,</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>can save <code>Accommodation</code> objects in json format and read it back.</p>
-</li>
-<li>
-<p>as <code>Tag is a field in Accommodation</code>, similarly JsonAdaptedTag is a field within JsonAdaptedAccommodation. Hence
-the association as shown in the diagram above.</p>
-</li>
-<li>
-<p>as <code>Contact is a field in Accommodation</code>, similarly JsonAdaptedContact is a field within JsonAdaptedAccommodation. Hence
-the association as shown in the diagram above.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="activity-storage-component"><a class="link" href="#activity-storage-component">4.1.2. Activity Storage component</a></h4>
-<div class="imageblock">
-<div class="content">
-<img src="../images/ActivityStorageUML.png" alt="ActivityStorageUML">
-</div>
-<div class="title">Figure 3. Structure of Activity Storage component</div>
-</div>
-<div class="paragraph">
-<p><strong>API</strong> : <a href="{repoURL}/src/main/java/seedu/planner/storage/activity/ActivityStorage.java"><code>ActivityStorage.java</code></a></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>can save <code>Activity</code> objects in json format and read it back.</p>
-</li>
-<li>
-<p>as <code>Tag is a field in Activity</code>, similarly JsonAdaptedTag is a field within JsonAdaptedActivity. Hence
-the association as shown in the diagram above.</p>
-</li>
-<li>
-<p>as <code>Contact is a field in Activity</code>, similarly JsonAdaptedContact is a field within JsonAdaptedActivity. Hence
-the association as shown in the diagram above.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="contact-storage-component"><a class="link" href="#contact-storage-component">4.1.3. Contact Storage component</a></h4>
-<div class="imageblock">
-<div class="content">
-<img src="../images/ContactStorageUML.png" alt="ContactStorageUML">
-</div>
-<div class="title">Figure 4. Structure of Contact Storage component</div>
-</div>
-<div class="paragraph">
-<p><strong>API</strong> : <a href="{repoURL}/src/main/java/seedu/planner/storage/contact/ContactStorage.java"><code>ContactStorage.java</code></a></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>can save <code>Contact</code> objects in json format and read it back.</p>
-</li>
-<li>
-<p>as <code>Tag is a field in Contact</code>, similarly JsonAdaptedTag is a field within JsonAdaptedContact. Hence
-the association as shown in the diagram above.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="itinerary-storage-component"><a class="link" href="#itinerary-storage-component">4.1.4. Itinerary Storage component</a></h4>
-<div class="imageblock">
-<div class="content">
-<img src="../images/ItineraryStorageUML.png" alt="ItineraryStorageUML">
-</div>
-<div class="title">Figure 5. Structure of Itinerary Storage component</div>
-</div>
-<div class="paragraph">
-<p><strong>API</strong> : <a href="{repoURL}/src/main/java/seedu/planner/storage/day/ItineraryStorage.java"><code>ItineraryStorage.java</code></a></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>can save <code>Itinerary</code> objects in json format and read it back.</p>
-</li>
-<li>
-<p>as <code>ActivityWithTime is a field in Day</code>, similarly JsonAdaptedActivityWithTime is a field within JsonAdaptedDay. Hence
-the association as shown in the diagram above.</p>
-</li>
-<li>
-<p>as <code>Activity is a field in ActivityWithTime</code>, similarly JsonAdaptedActivity is a field within JsonAdaptedActivityWithTime.
-Hence the association as shown in the diagram above.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">4.2. Undo/Redo feature</a></h3>
+<h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">3.1. Undo/Redo feature</a></h3>
 <div class="paragraph">
 <p>The undo command allows user to <code>undo by one command</code> (if the command is <code>undoable</code>).
 The redo command allows user to <code>return to the original state before the latest undo is called</code>.</p>
 </div>
 <div class="sect3">
-<h4 id="implementation"><a class="link" href="#implementation">4.2.1. Implementation</a></h4>
+<h4 id="implementation"><a class="link" href="#implementation">3.1.1. Implementation</a></h4>
 <div class="paragraph">
 <p>The undo/redo feature utilizes various classes to operate, such as <code>CommandHistory</code> class and the
 classes within the <code>events package</code> in the logic component.</p>
@@ -598,8 +329,9 @@ classes within the <code>events package</code> in the logic component.</p>
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Event</code>&#8201;&#8212;&#8201;Every UndoableCommand can be wrapped into its own unique Event.<br></p>
-<p class="tableblock"><code>undo/redo</code>&#8201;&#8212;&#8201;Every Event has an undo and redo method.<br></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Event</code>&#8201;&#8212;&#8201;Every UndoableCommand can be wrapped into its own unique Event.<br>
+<code>undo/redo</code>&#8201;&#8212;&#8201;Every Event has an undo and redo method.<br>
+<code>EventFactory</code>&#8201;&#8212;&#8201;An Event object is generated by the EventFactory before executing the Command.<br></p></td>
 </tr>
 </tbody>
 </table>
@@ -641,7 +373,7 @@ classes within the <code>events package</code> in the logic component.</p>
 <p><strong>Step 1.</strong> The user executes an <code>UndoableCommand</code>.</p>
 </div>
 <div class="paragraph">
-<p><strong>Step 2.</strong> <code>EventFactory</code> will parse the UndoableCommand to generate an Event.<br>
+<p><strong>Step 2.</strong> <code>EventFactory</code> will parse the <code>UndoableCommand</code> to generate an Event.<br>
 (eg. DeleteActivityCommand will result in DeleteActivityEvent generated)</p>
 </div>
 <div class="admonitionblock note">
@@ -651,7 +383,7 @@ classes within the <code>events package</code> in the logic component.</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-EventFactory is a static class that will parse an UndoableCommand and generate the corresponding Event.
+EventFactory is a <code>static class</code> that will parse an UndoableCommand and generate the corresponding Event.
 </td>
 </tr>
 </table>
@@ -664,7 +396,7 @@ CommandHistory is also <code>cleared</code> upon generating a new Event.</p>
 <p><strong>Step 4.</strong> The <code>UndoableCommand</code> is executed, generating the <code>CommandResult</code>.</p>
 </div>
 <div class="paragraph">
-<p><strong>Step 5.</strong> To <code>undo</code> the previous UndoableCommand, the user executes <code>undo</code> command. An <code>UndoCommand</code> is generated.</p>
+<p><strong>Step 5.</strong> To undo the previous UndoableCommand, the user executes <code><strong>undo</strong></code> command. An <code>UndoCommand</code> is generated.</p>
 </div>
 <div class="paragraph">
 <p><strong>Step 6.</strong> <code>UndoCommand is not an UndoableCommand</code>. Executing the UndoCommand calls the undo method of <code>Event</code>
@@ -686,21 +418,21 @@ Both UndoCommand and RedoCommand are an UndoableCommands, no Events are generate
 <p><strong>Step 7.</strong> The <code>Event</code> is popped from the undoEventStack and pushed to redoEventStack in CommandHistory. <code>The Event is undone</code>.</p>
 </div>
 <div class="paragraph">
-<p><strong>Step 8.</strong> To redo the command that has been undone, the user executes <code>redo</code> command. A <code>RedoCommand</code> is generated.
+<p><strong>Step 8.</strong> To redo the command that has been undone, the user executes <code><strong>redo</strong></code> command. A <code>RedoCommand</code> is generated.
 This execution is <code>similar to steps 6 and 7</code>, except Event is popped from redo stack instead and pushed to undo stack.</p>
 </div>
 <div class="paragraph">
-<p>The following two sequence diagram shows how the user&#8217;s input is handled for <code>'delete activity 1'</code>.</p>
+<p>The <strong>following two sequence diagrams</strong> shows how the user&#8217;s input is handled for <code><strong>'delete activity 1'</strong></code>.</p>
 </div>
 <div class="paragraph">
-<p>The first diagram below shows the execution of <code>delete activity 1</code> command. It shows <code>Event</code> generated and how the
+<p>The first diagram below shows the execution of <code>delete activity 1</code> command. It shows how the <code>Event</code> is generated and how the
 <code>undoEventStack and redoEventStack is updated</code>.</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="../images/DeleteActivitySequenceDiagram.png" alt="DeleteActivitySequenceDiagram">
 </div>
-<div class="title">Figure 6. Executing delete activity</div>
+<div class="title">Figure 5. Executing delete activity</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -709,7 +441,7 @@ This execution is <code>similar to steps 6 and 7</code>, except Event is popped 
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-When DeleteActivityEvent is executed, it generates the <code>activityToDelete</code> by extracting the <code>Activity</code> to be deleted from
+When DeleteActivityCommand is executed, it generates the <code>activityToDelete</code> by extracting the <code>Activity</code> to be deleted from
 the Model&#8217;s list of activities based on the index specified in user&#8217;s command input. It then calls the Model&#8217;s
 <code>deleteActivity</code> method.
 </td>
@@ -728,7 +460,7 @@ Both Activity and Index were stored in <code>DeleteActivityEvent</code>.<br></p>
 <div class="content">
 <img src="../images/UndoDeleteActivitySequenceDiagram.png" alt="UndoDeleteActivitySequenceDiagram">
 </div>
-<div class="title">Figure 7. Executing undo for 'delete activity'</div>
+<div class="title">Figure 6. Executing undo for 'delete activity'</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -737,7 +469,7 @@ Both Activity and Index were stored in <code>DeleteActivityEvent</code>.<br></p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-Each Event stores the necessary data required by the reverse Command to undo the effects of the initial
+Each Event stores the <code>necessary data</code> required by the reverse Command to undo the effects of the initial
 UndoableCommand.<br>
 (eg. AddActivityEvent stores the <code>Activity added</code>, as <code>DeleteActivityCommand</code> requires the Activity to undo
 the initial <code>AddActivityCommand&#8217;s</code> changes)
@@ -746,7 +478,7 @@ the initial <code>AddActivityCommand&#8217;s</code> changes)
 </table>
 </div>
 <div class="paragraph">
-<p>The following activity diagram summarizes what happens when a user executes an UndoableCommand, an UndoCommand,
+<p>The following <strong>activity diagram</strong> summarizes what happens when a user executes an UndoableCommand, an UndoCommand,
 a RedoCommand, or any other Commands.</p>
 </div>
 <div class="imageblock">
@@ -761,7 +493,7 @@ a RedoCommand, or any other Commands.</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-A Command that is not a UndoableCommand, UndoCommand or RedoCommand will not affect the stack of Events in CommandHistory.<br>
+A Command that is not an UndoableCommand, UndoCommand or RedoCommand will <strong>not affect</strong> the stack of Events in CommandHistory.<br>
 (eg. view, list commands)
 </td>
 </tr>
@@ -769,7 +501,7 @@ A Command that is not a UndoableCommand, UndoCommand or RedoCommand will not aff
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations"><a class="link" href="#design-considerations">4.2.2. Design Considerations</a></h4>
+<h4 id="design-considerations"><a class="link" href="#design-considerations">3.1.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-how-undo-redo-executes"><a class="link" href="#aspect-how-undo-redo-executes">Aspect: How undo &amp; redo executes</a></h5>
 <div class="ulist">
@@ -939,4 +671,4 @@ in the list.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-07 18:31:23 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-08 09:50:30 UTC</div></div></div></body></html>
