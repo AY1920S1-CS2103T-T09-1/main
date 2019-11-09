@@ -31,7 +31,7 @@
 <li><a href="#list-the-contacts-in-the-planner-code-list-contact-code">3.16. List the contacts in the planner: <code>list contact</code></a></li>
 <li><a href="#viewing-a-specific-contact-code-view-contact-code">3.17. Viewing a specific contact: <code>view contact</code></a></li>
 <li><a href="#adds-days-to-the-schedule-code-add-days-code">3.18. Adds days to the schedule: <code>add days</code></a></li>
-<li><a href="#deleting-days-code-delete-day-code">3.19. Deleting days: <code>delete day</code></a></li>
+<li><a href="#deleting-a-day-code-delete-day-code">3.19. Deleting a day: <code>delete day</code></a></li>
 <li><a href="#scheduling-an-activity-to-a-day-code-schedule-code">3.20. Scheduling an activity to a day: <code>schedule</code></a></li>
 <li><a href="#unscheduling-activities-from-a-day-code-unschedule-activity-code">3.21. Unscheduling activities from a day: <code>unschedule activity</code></a></li>
 <li><a href="#auto-schedule-code-autoschedule-code">3.22. Auto Schedule: <code>autoschedule</code></a></li>
@@ -226,7 +226,20 @@ Format: <code>view TAB_NAME</code></p>
 <h3 id="adding-an-accommodation-code-add-accommodation-code"><a class="link" href="#adding-an-accommodation-code-add-accommodation-code">3.3. Adding an accommodation: <code>add accommodation</code></a></h3>
 <div class="paragraph">
 <p>Creates an accommodation to the accommodation list<br>
-Format: <code>add accommodation n/NAME a/ADDRESS [p/PHONE_NUMBER] [e/EMAIL] [t/TAGS]</code></p>
+Format: <code>add accommodation n/NAME a/ADDRESS [p/PHONE_NUMBER] [t/TAGS]</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Both compulsory fields, name and address, must be present.</p>
+</li>
+<li>
+<p>Name must only contain alphanumeric characters and spaces (names with only white space would be treated as blank).</p>
+</li>
+<li>
+<p>Address can take up any values (likewise, address with only white space would be treated as blank).</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -234,30 +247,49 @@ Format: <code>add accommodation n/NAME a/ADDRESS [p/PHONE_NUMBER] [e/EMAIL] [t/T
 <div class="ulist">
 <ul>
 <li>
-<p><code>add accommodation n/Hotel 81 a/Orchard /p67555312</code></p>
+<p><code>add accommodation n/Hotel 81 a/Orchard p/67555312</code></p>
 </li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Adds "Hotel 81" with an address, "Orchard", and phone number, "67555312", into the accommodation list.</p>
+</div>
+<div class="ulist">
+<ul>
 <li>
 <p><code>add accommodation n/Mandarin Oriental a/Ang Mo Kio</code></p>
 </li>
 </ul>
+</div>
+<div class="paragraph">
+<p>Adds "Mandarin Oriental" with an address, "Ang Mo Kio" into the accommodation list.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="editing-an-accommodation-code-edit-accommodation-code"><a class="link" href="#editing-an-accommodation-code-edit-accommodation-code">3.4. Editing an accommodation: <code>edit accommodation</code></a></h3>
 <div class="paragraph">
 <p>Edits an accommodation<br>
-Format: <code>edit accommodation INDEX [n/NAME] [a/ADDRESS] [p/PHONE_NUMBER] [e/EMAIL] [t/TAGS]</code></p>
+Format: <code>edit accommodation INDEX [n/NAME] [a/ADDRESS] [p/PHONE_NUMBER] [t/TAGS]</code></p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Edits the accommodation with the specified INDEX. The index refers to the index number shown in the displayed accommodation list. The index must be a positive integer 1, 2, 3, &#8230;&#8203;</p>
+<p>Edits the accommodation with the specified INDEX.</p>
+</li>
+<li>
+<p>The index provided refers to the index number shown in the displayed accommodation list.</p>
+</li>
+<li>
+<p>The index provided must be a positive integer.</p>
+</li>
+<li>
+<p>The index provided must not exceed the number of accommodations in the accommodation list.</p>
 </li>
 <li>
 <p>At least one of the optional fields must be provided.</p>
 </li>
 <li>
-<p>Existing values will be updated to the input values.</p>
+<p>Existing fields will be updated by the input fields.</p>
 </li>
 </ul>
 </div>
@@ -272,7 +304,7 @@ Format: <code>edit accommodation INDEX [n/NAME] [a/ADDRESS] [p/PHONE_NUMBER] [e/
 </ul>
 </div>
 <div class="paragraph">
-<p>Edits the name, address and tag of the 1st accommodation to be MBS, Marina Bay and Atas respectively.</p>
+<p>Edits the 1st accommodation in the accommodation list to have a name, "MBS", address, "Marina Bay", and tag, "Atas".</p>
 </div>
 </div>
 <div class="sect2">
@@ -287,10 +319,13 @@ Format: <code>delete accommodation INDEX&#8230;&#8203;</code></p>
 <p>Deletes the accommodation at the specified INDEX.</p>
 </li>
 <li>
-<p>The index refers to the index number shown in the displayed accommodation list.</p>
+<p>The index provided refers to the index number shown in the displayed accommodation list.</p>
 </li>
 <li>
-<p>The index must be a positive integer 1, 2, 3, …</p>
+<p>The index provided must be a positive integer.</p>
+</li>
+<li>
+<p>The index provided must not exceed the number of accommodations in the accommodation list.</p>
 </li>
 </ul>
 </div>
@@ -314,6 +349,19 @@ Format: <code>delete accommodation INDEX&#8230;&#8203;</code></p>
 <p>Displays a list view of all the accommodation<br>
 Format: <code>list accommodation</code></p>
 </div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>list accommodation</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The tab of the activity list would drop down to show the list.</p>
+</div>
 </div>
 <div class="sect2">
 <h3 id="viewing-a-specific-accommodation-code-view-accommodation-code"><a class="link" href="#viewing-a-specific-accommodation-code-view-accommodation-code">3.7. Viewing a specific accommodation: <code>view accommodation</code></a></h3>
@@ -327,10 +375,13 @@ Format <code>view accommodation ACCOMMODATION_INDEX</code></p>
 <p>Views the accommodation at the specified INDEX.</p>
 </li>
 <li>
-<p>The index refers to the index number shown in the displayed accommodation list.</p>
+<p>The index provided refers to the index number shown in the displayed accommodation list.</p>
 </li>
 <li>
-<p>The index must be a positive integer 1, 2, 3, …</p>
+<p>The index provided must be a positive integer.</p>
+</li>
+<li>
+<p>The index provided must not exceed the number of accommodations in the accommodation list.</p>
 </li>
 </ul>
 </div>
@@ -345,14 +396,39 @@ Format <code>view accommodation ACCOMMODATION_INDEX</code></p>
 </ul>
 </div>
 <div class="paragraph">
-<p>Views the 3rd accommodation in the accommodation list.</p>
+<p>Shows a detailed view of the 3rd accommodation in the accommodation list.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="adding-an-activity-code-add-activity-code"><a class="link" href="#adding-an-activity-code-add-activity-code">3.8. Adding an activity: <code>add activity</code></a></h3>
 <div class="paragraph">
 <p>Creates an activity to the activity list<br>
-Format: <code>add activity n/NAME a/ADDRESS du/DURATION [p/PHONE_NUMBER] [e/EMAIL] [pr/PRIORITY] [t/TAGS]</code></p>
+Format: <code>add activity n/NAME a/ADDRESS du/DURATION [p/PHONE_NUMBER] [c/COST] [pr/PRIORITY] [t/TAGS]</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Compulsory fields, name, address and duration, must be present.</p>
+</li>
+<li>
+<p>Name must only contain alphanumeric characters and spaces (names with only white space would be treated as blank).</p>
+</li>
+<li>
+<p>Address can take up any values (likewise, address with only white space would be treated as blank).</p>
+</li>
+<li>
+<p>Duration is in minutes and must be less than or equal to 1440 minutes.</p>
+</li>
+<li>
+<p>Phone number should only contain numbers and must be at least 3 digits long.</p>
+</li>
+<li>
+<p>Cost should only contain numbers and have at most 2 decimal places.</p>
+</li>
+<li>
+<p>Priority should only contain numbers and range from 1 to 7 inclusive. (1 being the highest priority, 7 being the lowest).</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -360,30 +436,49 @@ Format: <code>add activity n/NAME a/ADDRESS du/DURATION [p/PHONE_NUMBER] [e/EMAI
 <div class="ulist">
 <ul>
 <li>
-<p><code>add activity n/Visit Gundam Museum a/Tokyo du/90 /p67521312</code></p>
+<p><code>add activity n/Visit Gundam Museum a/Tokyo du/90 p/67521312</code></p>
 </li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Adds "Visit Gundam Museum" with an address, "Tokyo", duration, 90 minutes, and phone number, "67521312", to the activity list.</p>
+</div>
+<div class="ulist">
+<ul>
 <li>
 <p><code>add activity n/Ski a/Mount Sinai du/120</code></p>
 </li>
 </ul>
+</div>
+<div class="paragraph">
+<p>Adds "Ski" with an address, "Mount Sinai", and duration, 120 minutes, to the activity list.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="editing-an-activity-code-edit-activity-code"><a class="link" href="#editing-an-activity-code-edit-activity-code">3.9. Editing an activity: <code>edit activity</code></a></h3>
 <div class="paragraph">
 <p>Edits an activity<br>
-Format: <code>edit activity INDEX [n/NAME] [a/ADDRESS] [p/PHONE_NUMBER] [e/EMAIL] [pr/PRIORITY] [t/TAGS]</code></p>
+Format: <code>edit activity INDEX [n/NAME] [a/ADDRESS] [p/PHONE_NUMBER] [c/COST] [pr/PRIORITY] [t/TAGS]</code></p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Edits the activity with the specified INDEX. The index refers to the index number shown in the displayed activity list. The index must be a positive integer 1, 2, 3, &#8230;&#8203;</p>
+<p>Edits the activity with the specified INDEX.</p>
+</li>
+<li>
+<p>The index provided refers to the index number shown in the displayed activity list.</p>
+</li>
+<li>
+<p>The index provided must be a positive integer.</p>
+</li>
+<li>
+<p>The index provided must not exceed the number of activities in the activity list.</p>
 </li>
 <li>
 <p>At least one of the optional fields must be provided.</p>
 </li>
 <li>
-<p>Existing values will be updated to the input values.</p>
+<p>Existing fields will be updated by the input fields.</p>
 </li>
 </ul>
 </div>
@@ -398,7 +493,7 @@ Format: <code>edit activity INDEX [n/NAME] [a/ADDRESS] [p/PHONE_NUMBER] [e/EMAIL
 </ul>
 </div>
 <div class="paragraph">
-<p>Edits the name, address and tag of the 1st activity to be Dinner, Hotel and Western respectively.</p>
+<p>Edits the 1st activity in the activity list to have a name, "Dinner", address, "Hotel", and tag, "Western".</p>
 </div>
 </div>
 <div class="sect2">
@@ -413,10 +508,13 @@ Format: <code>delete activity INDEX&#8230;&#8203;</code></p>
 <p>Deletes the activity at the specified INDEX.</p>
 </li>
 <li>
-<p>The index refers to the index number shown in the displayed activity list.</p>
+<p>The index provided refers to the index number shown in the displayed activity list.</p>
 </li>
 <li>
-<p>The index must be a positive integer 1, 2, 3, …</p>
+<p>The index provided must be a positive integer.</p>
+</li>
+<li>
+<p>The index provided must not exceed the number of activities in the activity list.</p>
 </li>
 </ul>
 </div>
@@ -440,6 +538,19 @@ Format: <code>delete activity INDEX&#8230;&#8203;</code></p>
 <p>Displays a list view of all the activities<br>
 Format: <code>list activity</code></p>
 </div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>list activity</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The tab of the activity list would drop down to show the list.</p>
+</div>
 </div>
 <div class="sect2">
 <h3 id="viewing-a-specific-activity-code-view-activity-code"><a class="link" href="#viewing-a-specific-activity-code-view-activity-code">3.12. Viewing a specific activity: <code>view activity</code></a></h3>
@@ -453,10 +564,13 @@ Format <code>view activity ACTIVITY_INDEX</code></p>
 <p>Views the activity at the specified INDEX.</p>
 </li>
 <li>
-<p>The index refers to the index number shown in the displayed activity list.</p>
+<p>The index provided refers to the index number shown in the displayed activity list.</p>
 </li>
 <li>
-<p>The index must be a positive integer 1, 2, 3, …</p>
+<p>The index provided must be a positive integer.</p>
+</li>
+<li>
+<p>The index provided must not exceed the number of activities in the activity list.</p>
 </li>
 </ul>
 </div>
@@ -471,7 +585,7 @@ Format <code>view activity ACTIVITY_INDEX</code></p>
 </ul>
 </div>
 <div class="paragraph">
-<p>Views the 3rd activity in the activity list.</p>
+<p>Shows a detailed view of the 3rd activity in the activity list.</p>
 </div>
 </div>
 <div class="sect2">
@@ -480,33 +594,94 @@ Format <code>view activity ACTIVITY_INDEX</code></p>
 <p>Creates a contact to the contact list<br>
 Format: <code>add contact n/NAME p/PHONE_NUMBER [e/EMAIL] [a/ADDRESS] [t/TAGS]</code></p>
 </div>
+<div class="ulist">
+<ul>
+<li>
+<p>Both compulsory fields, name and phone number, must be present.</p>
+</li>
+<li>
+<p>Name must only contain alphanumeric characters and spaces (names with only white space would be treated as blank).</p>
+</li>
+<li>
+<p>Phone number should only contain numbers and must be at least 3 digits long (numbers with only white space would be treated as blank).</p>
+</li>
+<li>
+<p>Emails should be of the format local-part@domain</p>
+<div class="ulist">
+<ul>
+<li>
+<p>local-part should only contain alphanumerics and the following special characters: !#$%&amp;'*+/=?`{|}~^.-</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
 <div class="paragraph">
 <p>Examples:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>add contact n/Bob p/83746658 t/false</code></p>
+<p><code>add contact n/Bob p/83746658</code></p>
 </li>
 </ul>
+</div>
+<div class="paragraph">
+<p>A contact with name, "Bob" and phone number, "83746658", is added to the contact list.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>add contact n/Sheryl p/96667710 a/Buangkok</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>A contact with name, "Sheryl", phone number, "96667710", and address, "Buangkok", is added to the contact list.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="editing-a-contact-code-edit-contact-code"><a class="link" href="#editing-a-contact-code-edit-contact-code">3.14. Editing a contact: <code>edit contact</code></a></h3>
 <div class="paragraph">
 <p>Edits an existing contact in the contact list<br>
-Format: <code>edit contact INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/IS_EMERGENCY]</code></p>
+Format: <code>edit contact INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAGS]</code></p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Edits the contact with the specified INDEX. The index refers to the index number shown in the displayed contact list. The index must be a positive integer 1, 2, 3, &#8230;&#8203;</p>
+<p>Edits the contact with the specified INDEX.</p>
+</li>
+<li>
+<p>The index provided refers to the index number shown in the displayed contact list.</p>
+</li>
+<li>
+<p>The index provided must be a positive integer.</p>
+</li>
+<li>
+<p>The index provided must not exceed the number of contacts in the contact list.</p>
 </li>
 <li>
 <p>At least one of the optional fields must be provided.</p>
 </li>
 <li>
-<p>Existing values will be updated to the input values.</p>
+<p>Existing fields will be updated with the input fields.</p>
+</li>
+<li>
+<p>Name must only contain alphanumeric characters and spaces (names with only white space would be treated as blank).</p>
+</li>
+<li>
+<p>Phone number should only contain numbers and must be at least 3 digits long (numbers with only white space would be treated as blank).</p>
+</li>
+<li>
+<p>Emails should be of the format local-part@domain</p>
+<div class="ulist">
+<ul>
+<li>
+<p>local-part should only contain alphanumerics and the following special characters: !#$%&amp;'*+/=?`{|}~^.-</p>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
@@ -516,12 +691,12 @@ Format: <code>edit contact INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS]
 <div class="ulist">
 <ul>
 <li>
-<p><code>edit contact 1 p/93746658 t/true</code></p>
+<p><code>edit contact 1 p/93746658</code></p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>Edits the phone number and tag of the 1st contact to be 93746658 and true respectively.</p>
+<p>Edits the phone number of the 1st contact to be ,"93746658".</p>
 </div>
 </div>
 <div class="sect2">
@@ -536,10 +711,13 @@ Format: <code>delete contact INDEX</code></p>
 <p>Deletes the contact at the specified INDEX.</p>
 </li>
 <li>
-<p>The index refers to the index number shown in the displayed contact list.</p>
+<p>The index provided refers to the index number shown in the displayed contact list.</p>
 </li>
 <li>
-<p>The index must be a positive integer 1, 2, 3, …</p>
+<p>The index provided must be a positive integer.</p>
+</li>
+<li>
+<p>The index provided must not exceed the number of contacts in the contact list.</p>
 </li>
 </ul>
 </div>
@@ -576,10 +754,13 @@ Format <code>view contact CONTACT_INDEX</code></p>
 <p>Views the contact at the specified INDEX.</p>
 </li>
 <li>
-<p>The index refers to the index number shown in the displayed contact list.</p>
+<p>The index provided refers to the index number shown in the displayed contact list.</p>
 </li>
 <li>
-<p>The index must be a positive integer 1, 2, 3, …</p>
+<p>The index provided must be a positive integer.</p>
+</li>
+<li>
+<p>The index provided must not exceed the number of contacts in the contact list.</p>
 </li>
 </ul>
 </div>
@@ -603,6 +784,16 @@ Format <code>view contact CONTACT_INDEX</code></p>
 <p>Adds DAY_NUMBER amount of days to the itinerary<br>
 Format: <code>add days DAY_NUMBER</code></p>
 </div>
+<div class="ulist">
+<ul>
+<li>
+<p>The number of days provided must be a positive integer.</p>
+</li>
+<li>
+<p>The total number of days in the itinerary cannot exceed 15 days.</p>
+</li>
+</ul>
+</div>
 <div class="paragraph">
 <p>Examples:</p>
 </div>
@@ -614,14 +805,27 @@ Format: <code>add days DAY_NUMBER</code></p>
 </ul>
 </div>
 <div class="paragraph">
-<p>Adds 7 days to the back of the itinerary.</p>
+<p>Extends the itinerary by 7 days.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="deleting-days-code-delete-day-code"><a class="link" href="#deleting-days-code-delete-day-code">3.19. Deleting days: <code>delete day</code></a></h3>
+<h3 id="deleting-a-day-code-delete-day-code"><a class="link" href="#deleting-a-day-code-delete-day-code">3.19. Deleting a day: <code>delete day</code></a></h3>
 <div class="paragraph">
 <p>Deletes day DAY_INDEX of the itinerary.<br>
 Format: <code>delete day DAY_INDEX</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The index provided refers to the index of the day in the itinerary.</p>
+</li>
+<li>
+<p>The index provided must be a positive integer.</p>
+</li>
+<li>
+<p>The index provided must not exceed the number of days in the itinerary.</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -643,6 +847,22 @@ Format: <code>delete day DAY_INDEX</code></p>
 <p>Schedules an activity to a day<br>
 Format: <code>schedule ACTIVITY_INDEX st/START_TIME d/DAY_INDEX</code></p>
 </div>
+<div class="ulist">
+<ul>
+<li>
+<p>The indices provided refers to the index of an activity in the activity list and the index of a day in the itinerary.</p>
+</li>
+<li>
+<p>The indices provided must be positive integers.</p>
+</li>
+<li>
+<p>The indices provided must not exceed the number of activities in the activity list or the number of days in the itinerary.</p>
+</li>
+<li>
+<p>The start time should follow a 24-HOUR format (i.e. 1400)</p>
+</li>
+</ul>
+</div>
 <div class="paragraph">
 <p>Examples:</p>
 </div>
@@ -663,6 +883,19 @@ Format: <code>schedule ACTIVITY_INDEX st/START_TIME d/DAY_INDEX</code></p>
 <p>Unschedules an activity from a day<br>
 Format: <code>unschedule ACTIVITY_INDEX d/DAY_INDEX</code></p>
 </div>
+<div class="ulist">
+<ul>
+<li>
+<p>The indices provided refers to the index of an activity in the activity list and the index of a day in the itinerary.</p>
+</li>
+<li>
+<p>The indices provided must be positive integers.</p>
+</li>
+<li>
+<p>The indices provided must not exceed the number of activities in the activity list or the number of days in the itinerary.</p>
+</li>
+</ul>
+</div>
 <div class="paragraph">
 <p>Examples:</p>
 </div>
@@ -675,6 +908,18 @@ Format: <code>unschedule ACTIVITY_INDEX d/DAY_INDEX</code></p>
 </div>
 <div class="paragraph">
 <p>This remove the 5th activity from the activity list from day 2.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+You can use the list day command to find out the index of the activity you wish to unschedule.
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect2">
@@ -767,6 +1012,19 @@ the combination with the most activities would be chosen.</p>
 </div>
 <div class="paragraph">
 <p>Format: <code>optimise DAY_INDEX</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The index provided refers to the index of a day in the itinerary.</p>
+</li>
+<li>
+<p>The index provided must be positive integer.</p>
+</li>
+<li>
+<p>The index provided must not exceed the number of days in the itinerary.</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -1160,4 +1418,4 @@ Format: <code>exit</code></p>
 </table>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-09 08:50:48 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-09 10:38:47 UTC</div></div></div></body></html>

@@ -10,14 +10,22 @@
 <h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Plan²travel is a desktop-based travel planning application made to target students, students who want to plan for an overseas trip in particular. The user interacts with it through a Command Line Interface (CLI), and it has a Graphical User Interface (GUI) created with JavaFX. This application is written in Java.</p>
+<p><strong>Plan²travel</strong> is a desktop travel planning application. The application is targeted at fellow university students who
+travel infrequently and would greatly benefit from an application that helps organize their travelling information when they plan their own itinerary. Plan²travel has the ability to store and display information such as activities, accommodations, contacts and an itinerary which comprises of a list of day. Each day is displayed with a list of activities that is scheduled.<br></p>
 </div>
 <div class="paragraph">
-<p>This is a software engineering project in which students are tasked to enhance/morph a simple CLI-based address book application. The end result is a travel planning application with focus on students who spend a lot of time on their computer.</p>
+<p>The user interacts with the application using a Command Line Interface (CLI), and it has Graphical User Interface GUI created with JavaFX.</p>
 </div>
 <div class="paragraph">
-<p>Plan²travel aims to assist the user in managing multiple categories of information crucial to planning their itineraries, such as contacts, activities and accommodations. Plan²travel further allows the user to schedule the activities from the list into a time table, giving the user a systematic and well-formatted
-view of their itinerary. For more budget-minded users, they are able to use the Optimise feature which optimises the schedule to make it conflict-free and at a low overall cost!</p>
+<p>It is cross-platform and can be compiled for both Windows and Mac OS.</p>
+</div>
+<div class="paragraph">
+<p>Below is a screenshot of our application:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/Plan2TravelSS.png" alt="Plan2TravelSS">
+</div>
 </div>
 </div>
 </div>
@@ -34,31 +42,39 @@ view of their itinerary. For more budget-minded users, they are able to use the 
 </tr>
 </tbody>
 </table>
+<div class="sect2">
+<h3 id="strong-major-enhancement-strong-br"><a class="link" href="#strong-major-enhancement-strong-br"><strong>Major enhancement</strong>:<br></a></h3>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Major enhancement</strong>: added <strong>the ability to add/delete/edit Accommodations/Activities/Contact</strong></p>
+<p><strong>Added the ability to manage Accommodations and Activities in the itinerary</strong></p>
 <div class="ulist">
 <ul>
 <li>
-<p>What it does: allows the user to compile information important to planning an itinerary.</p>
+<p><strong>What it does:</strong> allows the user to compile information important to planning an itinerary.</p>
 </li>
 <li>
-<p>Justification: This feature improves the product significantly because it allows the user to enter data in a standardised format, making itineraries more readable and manageable.</p>
+<p><strong>Justification:</strong> This feature improves the product significantly because it allows the user to enter data in a standardised format, making itineraries more readable and manageable.</p>
 </li>
 <li>
-<p>Highlights: This enhancement affects existing commands and commands to be added in future. It required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to existing commands.</p>
+<p><strong>Highlights:</strong> This enhancement affects existing commands and commands to be added in future. It required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to existing commands.</p>
 </li>
 <li>
-<p>Credits: <em>{The commands were adapted and built upon existing commands from Address Book 3}</em></p>
+<p><strong>Credits:</strong> <em>The commands were adapted and built upon commands from Address Book 3</em></p>
 </li>
 </ul>
 </div>
 </li>
-<li>
-<p><strong>Minor enhancement</strong>: added <strong>the ability to optimise a day&#8217;s schedule</strong></p>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="strong-minor-enhancement-strong-br"><a class="link" href="#strong-minor-enhancement-strong-br"><strong>Minor enhancement</strong>:<br></a></h3>
 <div class="ulist">
 <ul>
+<li>
+<p><strong>Added the ability to optimise a day&#8217;s schedule</strong></p>
+</li>
 <li>
 <p>What it does: allows the user to optimise a day&#8217;s schedule by looking for the best way to schedule activities such that there are no conflicts and that the schedule is at the lowest cost. If there are multiple possibilities, the one with the most number of activities would be chosen.</p>
 </li>
@@ -67,36 +83,30 @@ view of their itinerary. For more budget-minded users, they are able to use the 
 </li>
 <li>
 <p>Highlights: This enhancement can be easily extended to allow the user to optimise the schedule besides budget.</p>
-</li>
-</ul>
-</div>
-</li>
+<div class="ulist">
+<ul>
 <li>
 <p><strong>Code contributed</strong>: [<a href="https://nus-cs2103-ay1920s1.github.io/tp-dashboard/#=undefined&amp;search=KxxMxxx">RepoSense Report</a>]</p>
 </li>
-<li>
-<p><strong>Other contributions</strong>:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Project management:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Managed releases <code>v1.3</code> - <code>v1.5rc</code> (3 releases) on GitHub</p>
-</li>
 </ul>
 </div>
 </li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="strong-other-contributions-strong"><a class="link" href="#strong-other-contributions-strong"><strong>Other contributions</strong>:</a></h3>
+<div class="ulist">
+<ul>
 <li>
 <p>Enhancements to existing features:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Updated the GUI color scheme (Pull requests <a href="https://github.com">#33</a>, <a href="https://github.com">#34</a>)</p>
+<p>Link different models to update one another <a href="https://github.com/AY1920S1-CS2103T-T09-1/main/pull/108"><mark>108</mark></a></p>
 </li>
 <li>
-<p>Wrote additional tests for existing features to increase coverage from 88% to 92% (Pull requests <a href="https://github.com">#36</a>, <a href="https://github.com">#38</a>)</p>
+<p>Wrote additional tests for existing features to increase coverage <a href="https://github.com/AY1920S1-CS2103T-T09-1/main/pull/221">#221</a></p>
 </li>
 </ul>
 </div>
@@ -106,7 +116,7 @@ view of their itinerary. For more budget-minded users, they are able to use the 
 <div class="ulist">
 <ul>
 <li>
-<p>Did cosmetic tweaks to existing contents of the User Guide: <a href="https://github.com">#14</a></p>
+<p>Did tweaks to existing contents of the User Guide: <a href="https://github.com/AY1920S1-CS2103T-T09-1/main/pull/248">#248</a></p>
 </li>
 </ul>
 </div>
@@ -116,32 +126,7 @@ view of their itinerary. For more budget-minded users, they are able to use the 
 <div class="ulist">
 <ul>
 <li>
-<p>PRs reviewed (with non-trivial review comments): <a href="https://github.com">#12</a>, <a href="https://github.com">#32</a>, <a href="https://github.com">#19</a>, <a href="https://github.com">#42</a></p>
-</li>
-<li>
-<p>Contributed to forum discussions (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>, <a href="https://github.com">4</a>)</p>
-</li>
-<li>
-<p>Reported bugs and suggestions for other teams in the class (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>)</p>
-</li>
-<li>
-<p>Some parts of the history feature I added was adopted by several other class mates (<a href="https://github.com">1</a>, <a href="https://github.com">2</a>)</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Tools:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Integrated a third party library (Natty) to the project (<a href="https://github.com">#42</a>)</p>
-</li>
-<li>
-<p>Integrated a new Github plugin (CircleCI) to the team repo</p>
-</li>
-</ul>
-</div>
+<p>PRs reviewed: <a href="https://github.com/AY1920S1-CS2103T-T09-1/main/pulls?q=is%3Apr+reviewed-by%3AKxxMxxx+is%3Aclosed">Reviews</a></p>
 </li>
 </ul>
 </div>
@@ -150,6 +135,7 @@ view of their itinerary. For more budget-minded users, they are able to use the 
 </div>
 <div class="paragraph">
 <p><em>{you can add/remove categories in the list above}</em></p>
+</div>
 </div>
 </div>
 </div>
@@ -167,13 +153,268 @@ view of their itinerary. For more budget-minded users, they are able to use the 
 </tbody>
 </table>
 <div class="sect2">
-<h3 id="optimising-by-budget-code-optimise-code"><a class="link" href="#optimising-by-budget-code-optimise-code">Optimising by budget: <code>optimise</code></a></h3>
+<h3 id="adding-an-accommodation-code-add-accommodation-code"><a class="link" href="#adding-an-accommodation-code-add-accommodation-code">Adding an accommodation: <code>add accommodation</code></a></h3>
+<div class="paragraph">
+<p>Creates an accommodation to the accommodation list<br>
+Format: <code>add accommodation n/NAME a/ADDRESS [p/PHONE_NUMBER] [t/TAGS]</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Both compulsory fields, name and address, must be present.</p>
+</li>
+<li>
+<p>Name must only contain alphanumeric characters and spaces (names with only white space would be treated as blank).</p>
+</li>
+<li>
+<p>Address can take up any values (likewise, address with only white space would be treated as blank).</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>add accommodation n/Hotel 81 a/Orchard p/67555312</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Adds "Hotel 81" with an address, "Orchard", and phone number, "67555312", into the accommodation list.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>add accommodation n/Mandarin Oriental a/Ang Mo Kio</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Adds "Mandarin Oriental" with an address, "Ang Mo Kio" into the accommodation list.
+=== Editing an accommodation: <code>edit accommodation</code></p>
+</div>
+<div class="paragraph">
+<p>Edits an accommodation<br>
+Format: <code>edit accommodation INDEX [n/NAME] [a/ADDRESS] [p/PHONE_NUMBER] [t/TAGS]</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Edits the accommodation with the specified INDEX.</p>
+</li>
+<li>
+<p>The index provided refers to the index number shown in the displayed accommodation list.</p>
+</li>
+<li>
+<p>The index provided must be a positive integer.</p>
+</li>
+<li>
+<p>The index provided must not exceed the number of accommodations in the accommodation list.</p>
+</li>
+<li>
+<p>At least one of the optional fields must be provided.</p>
+</li>
+<li>
+<p>Existing fields will be updated by the input fields.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>edit accommodation 1 n/MBS a/Marina Bay t/Atas</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Edits the 1st accommodation in the accommodation list to have a name, "MBS", address, "Marina Bay", and tag, "Atas".
+=== Deleting an accommodation: <code>delete accommodation</code></p>
+</div>
+<div class="paragraph">
+<p>Delete one or more accommodation from the accommodation list<br>
+Format: <code>delete accommodation INDEX&#8230;&#8203;</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Deletes the accommodation at the specified INDEX.</p>
+</li>
+<li>
+<p>The index provided refers to the index number shown in the displayed accommodation list.</p>
+</li>
+<li>
+<p>The index provided must be a positive integer.</p>
+</li>
+<li>
+<p>The index provided must not exceed the number of accommodations in the accommodation list.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>delete accommodation 2</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Deletes the 2nd accommodation in the accommodation list.
+=== Adding an activity: <code>add activity</code></p>
+</div>
+<div class="paragraph">
+<p>Creates an activity to the activity list<br>
+Format: <code>add activity n/NAME a/ADDRESS du/DURATION [p/PHONE_NUMBER] [c/COST] [pr/PRIORITY] [t/TAGS]</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Compulsory fields, name, address and duration, must be present.</p>
+</li>
+<li>
+<p>Name must only contain alphanumeric characters and spaces (names with only white space would be treated as blank).</p>
+</li>
+<li>
+<p>Address can take up any values (likewise, address with only white space would be treated as blank).</p>
+</li>
+<li>
+<p>Duration is in minutes and must be less than or equal to 1440 minutes.</p>
+</li>
+<li>
+<p>Phone number should only contain numbers and must be at least 3 digits long.</p>
+</li>
+<li>
+<p>Cost should only contain numbers and have at most 2 decimal places.</p>
+</li>
+<li>
+<p>Priority should only contain numbers and range from 1 to 7 inclusive. (1 being the highest priority, 7 being the lowest).</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>add activity n/Visit Gundam Museum a/Tokyo du/90 p/67521312</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Adds "Visit Gundam Museum" with an address, "Tokyo", duration, 90 minutes, and phone number, "67521312", to the activity list.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>add activity n/Ski a/Mount Sinai du/120</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Adds "Ski" with an address, "Mount Sinai", and duration, 120 minutes, to the activity list.
+=== Editing an activity: <code>edit activity</code></p>
+</div>
+<div class="paragraph">
+<p>Edits an activity<br>
+Format: <code>edit activity INDEX [n/NAME] [a/ADDRESS] [p/PHONE_NUMBER] [c/COST] [pr/PRIORITY] [t/TAGS]</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Edits the activity with the specified INDEX.</p>
+</li>
+<li>
+<p>The index provided refers to the index number shown in the displayed activity list.</p>
+</li>
+<li>
+<p>The index provided must be a positive integer.</p>
+</li>
+<li>
+<p>The index provided must not exceed the number of activities in the activity list.</p>
+</li>
+<li>
+<p>At least one of the optional fields must be provided.</p>
+</li>
+<li>
+<p>Existing fields will be updated by the input fields.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>edit activity 1 n/Dinner a/Hotel t/Western</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Edits the 1st activity in the activity list to have a name, "Dinner", address, "Hotel", and tag, "Western".
+=== Deleting an activity: <code>delete activity</code></p>
+</div>
+<div class="paragraph">
+<p>Delete one or more activities from the activity list<br>
+Format: <code>delete activity INDEX&#8230;&#8203;</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Deletes the activity at the specified INDEX.</p>
+</li>
+<li>
+<p>The index provided refers to the index number shown in the displayed activity list.</p>
+</li>
+<li>
+<p>The index provided must be a positive integer.</p>
+</li>
+<li>
+<p>The index provided must not exceed the number of activities in the activity list.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>delete activity 2</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Deletes the 2nd activity in the activity list.
+=== Optimising by budget: <code>optimise</code></p>
+</div>
 <div class="paragraph">
 <p>Optimises a day&#8217;s schedule by finding all possible combinations of activities. The resulting combination would have the lowest total cost. If there are multiple combinations with the same cost,
 the combination with the most activities would be chosen.</p>
 </div>
 <div class="paragraph">
 <p>Format: <code>optimise DAY_INDEX</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The index provided refers to the index of a day in the itinerary.</p>
+</li>
+<li>
+<p>The index provided must be positive integer.</p>
+</li>
+<li>
+<p>The index provided must not exceed the number of days in the itinerary.</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -214,9 +455,59 @@ This command would not work if there are no activities scheduled in the day.
 </tbody>
 </table>
 <div class="sect2">
-<h3 id="schedule-optimisation"><a class="link" href="#schedule-optimisation">Schedule optimisation</a></h3>
-<div class="sect3">
-<h4 id="implementation"><a class="link" href="#implementation">Implementation</a></h4>
+<h3 id="Design-Logic"><a class="link" href="#Design-Logic">Logic component</a></h3>
+<div id="fig-LogicClassDiagram" class="imageblock">
+<div class="content">
+<img src="../images/LogicClassDiagram.png" alt="LogicClassDiagram">
+</div>
+<div class="title">Figure 1. Structure of the Logic Component</div>
+</div>
+<div class="paragraph">
+<p><strong>API</strong> :
+<a href="{repoURL}/src/main/java/seedu/address/logic/Logic.java"><code>Logic.java</code></a></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>Logic</code> uses the <code>PlannerParser</code> class to parse the user command.</p>
+</li>
+<li>
+<p>This results in a <code>Command</code> object which is executed by the <code>LogicManager</code>.</p>
+</li>
+<li>
+<p>The command execution can affect the <code>Model</code> (e.g. adding a contact).</p>
+</li>
+<li>
+<p>The result of the command execution is encapsulated as a <code>CommandResult</code> object which is passed back to the <code>Ui</code>.</p>
+</li>
+<li>
+<p>In addition, the <code>CommandResult</code> object can also instruct the <code>Ui</code> to perform certain actions, such as displaying help to the user.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Given below is the Sequence Diagram for interactions within the <code>Logic</code> component for the <code>execute("add activity n/Climb Fuji a/Mount Fuji")</code> API call.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/AddSequenceDiagram.png" alt="AddSequenceDiagram">
+</div>
+<div class="title">Figure 2. Interactions Inside the Logic Component for the <code>add activity n/Climb Fuji a/Mount Fuji</code> Command</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The lifeline for <code>AddCommandParser</code> should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
+=== Schedule optimisation
+==== Implementation
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
 <p>The schedule optimisation feature utilises <code>TimeTable</code> and allows the user to resolve any overlapping activities. Resulting in a schedule with the
 lowest overall cost and the most number of activities such that the user&#8217;s time is maximised. The following command is supported:</p>
@@ -242,7 +533,6 @@ Another utility method then traverses the adjacency list to create all possible 
 <div class="imageblock">
 <div class="content">
 <img src="../images/OptimiseSequenceDiagram.png" alt="OptimiseSequenceDiagram">
-</div>
 </div>
 </div>
 <div class="sect3">
@@ -462,4 +752,4 @@ Another utility method then traverses the adjacency list to create all possible 
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-09 08:50:48 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-09 10:38:47 UTC</div></div></div></body></html>
