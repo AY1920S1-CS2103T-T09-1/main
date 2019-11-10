@@ -33,17 +33,19 @@
 <li><a href="#viewing-a-specific-contact-code-view-contact-code">3.18. Viewing a specific contact: <code>view contact</code></a></li>
 <li><a href="#adds-days-to-the-schedule-code-add-days-code">3.19. Adds days to the schedule: <code>add days</code></a></li>
 <li><a href="#deleting-a-day-code-delete-day-code">3.20. Deleting a day: <code>delete day</code></a></li>
-<li><a href="#scheduling-an-activity-to-a-day-code-schedule-code">3.21. Scheduling an activity to a day: <code>schedule</code></a></li>
-<li><a href="#unscheduling-activities-from-a-day-code-unschedule-activity-code">3.22. Unscheduling activities from a day: <code>unschedule activity</code></a></li>
-<li><a href="#auto-schedule-code-autoschedule-code">3.23. Auto Schedule: <code>autoschedule</code></a></li>
-<li><a href="#optimising-by-budget-code-optimise-code">3.24. Optimising by budget: <code>optimise</code></a></li>
-<li><a href="#undo-code-undo-code">3.25. Undo: <code>undo</code></a></li>
-<li><a href="#redo-code-redo-code">3.26. Redo: <code>redo</code></a></li>
-<li><a href="#loading-the-data-code-load-code-work-in-progress">3.27. Loading the data: <code>load</code>[Work in progress]</a></li>
-<li><a href="#look-up-history-of-inputs-code-history-code-coming-in-v2-0">3.28. Look up history of inputs: <code>history</code>[Coming in v2.0]</a></li>
-<li><a href="#export-schedule-code-export-code-coming-in-v2-0">3.29. Export schedule: <code>export</code>[Coming in v2.0]</a></li>
-<li><a href="#auto-correct-coming-in-v2-0">3.30. Auto-correct[Coming in v2.0]</a></li>
-<li><a href="#exiting-the-program-code-exit-code">3.31. Exiting the program : <code>exit</code></a></li>
+<li><a href="#list-activities-in-a-day-code-list-day-code">3.21. List activities in a day: <code>list day</code></a></li>
+<li><a href="#scheduling-an-activity-to-a-day-code-schedule-code">3.22. Scheduling an activity to a day: <code>schedule</code></a></li>
+<li><a href="#unscheduling-activities-from-a-day-code-unschedule-activity-code">3.23. Unscheduling activities from a day: <code>unschedule activity</code></a></li>
+<li><a href="#auto-schedule-code-autoschedule-code">3.24. Auto Schedule: <code>autoschedule</code></a></li>
+<li><a href="#optimising-by-budget-code-optimise-code">3.25. Optimising by budget: <code>optimise</code></a></li>
+<li><a href="#undo-code-undo-code">3.26. Undo: <code>undo</code></a></li>
+<li><a href="#redo-code-redo-code">3.27. Redo: <code>redo</code></a></li>
+<li><a href="#autocomplete">3.28. Autocomplete</a></li>
+<li><a href="#loading-the-data-code-load-code-work-in-progress">3.29. Loading the data: <code>load</code>[Work in progress]</a></li>
+<li><a href="#look-up-history-of-inputs-code-history-code-coming-in-v2-0">3.30. Look up history of inputs: <code>history</code>[Coming in v2.0]</a></li>
+<li><a href="#export-schedule-code-export-code-coming-in-v2-0">3.31. Export schedule: <code>export</code>[Coming in v2.0]</a></li>
+<li><a href="#auto-correct-coming-in-v2-0">3.32. Auto-correct[Coming in v2.0]</a></li>
+<li><a href="#exiting-the-program-code-exit-code">3.33. Exiting the program : <code>exit</code></a></li>
 </ul>
 </li>
 <li><a href="#faq">4. FAQ</a></li>
@@ -860,7 +862,27 @@ Format: <code>delete day DAY_INDEX</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="scheduling-an-activity-to-a-day-code-schedule-code"><a class="link" href="#scheduling-an-activity-to-a-day-code-schedule-code">3.21. Scheduling an activity to a day: <code>schedule</code></a></h3>
+<h3 id="list-activities-in-a-day-code-list-day-code"><a class="link" href="#list-activities-in-a-day-code-list-day-code">3.21. List activities in a day: <code>list day</code></a></h3>
+<div class="paragraph">
+<p>Lists the activities within day DAY_INDEX of the itinerary.<br>
+Format: <code>list day DAY_INDEX</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>list day 3</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Lists activities within day 3 of the itinerary.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="scheduling-an-activity-to-a-day-code-schedule-code"><a class="link" href="#scheduling-an-activity-to-a-day-code-schedule-code">3.22. Scheduling an activity to a day: <code>schedule</code></a></h3>
 <div class="paragraph">
 <p>Schedules an activity to a day<br>
 Format: <code>schedule ACTIVITY_INDEX st/START_TIME d/DAY_INDEX</code></p>
@@ -896,7 +918,7 @@ Format: <code>schedule ACTIVITY_INDEX st/START_TIME d/DAY_INDEX</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="unscheduling-activities-from-a-day-code-unschedule-activity-code"><a class="link" href="#unscheduling-activities-from-a-day-code-unschedule-activity-code">3.22. Unscheduling activities from a day: <code>unschedule activity</code></a></h3>
+<h3 id="unscheduling-activities-from-a-day-code-unschedule-activity-code"><a class="link" href="#unscheduling-activities-from-a-day-code-unschedule-activity-code">3.23. Unscheduling activities from a day: <code>unschedule activity</code></a></h3>
 <div class="paragraph">
 <p>Unschedules an activity from a day<br>
 Format: <code>unschedule ACTIVITY_INDEX d/DAY_INDEX</code></p>
@@ -941,7 +963,7 @@ You can use the list day command to find out the index of the activity you wish 
 </div>
 </div>
 <div class="sect2">
-<h3 id="auto-schedule-code-autoschedule-code"><a class="link" href="#auto-schedule-code-autoschedule-code">3.23. Auto Schedule: <code>autoschedule</code></a></h3>
+<h3 id="auto-schedule-code-autoschedule-code"><a class="link" href="#auto-schedule-code-autoschedule-code">3.24. Auto Schedule: <code>autoschedule</code></a></h3>
 <div class="paragraph">
 <p>Generates a list of activities for the specified days based on the <code>highest priority</code> and the <code>least number of times it
 appears on the timetable.</code><br></p>
@@ -1023,7 +1045,7 @@ You may wish to input the location of the activities so that we schedule activit
 </div>
 </div>
 <div class="sect2">
-<h3 id="optimising-by-budget-code-optimise-code"><a class="link" href="#optimising-by-budget-code-optimise-code">3.24. Optimising by budget: <code>optimise</code></a></h3>
+<h3 id="optimising-by-budget-code-optimise-code"><a class="link" href="#optimising-by-budget-code-optimise-code">3.25. Optimising by budget: <code>optimise</code></a></h3>
 <div class="paragraph">
 <p>Optimises a day&#8217;s schedule by finding all possible combinations of activities. The resulting combination would have the lowest total cost. If there are multiple combinations with the same cost,
 the combination with the most activities would be chosen.</p>
@@ -1068,7 +1090,7 @@ This command would not work if there are no activities scheduled in the day.
 </div>
 </div>
 <div class="sect2">
-<h3 id="undo-code-undo-code"><a class="link" href="#undo-code-undo-code">3.25. Undo: <code>undo</code></a></h3>
+<h3 id="undo-code-undo-code"><a class="link" href="#undo-code-undo-code">3.26. Undo: <code>undo</code></a></h3>
 <div class="paragraph">
 <p>Undo by one action<br>
 Format: <code>undo</code><br></p>
@@ -1109,13 +1131,43 @@ Format: <code>undo</code><br></p>
 </table>
 </div>
 <div class="sect2">
-<h3 id="redo-code-redo-code"><a class="link" href="#redo-code-redo-code">3.26. Redo: <code>redo</code></a></h3>
+<h3 id="redo-code-redo-code"><a class="link" href="#redo-code-redo-code">3.27. Redo: <code>redo</code></a></h3>
 <div class="paragraph">
 <p>Redo by one action. Any undoable command is able to be redone.<br>
 Format: <code>redo</code></p>
 </div>
 <div class="paragraph">
 <p>Examples: Undo/Redo optimise budget command</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="autocomplete"><a class="link" href="#autocomplete">3.28. Autocomplete</a></h3>
+<div class="paragraph">
+<p>While typing a command, suggestions from a dropdown menu will appear. The menu can be interacted with using the arrow keys, enter button or the mouse.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Autocomplete for commands</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/CommandAutoComplete.png" alt="CommandAutoComplete">
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Autocomplete for prefix</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/PrefixAutoComplete.png" alt="PrefixAutoComplete">
+</div>
 </div>
 <div class="ulist">
 <ul>
@@ -1171,7 +1223,7 @@ Format: <code>redo</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="loading-the-data-code-load-code-work-in-progress"><a class="link" href="#loading-the-data-code-load-code-work-in-progress">3.27. Loading the data: <code>load</code>[Work in progress]</a></h3>
+<h3 id="loading-the-data-code-load-code-work-in-progress"><a class="link" href="#loading-the-data-code-load-code-work-in-progress">3.29. Loading the data: <code>load</code>[Work in progress]</a></h3>
 <div class="paragraph">
 <p>The user can load the desired schedule with the schedule name. Else, the user can add a new schedule<br>
 Format: <code>load SCHEDULE_NAME</code></p>
@@ -1188,21 +1240,21 @@ Format: <code>load SCHEDULE_NAME</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="look-up-history-of-inputs-code-history-code-coming-in-v2-0"><a class="link" href="#look-up-history-of-inputs-code-history-code-coming-in-v2-0">3.28. Look up history of inputs: <code>history</code>[Coming in v2.0]</a></h3>
+<h3 id="look-up-history-of-inputs-code-history-code-coming-in-v2-0"><a class="link" href="#look-up-history-of-inputs-code-history-code-coming-in-v2-0">3.30. Look up history of inputs: <code>history</code>[Coming in v2.0]</a></h3>
 <div class="paragraph">
 <p>Lists the inputs that have been entered<br>
 Format: <code>history</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="export-schedule-code-export-code-coming-in-v2-0"><a class="link" href="#export-schedule-code-export-code-coming-in-v2-0">3.29. Export schedule: <code>export</code>[Coming in v2.0]</a></h3>
+<h3 id="export-schedule-code-export-code-coming-in-v2-0"><a class="link" href="#export-schedule-code-export-code-coming-in-v2-0">3.31. Export schedule: <code>export</code>[Coming in v2.0]</a></h3>
 <div class="paragraph">
 <p>Exports the schedule into a pdf<br>
 Format: <code>export</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="auto-correct-coming-in-v2-0"><a class="link" href="#auto-correct-coming-in-v2-0">3.30. Auto-correct[Coming in v2.0]</a></h3>
+<h3 id="auto-correct-coming-in-v2-0"><a class="link" href="#auto-correct-coming-in-v2-0">3.32. Auto-correct[Coming in v2.0]</a></h3>
 <div class="paragraph">
 <p>When there is an invalid command, the input command is checked against the known command list for similarity and the user will be prompted with the closest command match</p>
 </div>
@@ -1221,7 +1273,7 @@ Format: <code>export</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.31. Exiting the program : <code>exit</code></a></h3>
+<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.33. Exiting the program : <code>exit</code></a></h3>
 <div class="paragraph">
 <p>Exits the program.<br>
 Format: <code>exit</code></p>
@@ -1370,6 +1422,9 @@ Format: <code>exit</code></p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">list contact</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">list day DAY_INDEX</p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -1439,4 +1494,4 @@ Format: <code>exit</code></p>
 </table>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 08:13:03 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 08:17:46 UTC</div></div></div></body></html>
