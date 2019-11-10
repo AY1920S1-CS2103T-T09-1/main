@@ -914,7 +914,7 @@ Format: <code>schedule ACTIVITY_INDEX st/START_TIME d/DAY_INDEX</code></p>
 </ul>
 </div>
 <div class="paragraph">
-<p>Schedules the second activity in the activity list under day 2.</p>
+<p>Schedules the second activity in the activity list under day 2 at the specified starting time.</p>
 </div>
 </div>
 <div class="sect2">
@@ -965,15 +965,27 @@ You can use the list day command to find out the index of the activity you wish 
 <div class="sect2">
 <h3 id="auto-schedule-code-autoschedule-code"><a class="link" href="#auto-schedule-code-autoschedule-code">3.24. Auto Schedule: <code>autoschedule</code></a></h3>
 <div class="paragraph">
-<p>Generates a list of activities for the specified days based on the <code>highest priority</code> and the <code>least number of times it
-appears on the timetable.</code><br></p>
+<p>Generates a list of activities for the specified days based on the activity&#8217;s <strong>priority</strong> and the <strong>number of times it
+has been scheduled on the timetable.</strong>. Activity with the <strong>highest priority</strong> and the <strong>least number of time being scheduled on the timetable</strong> will be chosen to be scheduled.</p>
 </div>
 <div class="paragraph">
 <p>If the end time of the activity chosen overlaps with the next activity&#8217;s start time, the
-next activity with the <code>next highest priority</code> and <code>least number of count in the timetable</code> are chosen.</p>
+next activity with the <code>next highest priority</code> and <code>second lowest number of count in the timetable</code> are chosen. This process will repeat until it finds a suitable activity to schedule.</p>
 </div>
 <div class="ulist">
 <ul>
+<li>
+<p><strong>Timing</strong> can be specified if there is an activity that is confirmed to do at that timing.</p>
+</li>
+<li>
+<p>A specific <strong>activity name</strong> can be specified using <code>n/</code> instead of <code>t/</code> if there is an activity that has been confirmed to do.</p>
+</li>
+<li>
+<p><strong>Location</strong> for those activities can be specified, otherwise it is assumed to be any location.</p>
+</li>
+<li>
+<p>The <strong>day</strong> to schedule for can be specified, otherwise it is assumed to be scheduled for all days.</p>
+</li>
 <li>
 <p>Timing can be specified if there is an activity that is confirmed to do at that timing.</p>
 </li>
@@ -995,7 +1007,7 @@ next activity with the <code>next highest priority</code> and <code>least number
 <i class="fa icon-warning" title="Warning"></i>
 </td>
 <td class="content">
-Ensure that activity with the specified name or tag is present in the activity list.
+Ensure that activity with the specified name or tag is present in the activity list first before using the autoschedule command.
 </td>
 </tr>
 </table>
@@ -1037,6 +1049,9 @@ You may wish to input the location of the activities so that we schedule activit
 </li>
 <li>
 <p><code>autoschedule t/Breakfast t/Sightseeing t/Dinner a/Kyoto d/1</code></p>
+</li>
+<li>
+<p><code>autoschedule t/Breakfast n/DisneyLand t/Dinner a/Kyoto d/1</code></p>
 </li>
 <li>
 <p><code>autoschedule t/Breakfast 1000 n/DisneyLand t/Dinner a/Kyoto d/1 2 3 4</code></p>
@@ -1494,4 +1509,4 @@ Format: <code>exit</code></p>
 </table>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 15:57:25 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 16:10:03 UTC</div></div></div></body></html>

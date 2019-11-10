@@ -3,6 +3,9 @@
 <link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="seedu-header"><nav class="navbar navbar-lg navbar-light bg-lighter"><div class="container"><a class="navbar-brand" href="https://se-edu.github.io/"><img src="../images/SeEduLogo.png" alt="SE-EDU"></a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level1">AB-1</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level2">AB-2</a></li><li class="nav-item"><a class="nav-link active" href="../index.html">AB-3</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level4">AB-4</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/collate">Collate</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/se-book">Book</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/learningresources">Resources</a></li></ul></div></nav></div><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="../index.html">AddressBook-Level3</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="../UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="../DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="../LearningOutcomes.html">LOs</a></li><li class="nav-item"><a class="nav-link active" href="../AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="../ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/se-edu/addressbook-level3"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>Oscar Su Zhen Hong - Project Portfolio</h1></div><div id="content"><div class="sect1">
 <h2 id="project-plan-travel"><a class="link" href="#project-plan-travel">PROJECT: Plan²travel</a></h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p><strong><em>Plan²travel</em></strong> Github link: <a href="https://ay1920s1-cs2103t-t09-1.github.io/main/" class="bare">https://ay1920s1-cs2103t-t09-1.github.io/main/</a></p>
+</div>
 <hr>
 </div>
 </div>
@@ -14,6 +17,14 @@
 It has a GUI created with JavaFX and user would interacts with it through a CLI (Command Line Interface). The application is written in Java.
 <strong><em>Plan²travel</em></strong> allows students to better organise their trip information by providing them with a template with these three main list: accommodation, contact and activity list.
 Also, <strong><em>Plan²travel</em></strong> is able to generate a best suited schedule based on the student&#8217;s requirement and optimise their budget spending for a trip.</p>
+</div>
+<div class="paragraph">
+<p>Below is a screenshot of our application:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/Plan2TravelSS.png" alt="Plan2TravelSS">
+</div>
 </div>
 </div>
 </div>
@@ -100,14 +111,47 @@ Therefore, this command is crucial in allowing user to input activity into a par
 </div>
 </li>
 <li>
-<p><strong>Code contributed</strong>: [<a href="https://nus-cs2103-ay1920s1.github.io/tp-dashboard/#=undefined&amp;search=oscarsu97">RepoSense Report</a>]</p>
-</li>
-</ul>
-</div>
+<p><strong>Other contributions</strong>:</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Other contributions</strong>:</p>
+<p>Enhancement to existing features:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Wrote test for exisiting feature to improve coverage <a href="https://github.com/AY1920S1-CS2103T-T09-1/main/pull/106">#106</a>https://github.com/AY1920S1-CS2103T-T09-1/main/pull/216[#216]</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Documentation:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Contributed to the User Guide and Developer Guide for this project. See below for more details.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Community:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Over 20 <a href="https://github.com/AY1920S1-CS2103T-T09-1/main/pulls?utf8=%E2%9C%93&amp;q=is%3Apr+author%3Aoscarsu97">Pull Requests</a> on Github</p>
+</li>
+<li>
+<p>Over 20 <a href="https://github.com/AY1920S1-CS2103T-T09-1/main/pulls?utf8=%E2%9C%93&amp;q=is%3Apr+commenter%3AOneArmyj">Reviews</a> on Github</p>
+</li>
+<li>
+<p>Overview of Code Contribution <a href="https://nus-cs2103-ay1920s1.github.io/tp-dashboard/#=undefined&amp;search=oscarsu97">here</a></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
@@ -159,22 +203,29 @@ Format: <code>schedule ACTIVITY_INDEX st/START_TIME d/DAY_INDEX</code></p>
 </ul>
 </div>
 <div class="paragraph">
-<p>Schedules the second activity in the activity list under day 2.</p>
-</div>
-<hr>
-</div>
-<div class="sect2">
-<h3 id="auto-schedule-code-autoschedule-code"><a class="link" href="#auto-schedule-code-autoschedule-code">Auto Schedule: <code>autoschedule</code></a></h3>
-<div class="paragraph">
-<p>Generates a list of activities for the specified days based on the <code>highest priority</code> and the <code>least number of times it
-appears on the timetable.</code><br></p>
+<p>Schedules the second activity in the activity list under day 2 at the specified starting time.
+=== Auto Schedule: <code>autoschedule</code>
+Generates a list of activities for the specified days based on the activity&#8217;s <strong>priority</strong> and the <strong>number of times it
+has been scheduled on the timetable.</strong>. Activity with the <strong>highest priority</strong> and the <strong>least number of time being scheduled on the timetable</strong> will be chosen to be scheduled.</p>
 </div>
 <div class="paragraph">
 <p>If the end time of the activity chosen overlaps with the next activity&#8217;s start time, the
-next activity with the <code>next highest priority</code> and <code>least number of count in the timetable</code> are chosen.</p>
+next activity with the <code>next highest priority</code> and <code>second lowest number of count in the timetable</code> are chosen. This process will repeat until it finds a suitable activity to schedule.</p>
 </div>
 <div class="ulist">
 <ul>
+<li>
+<p><strong>Timing</strong> can be specified if there is an activity that is confirmed to do at that timing.</p>
+</li>
+<li>
+<p>A specific <strong>activity name</strong> can be specified using <code>n/</code> instead of <code>t/</code> if there is an activity that has been confirmed to do.</p>
+</li>
+<li>
+<p><strong>Location</strong> for those activities can be specified, otherwise it is assumed to be any location.</p>
+</li>
+<li>
+<p>The <strong>day</strong> to schedule for can be specified, otherwise it is assumed to be scheduled for all days.</p>
+</li>
 <li>
 <p>Timing can be specified if there is an activity that is confirmed to do at that timing.</p>
 </li>
@@ -196,7 +247,7 @@ next activity with the <code>next highest priority</code> and <code>least number
 <i class="fa icon-warning" title="Warning"></i>
 </td>
 <td class="content">
-Ensure that activity with the specified name or tag is present in the activity list.
+Ensure that activity with the specified name or tag is present in the activity list first before using the autoschedule command.
 </td>
 </tr>
 </table>
@@ -238,6 +289,9 @@ You may wish to input the location of the activities so that we schedule activit
 </li>
 <li>
 <p><code>autoschedule t/Breakfast t/Sightseeing t/Dinner a/Kyoto d/1</code></p>
+</li>
+<li>
+<p><code>autoschedule t/Breakfast n/DisneyLand t/Dinner a/Kyoto d/1</code></p>
 </li>
 <li>
 <p><code>autoschedule t/Breakfast 1000 n/DisneyLand t/Dinner a/Kyoto d/1 2 3 4</code></p>
@@ -286,17 +340,14 @@ You may wish to input the location of the activities so that we schedule activit
 <p>Executes user commands using the <code>Logic</code> component.</p>
 </li>
 <li>
-<p>Listens for changes to <code>Model</code> data so that the UI can be updated with the modified data.</p>
+<p>Listens for changes to <code>Model</code> data so that the UI can be updated with the modified data.
+=== Schedule feature</p>
 </li>
 </ul>
 </div>
-<hr>
-</div>
-<div class="sect2">
-<h3 id="schedule-feature"><a class="link" href="#schedule-feature">Schedule feature</a></h3>
 <div class="paragraph">
 <p><strong><em>Plan²travel</em></strong> allows user to schedule an activity from the activity list to a specified time of a day.
-This is accomplished by executing the Schedule Command using user inputted <code>ACTIVITY_INDEX</code>, <code>DAY_INDEX`and `start time</code>.</p>
+This is accomplished by executing the <code>ScheduleCommand</code> with <code>activity index</code>, <code>start time</code> and  <code>day index</code>.</p>
 </div>
 <div class="paragraph">
 <p>Eg. <code>schedule ACTIVITY_INDEX st/START_TIME d/DAY_INDEX</code></p>
@@ -308,13 +359,13 @@ This is accomplished by executing the Schedule Command using user inputted <code
 These are then passed to the <code>ScheduleCommand</code> for execution later on.</p>
 </div>
 <div class="paragraph">
-<p>Given below is a sequence diagram showing the creation of <code>ScheduleActivityCommand</code>:</p>
+<p>Given below is a sequence diagram showing the creation of <code>ScheduleCommand</code>:</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/ScheduleActivityCommandCreation.png" alt="ScheduleActivityCommandCreation">
+<img src="../images/ScheduleCommandCreation.png" alt="ScheduleCommandCreation">
 </div>
-<div class="title">Figure 2. Sequence diagram showing how ScheduleActivityCommand is created.</div>
+<div class="title">Figure 2. Sequence diagram showing how ScheduleCommand is created.</div>
 </div>
 <div class="paragraph">
 <p>After the creation of <code>ScheduleCommand</code>, <code>LogicManager</code> will proceed to call the <code>execute()</code> method of <code>ScheduleCommand</code>.</p>
@@ -328,8 +379,8 @@ These are then passed to the <code>ScheduleCommand</code> for execution later on
 <p><code>Model</code> will retrieve the list of days from the <code>Itinerary</code> and the list of activities from  <code>UniqueActivityList</code>.</p>
 </li>
 <li>
-<p>The <code>activityIndex</code> and <code>dayIndex</code> will then be used to obtain the target <code>Activity</code> from activity list
-and target <code>Day</code> from list of days.</p>
+<p>The <code>activityIndex</code> and <code>dayIndex</code> will then be used to obtain the targeted <code>Activity</code> from activity list
+and targeted <code>Day</code> from list of days.</p>
 </li>
 <li>
 <p><code>Activity</code> will be converted to <code>ActivityWithTime</code> using the startDateTime and duration of activity.</p>
@@ -343,23 +394,36 @@ and target <code>Day</code> from list of days.</p>
 </ol>
 </div>
 <div class="paragraph">
-<p>Given below is a sequence diagram showing the execution of <code>ScheduleActivityCommand</code>:</p>
+<p>Given below is a sequence diagram showing the execution of <code>ScheduleCommand</code>:</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/ScheduleActivityExecution.png" alt="ScheduleActivityExecution">
+<img src="../images/ScheduleCommandExecution.png" alt="ScheduleCommandExecution">
 </div>
-<div class="title">Figure 3. Sequence diagram showing how ScheduleActivityCommand executes.</div>
+<div class="title">Figure 3. Sequence diagram showing how ScheduleCommand executes.</div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
+<h4 id="design-consideration"><a class="link" href="#design-consideration">Design Consideration</a></h4>
 <div class="sect4">
 <h5 id="aspect-update-activities-for-that-particular-day"><a class="link" href="#aspect-update-activities-for-that-particular-day">Aspect: Update activities for that particular day</a></h5>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 :</strong> Create a new <code>Day</code> class with updated activity list for that day.</p>
+<p><strong>Current Choice:</strong> Directly updates the activity list in the targeted <code>Day</code> class.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Seem more intuitive and simple to implement.</p>
+</li>
+<li>
+<p>Cons: Might make it harder to debug error that surface if many other functions/classes also depends on the same <code>Day</code> class.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative:</strong> Create a new <code>Day</code> class with the new updated activity list to replace the targeted <code>Day</code> class.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -371,24 +435,10 @@ and target <code>Day</code> from list of days.</p>
 </ul>
 </div>
 </li>
-<li>
-<p><strong>Alternative 2 (current choice):</strong> Directly updates the activity list in the current <code>Day</code> class.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: More intuitive and simple to implement. Requires less computational time to execute.</p>
-</li>
-<li>
-<p>Cons: Might make it harder to debug if other functions/classes also depends on the same <code>Day</code> class.</p>
-</li>
 </ul>
 </div>
-</li>
-</ul>
-</div>
-<hr>
 </div>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 15:57:25 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 16:10:03 UTC</div></div></div></body></html>
