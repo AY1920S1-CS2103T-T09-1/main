@@ -24,12 +24,13 @@
 <ul class="sectlevel2">
 <li><a href="#undo-redo-feature">3.1. Undo/Redo feature</a></li>
 <li><a href="#schedule-optimisation">3.2. Schedule optimisation</a></li>
-<li><a href="#schedule-feature">3.3. Schedule feature</a></li>
-<li><a href="#auto-schedule-feature">3.4. Auto Schedule feature</a></li>
-<li><a href="#implementation-4">3.5. Implementation</a></li>
-<li><a href="#logging">3.6. Logging</a></li>
-<li><a href="#Implementation-Configuration">3.7. Configuration</a></li>
-<li><a href="#timetable">3.8. Timetable</a></li>
+<li><a href="#autocomplete">3.3. Autocomplete</a></li>
+<li><a href="#schedule-feature">3.4. Schedule feature</a></li>
+<li><a href="#auto-schedule-feature">3.5. Auto Schedule feature</a></li>
+<li><a href="#implementation-4">3.6. Implementation</a></li>
+<li><a href="#logging">3.7. Logging</a></li>
+<li><a href="#Implementation-Configuration">3.8. Configuration</a></li>
+<li><a href="#timetable">3.9. Timetable</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a></li>
@@ -767,8 +768,9 @@ in the list.</p>
 <div class="sect3">
 <h4 id="implementation-3"><a class="link" href="#implementation-3">3.2.1. Implementation</a></h4>
 <div class="paragraph">
-<p>The schedule optimisation feature utilises <code>TimeTable</code> and allows the user to resolve any overlapping activities. Resulting in a schedule with the
-lowest overall cost and the most number of activities such that the user&#8217;s time is maximised. The following command is supported:</p>
+<p>Scheduled activities in a day can be modeled as a <code>Directed Acyclic Graph (DAG)</code> where the <code>vertices</code> are the <code>activities</code> and an <code>edge</code> from 1 vertex to another means that the activities are <code>not overlapping</code>. Just like DAGs, there are <code>no cycles</code> within the schedule due to the linearity of time.
+When the command is executed, an <code>adjacency list</code> is formed from the existing activities within the schedule. The paths are then traced, with the help of a utility method, from the adjacency list to find <code>all possible combinations</code> of activities such that there are no overlaps between activities. The list of paths are then sorted
+by their total cost. If there are <code>multiple paths</code> with the <code>same total cost</code>, the one with the <code>most number of activities</code> is selected. The existing day is then replaced with a day that contains the new schedule made from the path.</p>
 </div>
 <div class="ulist">
 <ul>
@@ -782,8 +784,7 @@ a cost. Activities without a cost have a default cost of $0.00.</p>
 <p>Given below is a sample usage of the feature:</p>
 </div>
 <div class="paragraph">
-<p>The scheduled activities in a day can be viewed as a Directed Acyclic Graph (DAG), where a path represents a possible schedule. When a user executes the <code>Optimise</code> command on a day with conflicting activities, a utility method creates an adjacency list.
-Another utility method then traverses the adjacency list to create all possible paths. The paths are then sorted to obtain the one with the lowest total cost and most number of activities (nodes).</p>
+<p>The user calls <code>optimise</code> command on an existing day with <code>overlapping activities</code> within its schedule. This results in a schedule <code>without overlaps</code> such that the <code>lowest overall cost</code> and the <code>most number of activities</code> if there are <code>multiple combinations</code> with the <code>same total cost</code>, such that the user&#8217;s time is maximised.</p>
 </div>
 <div class="paragraph">
 <p>Shown below is a summary of the execution of the command.</p>
@@ -797,12 +798,12 @@ Another utility method then traverses the adjacency list to create all possible 
 <div class="sect3">
 <h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.2.2. Design considerations</a></h4>
 <div class="paragraph">
-<p>Aspect: Execution</p>
+<p>Aspect: Algorithm to de-conflict</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Alternative 1 (current): Find all paths</p>
+<p>Alternative 1 (current): Find all combinations, if the total cost is the same, combination with more activities is selected.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -810,10 +811,10 @@ Another utility method then traverses the adjacency list to create all possible 
 <div class="ulist">
 <ul>
 <li>
-<p>Able to compare both budget and number of activities.</p>
+<p>Allow users to maximise time by squeezing more activities into the schedule.</p>
 </li>
 <li>
-<p>Can reuse to find different methods of optimisation besides cost, by replacing comparator.</p>
+<p>Allow optimisation to cover more criteria such as cost, number of activities, etc.</p>
 </li>
 </ul>
 </div>
@@ -823,7 +824,7 @@ Another utility method then traverses the adjacency list to create all possible 
 <div class="ulist">
 <ul>
 <li>
-<p>Slow runtime.</p>
+<p>Costly runtime.</p>
 </li>
 </ul>
 </div>
@@ -832,7 +833,7 @@ Another utility method then traverses the adjacency list to create all possible 
 </div>
 </li>
 <li>
-<p>Alternative 2: Find shortest path</p>
+<p>Alternative 2: Use Single Shortest Path (SSSP) algorithms to find a combination without conflicts.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -840,7 +841,7 @@ Another utility method then traverses the adjacency list to create all possible 
 <div class="ulist">
 <ul>
 <li>
-<p>Faster runtime.</p>
+<p>Fast runtime.</p>
 </li>
 </ul>
 </div>
@@ -850,8 +851,68 @@ Another utility method then traverses the adjacency list to create all possible 
 <div class="ulist">
 <ul>
 <li>
-<p>Less flexible optimisation.
-=== Autocomplete</p>
+<p>Use of SSSP algorithms like Djikstra or Bellman Ford restricts the criteria of optimisation due to the limits of edge weight (i.e. cost).</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Aspect: De-conflict process</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Alternative 1 (current): Model as a DAG and find combination with the lowest overall cost.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Easy for users to use, less hassle for indecisive users.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Cons:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Less control for the user to choose activity.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Alternative 2: Allow users to manually de-conflict by selecting individual activities they wish to keep.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Users have more control over activities.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Cons:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Users have to enter multiple inputs to de-conflict.</p>
 </li>
 </ul>
 </div>
@@ -864,7 +925,11 @@ Another utility method then traverses the adjacency list to create all possible 
 </div>
 </div>
 <div class="sect2">
-<h3 id="schedule-feature"><a class="link" href="#schedule-feature">3.3. Schedule feature</a></h3>
+<h3 id="autocomplete"><a class="link" href="#autocomplete">3.3. Autocomplete</a></h3>
+
+</div>
+<div class="sect2">
+<h3 id="schedule-feature"><a class="link" href="#schedule-feature">3.4. Schedule feature</a></h3>
 <div class="paragraph">
 <p><strong><em>Plan²travel</em></strong> allows user to schedule an activity from the activity list to a specified time of a day.
 This is accomplished by executing the <code>ScheduleCommand</code> with <code>activity index</code>, <code>start time</code> and  <code>day index</code>.</p>
@@ -873,7 +938,7 @@ This is accomplished by executing the <code>ScheduleCommand</code> with <code>ac
 <p>Eg. <code>schedule ACTIVITY_INDEX st/START_TIME d/DAY_INDEX</code></p>
 </div>
 <div class="sect3">
-<h4 id="current-implementation"><a class="link" href="#current-implementation">3.3.1. Current Implementation</a></h4>
+<h4 id="current-implementation"><a class="link" href="#current-implementation">3.4.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The keywords from the command given by user is parsed using <code>ScheduleCommandParser</code> which converts the string variable of start time into a LocalDateTime object, while activity index and day index are converted into Index objects.
 These are then passed to the <code>ScheduleCommand</code> for execution later on.</p>
@@ -924,7 +989,7 @@ and targeted <code>Day</code> from list of days.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-consideration"><a class="link" href="#design-consideration">3.3.2. Design Consideration</a></h4>
+<h4 id="design-consideration"><a class="link" href="#design-consideration">3.4.2. Design Consideration</a></h4>
 <div class="sect4">
 <h5 id="aspect-update-activities-for-that-particular-day"><a class="link" href="#aspect-update-activities-for-that-particular-day">Aspect: Update activities for that particular day</a></h5>
 <div class="ulist">
@@ -961,15 +1026,15 @@ and targeted <code>Day</code> from list of days.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="auto-schedule-feature"><a class="link" href="#auto-schedule-feature">3.4. Auto Schedule feature</a></h3>
+<h3 id="auto-schedule-feature"><a class="link" href="#auto-schedule-feature">3.5. Auto Schedule feature</a></h3>
 <div class="sect3">
-<h4 id="rationale"><a class="link" href="#rationale">3.4.1. Rationale</a></h4>
+<h4 id="rationale"><a class="link" href="#rationale">3.5.1. Rationale</a></h4>
 <div class="paragraph">
 <p>There are times when users are planning for an overseas trip, there are so many activities in their activity list that they want to do but the problems faced are that they are unable to finish all the activities in the list or they are unable to find an optimal schedule plan.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="overview"><a class="link" href="#overview">3.4.2. Overview</a></h4>
+<h4 id="overview"><a class="link" href="#overview">3.5.2. Overview</a></h4>
 <div class="paragraph">
 <p>The <code>autoschedule</code> command requires user to specify either the tag name or the activity name itself in order of the type of activity that they want.
 For example, <code>t/shopping t/sightseeing t/dining</code> would means an activity of <code>shopping</code> type would be scheduled first followed by <code>sightseeing</code> and then <code>dining</code>.
@@ -979,7 +1044,7 @@ Afterwards, <code>autoschedule</code> would serve to ensure that the activities 
 </div>
 </div>
 <div class="sect2">
-<h3 id="implementation-4"><a class="link" href="#implementation-4">3.5. Implementation</a></h3>
+<h3 id="implementation-4"><a class="link" href="#implementation-4">3.6. Implementation</a></h3>
 <div class="paragraph">
 <p>The keywords from the command given by the user is parsed using <code>AutoScheduleCommandParser</code> which converts all the <code>tag</code> or <code>name</code> prefix&#8217;s argument with their respective <code>start time</code> if given, in <code>NameOrTagWithTime</code> class and stores them in a list to maintain the same ordering as given by the user.
 If <code>address</code> is specified, it is wrapped in an <code>Address</code> class and if the <code>day index(es)</code> to schedule are specified, they stored in a list with each index wrapped in an <code>Index</code> class.
@@ -1048,7 +1113,7 @@ The process will continue until it finds a suitable activity or it has finished 
 If there other days to schedule, the steps taken will also be the same as Step 4 to Step 7.</p>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.5.1. Design Considerations</a></h4>
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.6.1. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-counting-the-number-of-times-each-activity-of-the-same-name-or-tag-appears-in-the-list"><a class="link" href="#aspect-counting-the-number-of-times-each-activity-of-the-same-name-or-tag-appears-in-the-list">Aspect: Counting the number of times each activity of the same name or tag appears in the list</a></h5>
 <div class="ulist">
@@ -1118,14 +1183,14 @@ If there other days to schedule, the steps taken will also be the same as Step 4
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.6. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">3.7. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.7, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.8, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -1156,21 +1221,21 @@ If there other days to schedule, the steps taken will also be the same as Step 4
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.7. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.8. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g user prefs file location, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="timetable"><a class="link" href="#timetable">3.8. Timetable</a></h3>
+<h3 id="timetable"><a class="link" href="#timetable">3.9. Timetable</a></h3>
 <div class="sect3">
-<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">3.8.1. Current Implementation</a></h4>
+<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">3.9.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>Internally, Timetable is a List of ActivityWithTime. This gives the Timetable flexibility to accept Activities that start and end at any time instead of fixed intervals (e.g. 30 minute intervals) while allow for conflicting ActivityWithTime.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">3.8.2. Design considerations</a></h4>
+<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">3.9.2. Design considerations</a></h4>
 <div class="ulist">
 <ul>
 <li>
@@ -1797,4 +1862,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 10:27:03 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 12:02:24 UTC</div></div></div></body></html>

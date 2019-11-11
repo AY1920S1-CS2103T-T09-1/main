@@ -74,7 +74,8 @@ travel infrequently and would greatly benefit from an application that helps org
 <ul>
 <li>
 <p><strong>Added the ability to optimise a day&#8217;s schedule</strong></p>
-</li>
+<div class="ulist">
+<ul>
 <li>
 <p>What it does: allows the user to optimise a day&#8217;s schedule by looking for the best way to schedule activities such that there are no conflicts and that the schedule is at the lowest cost. If there are multiple possibilities, the one with the most number of activities would be chosen.</p>
 </li>
@@ -82,11 +83,30 @@ travel infrequently and would greatly benefit from an application that helps org
 <p>Justification: This feature improves the product because it allows users to rid the schedule of conflicts with a single command.</p>
 </li>
 <li>
-<p>Highlights: This enhancement can be easily extended to allow the user to optimise the schedule besides budget.</p>
+<p>Highlights: This enhancement can be extended to allow the user to optimise the schedule besides cost and number of activities.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Link different model components to update one another</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: allows the user to update the contact in an Activity/Accommodation from the contact list, vice versa.</p>
+</li>
+<li>
+<p>Justification: This feature improves the product as it incorporates different models into the product and polishes the product.</p>
+</li>
+<li>
+<p>Highlights: This enhancement makes the product a more cohesive ecosystem.</p>
 <div class="ulist">
 <ul>
 <li>
 <p><strong>Code contributed</strong>: [<a href="https://nus-cs2103-ay1920s1.github.io/tp-dashboard/#=undefined&amp;search=KxxMxxx">RepoSense Report</a>]</p>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
@@ -103,10 +123,7 @@ travel infrequently and would greatly benefit from an application that helps org
 <div class="ulist">
 <ul>
 <li>
-<p>Link different models to update one another <a href="https://github.com/AY1920S1-CS2103T-T09-1/main/pull/108"><mark>108</mark></a></p>
-</li>
-<li>
-<p>Wrote additional tests for existing features to increase coverage <a href="https://github.com/AY1920S1-CS2103T-T09-1/main/pull/221">#221</a></p>
+<p>Wrote additional tests for existing features to increase coverage <a href="https://github.com/AY1920S1-CS2103T-T09-1/main/pull/221">#221</a>, <a href="https://github.com/AY1920S1-CS2103T-T09-1/main/pull/268">#268</a></p>
 </li>
 </ul>
 </div>
@@ -122,19 +139,9 @@ travel infrequently and would greatly benefit from an application that helps org
 </div>
 </li>
 <li>
-<p>Community:</p>
-<div class="ulist">
-<ul>
-<li>
 <p>PRs reviewed: <a href="https://github.com/AY1920S1-CS2103T-T09-1/main/pulls?q=is%3Apr+reviewed-by%3AKxxMxxx+is%3Aclosed">Reviews</a></p>
 </li>
 </ul>
-</div>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p><em>{you can add/remove categories in the list above}</em></p>
 </div>
 </div>
 </div>
@@ -192,9 +199,11 @@ Format: <code>add accommodation n/NAME a/ADDRESS [p/PHONE_NUMBER] [t/TAGS]</code
 </ul>
 </div>
 <div class="paragraph">
-<p>Adds "Mandarin Oriental" with an address, "Ang Mo Kio" into the accommodation list.
-=== Editing an accommodation: <code>edit accommodation</code></p>
+<p>Adds "Mandarin Oriental" with an address, "Ang Mo Kio" into the accommodation list.</p>
 </div>
+</div>
+<div class="sect2">
+<h3 id="editing-an-accommodation-code-edit-accommodation-code"><a class="link" href="#editing-an-accommodation-code-edit-accommodation-code">Editing an accommodation: <code>edit accommodation</code></a></h3>
 <div class="paragraph">
 <p>Edits an accommodation<br>
 Format: <code>edit accommodation INDEX [n/NAME] [a/ADDRESS] [p/PHONE_NUMBER] [t/TAGS]</code></p>
@@ -232,9 +241,11 @@ Format: <code>edit accommodation INDEX [n/NAME] [a/ADDRESS] [p/PHONE_NUMBER] [t/
 </ul>
 </div>
 <div class="paragraph">
-<p>Edits the 1st accommodation in the accommodation list to have a name, "MBS", address, "Marina Bay", and tag, "Atas".
-=== Deleting an accommodation: <code>delete accommodation</code></p>
+<p>Edits the 1st accommodation in the accommodation list to have a name, "MBS", address, "Marina Bay", and tag, "Atas".</p>
 </div>
+</div>
+<div class="sect2">
+<h3 id="deleting-an-accommodation-code-delete-accommodation-code"><a class="link" href="#deleting-an-accommodation-code-delete-accommodation-code">Deleting an accommodation: <code>delete accommodation</code></a></h3>
 <div class="paragraph">
 <p>Delete one or more accommodation from the accommodation list<br>
 Format: <code>delete accommodation INDEX&#8230;&#8203;</code></p>
@@ -266,9 +277,11 @@ Format: <code>delete accommodation INDEX&#8230;&#8203;</code></p>
 </ul>
 </div>
 <div class="paragraph">
-<p>Deletes the 2nd accommodation in the accommodation list.
-=== Adding an activity: <code>add activity</code></p>
+<p>Deletes the 2nd accommodation in the accommodation list.</p>
 </div>
+</div>
+<div class="sect2">
+<h3 id="adding-an-activity-code-add-activity-code"><a class="link" href="#adding-an-activity-code-add-activity-code">Adding an activity: <code>add activity</code></a></h3>
 <div class="paragraph">
 <p>Creates an activity to the activity list<br>
 Format: <code>add activity n/NAME a/ADDRESS du/DURATION [p/PHONE_NUMBER] [c/COST] [pr/PRIORITY] [t/TAGS]</code></p>
@@ -319,9 +332,11 @@ Format: <code>add activity n/NAME a/ADDRESS du/DURATION [p/PHONE_NUMBER] [c/COST
 </ul>
 </div>
 <div class="paragraph">
-<p>Adds "Ski" with an address, "Mount Sinai", and duration, 120 minutes, to the activity list.
-=== Editing an activity: <code>edit activity</code></p>
+<p>Adds "Ski" with an address, "Mount Sinai", and duration, 120 minutes, to the activity list.</p>
 </div>
+</div>
+<div class="sect2">
+<h3 id="editing-an-activity-code-edit-activity-code"><a class="link" href="#editing-an-activity-code-edit-activity-code">Editing an activity: <code>edit activity</code></a></h3>
 <div class="paragraph">
 <p>Edits an activity<br>
 Format: <code>edit activity INDEX [n/NAME] [a/ADDRESS] [p/PHONE_NUMBER] [c/COST] [pr/PRIORITY] [t/TAGS]</code></p>
@@ -359,9 +374,11 @@ Format: <code>edit activity INDEX [n/NAME] [a/ADDRESS] [p/PHONE_NUMBER] [c/COST]
 </ul>
 </div>
 <div class="paragraph">
-<p>Edits the 1st activity in the activity list to have a name, "Dinner", address, "Hotel", and tag, "Western".
-=== Deleting an activity: <code>delete activity</code></p>
+<p>Edits the 1st activity in the activity list to have a name, "Dinner", address, "Hotel", and tag, "Western".</p>
 </div>
+</div>
+<div class="sect2">
+<h3 id="deleting-an-activity-code-delete-activity-code"><a class="link" href="#deleting-an-activity-code-delete-activity-code">Deleting an activity: <code>delete activity</code></a></h3>
 <div class="paragraph">
 <p>Delete one or more activities from the activity list<br>
 Format: <code>delete activity INDEX&#8230;&#8203;</code></p>
@@ -393,9 +410,11 @@ Format: <code>delete activity INDEX&#8230;&#8203;</code></p>
 </ul>
 </div>
 <div class="paragraph">
-<p>Deletes the 2nd activity in the activity list.
-=== Optimising by budget: <code>optimise</code></p>
+<p>Deletes the 2nd activity in the activity list.</p>
 </div>
+</div>
+<div class="sect2">
+<h3 id="optimising-by-budget-code-optimise-code"><a class="link" href="#optimising-by-budget-code-optimise-code">Optimising by budget: <code>optimise</code></a></h3>
 <div class="paragraph">
 <p>Optimises a day&#8217;s schedule by finding all possible combinations of activities. The resulting combination would have the lowest total cost. If there are multiple combinations with the same cost,
 the combination with the most activities would be chosen.</p>
@@ -419,12 +438,24 @@ the combination with the most activities would be chosen.</p>
 <div class="paragraph">
 <p>Examples:</p>
 </div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/BeforeOptimise.png" alt="BeforeOptimise">
+</div>
+<div class="title">Figure 1. Day 2 has Overlapping Activities</div>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>optimise 3</code></p>
+<p><code>optimise 2</code></p>
 </li>
 </ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/AfterOptimise.png" alt="AfterOptimise">
+</div>
+<div class="title">Figure 2. Day 2 has been optimised.</div>
 </div>
 <div class="admonitionblock warning">
 <table>
@@ -460,7 +491,7 @@ This command would not work if there are no activities scheduled in the day.
 <div class="content">
 <img src="../images/LogicClassDiagram.png" alt="LogicClassDiagram">
 </div>
-<div class="title">Figure 1. Structure of the Logic Component</div>
+<div class="title">Figure 3. Structure of the Logic Component</div>
 </div>
 <div class="paragraph">
 <p><strong>API</strong> :
@@ -492,7 +523,7 @@ This command would not work if there are no activities scheduled in the day.
 <div class="content">
 <img src="../images/AddSequenceDiagram.png" alt="AddSequenceDiagram">
 </div>
-<div class="title">Figure 2. Interactions Inside the Logic Component for the <code>add activity n/Climb Fuji a/Mount Fuji</code> Command</div>
+<div class="title">Figure 4. Interactions Inside the Logic Component for the <code>add activity n/Climb Fuji a/Mount Fuji</code> Command</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -502,15 +533,19 @@ This command would not work if there are no activities scheduled in the day.
 </td>
 <td class="content">
 The lifeline for <code>AddCommandParser</code> should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
-=== Schedule optimisation
-==== Implementation
 </td>
 </tr>
 </table>
 </div>
+</div>
+<div class="sect2">
+<h3 id="schedule-optimisation"><a class="link" href="#schedule-optimisation">Schedule optimisation</a></h3>
+<div class="sect3">
+<h4 id="implementation"><a class="link" href="#implementation">Implementation</a></h4>
 <div class="paragraph">
-<p>The schedule optimisation feature utilises <code>TimeTable</code> and allows the user to resolve any overlapping activities. Resulting in a schedule with the
-lowest overall cost and the most number of activities such that the user&#8217;s time is maximised. The following command is supported:</p>
+<p>Scheduled activities in a day can be modeled as a <code>Directed Acyclic Graph (DAG)</code> where the <code>vertices</code> are the <code>activities</code> and an <code>edge</code> from 1 vertex to another means that the activities are <code>not overlapping</code>. Just like DAGs, there are <code>no cycles</code> within the schedule due to the linearity of time.
+When the command is executed, an <code>adjacency list</code> is formed from the existing activities within the schedule. The paths are then traced, with the help of a utility method, from the adjacency list to find <code>all possible combinations</code> of activities such that there are no overlaps between activities. The list of paths are then sorted
+by their total cost. If there are <code>multiple paths</code> with the <code>same total cost</code>, the one with the <code>most number of activities</code> is selected. The existing day is then replaced with a day that contains the new schedule made from the path.</p>
 </div>
 <div class="ulist">
 <ul>
@@ -524,8 +559,7 @@ a cost. Activities without a cost have a default cost of $0.00.</p>
 <p>Given below is a sample usage of the feature:</p>
 </div>
 <div class="paragraph">
-<p>The scheduled activities in a day can be viewed as a Directed Acyclic Graph (DAG), where a path represents a possible schedule. When a user executes the <code>Optimise</code> command on a day with conflicting activities, a utility method creates an adjacency list.
-Another utility method then traverses the adjacency list to create all possible paths. The paths are then sorted to obtain the one with the lowest total cost and most number of activities (nodes).</p>
+<p>The user calls <code>optimise</code> command on an existing day with <code>overlapping activities</code> within its schedule. This results in a schedule <code>without overlaps</code> such that the <code>lowest overall cost</code> and the <code>most number of activities</code> if there are <code>multiple combinations</code> with the <code>same total cost</code>, such that the user&#8217;s time is maximised.</p>
 </div>
 <div class="paragraph">
 <p>Shown below is a summary of the execution of the command.</p>
@@ -535,15 +569,16 @@ Another utility method then traverses the adjacency list to create all possible 
 <img src="../images/OptimiseSequenceDiagram.png" alt="OptimiseSequenceDiagram">
 </div>
 </div>
+</div>
 <div class="sect3">
 <h4 id="design-considerations"><a class="link" href="#design-considerations">Design considerations</a></h4>
 <div class="paragraph">
-<p>Aspect: Execution</p>
+<p>Aspect: Algorithm to de-conflict</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Alternative 1 (current): Find all paths</p>
+<p>Alternative 1 (current): Find all combinations, if the total cost is the same, combination with more activities is selected.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -551,10 +586,10 @@ Another utility method then traverses the adjacency list to create all possible 
 <div class="ulist">
 <ul>
 <li>
-<p>Able to compare both budget and number of activities.</p>
+<p>Allow users to maximise time by squeezing more activities into the schedule.</p>
 </li>
 <li>
-<p>Can reuse to find different methods of optimisation besides cost, by replacing comparator.</p>
+<p>Allow optimisation to cover more criteria such as cost, number of activities, etc.</p>
 </li>
 </ul>
 </div>
@@ -564,7 +599,7 @@ Another utility method then traverses the adjacency list to create all possible 
 <div class="ulist">
 <ul>
 <li>
-<p>Slow runtime.</p>
+<p>Costly runtime.</p>
 </li>
 </ul>
 </div>
@@ -573,7 +608,7 @@ Another utility method then traverses the adjacency list to create all possible 
 </div>
 </li>
 <li>
-<p>Alternative 2: Find shortest path</p>
+<p>Alternative 2: Use Single Shortest Path (SSSP) algorithms to find a combination without conflicts.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -581,7 +616,7 @@ Another utility method then traverses the adjacency list to create all possible 
 <div class="ulist">
 <ul>
 <li>
-<p>Faster runtime.</p>
+<p>Fast runtime.</p>
 </li>
 </ul>
 </div>
@@ -591,8 +626,7 @@ Another utility method then traverses the adjacency list to create all possible 
 <div class="ulist">
 <ul>
 <li>
-<p>Less flexible optimisation.
-== User Stories</p>
+<p>Use of SSSP algorithms like Djikstra or Bellman Ford restricts the criteria of optimisation due to the limits of edge weight (i.e. cost).</p>
 </li>
 </ul>
 </div>
@@ -602,6 +636,74 @@ Another utility method then traverses the adjacency list to create all possible 
 </li>
 </ul>
 </div>
+<div class="paragraph">
+<p>Aspect: De-conflict process</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Alternative 1 (current): Model as a DAG and find combination with the lowest overall cost.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Easy for users to use, less hassle for indecisive users.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Cons:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Less control for the user to choose activity.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Alternative 2: Allow users to manually de-conflict by selecting individual activities they wish to keep.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Users have more control over activities.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Cons:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Users have to enter multiple inputs to de-conflict.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="user-stories"><a class="link" href="#user-stories">Appendix A: User Stories</a></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>Priorities: High (must have) - <code>* * *</code>, Medium (nice to have) - <code>* *</code>, Low (unlikely to have) - <code>*</code></p>
 </div>
@@ -750,6 +852,4 @@ Another utility method then traverses the adjacency list to create all possible 
 </tbody>
 </table>
 </div>
-</div>
-</div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 10:27:03 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 12:02:24 UTC</div></div></div></body></html>
