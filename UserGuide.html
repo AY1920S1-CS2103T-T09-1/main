@@ -1119,8 +1119,24 @@ This command would not work if there are no activities scheduled in the day.
 <div class="sect2">
 <h3 id="undo-code-undo-code"><a class="link" href="#undo-code-undo-code">3.26. Undo: <code>undo</code></a></h3>
 <div class="paragraph">
-<p>Undo by one action<br>
-Format: <code>undo</code><br></p>
+<p>Allows user to undo by one action. Only Undoable commands executed previously by the user can
+be undone. Refer to the list below for all possible undoable commands.<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>undo</code><br></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+undo command cannot be chained (i.e. 'undo undo undo' does not result in 3 undos applied), but typed
+one at a time.
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p><strong>List of UndoableCommand:</strong></p>
@@ -1160,11 +1176,26 @@ Format: <code>undo</code><br></p>
 <div class="sect2">
 <h3 id="redo-code-redo-code"><a class="link" href="#redo-code-redo-code">3.27. Redo: <code>redo</code></a></h3>
 <div class="paragraph">
-<p>Redo by one action. Any undoable command is able to be redone.<br>
-Format: <code>redo</code></p>
+<p>Redo by one action. Only to be used after undo has been called. This command is to revert
+the changes of the latest undo.<br></p>
 </div>
 <div class="paragraph">
-<p>Examples: Undo/Redo optimise budget command</p>
+<p>Format: <code>redo</code><br></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+redo command cannot be called after an Undoable command is executed by the user.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The <strong>4 screenshots</strong> below demonstrates the Undo/Redo command when the user executes <code>optimise budget command</code>.</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1521,4 +1552,4 @@ Format: <code>exit</code></p>
 </table>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 12:02:24 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 12:08:22 UTC</div></div></div></body></html>
