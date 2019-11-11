@@ -85,14 +85,14 @@ analysis of design alternatives. The implementation too was challenging as it re
 </div>
 </li>
 <li>
-<p><strong>Functional Code Contributed</strong>: <a href="https://github.com/AY1920S1-CS2103T-T09-1/main/pull/112">#112</a> |
-<a href="https://github.com/AY1920S1-CS2103T-T09-1/main/pull/127">#127</a> | <a href="https://github.com/AY1920S1-CS2103T-T09-1/main/pull/133">#133</a>
-| <a href="https://github.com/AY1920S1-CS2103T-T09-1/main/pull/194">#194</a> | <a href="https://github.com/AY1920S1-CS2103T-T09-1/main/pull/220">#220</a>
-| <a href="https://github.com/AY1920S1-CS2103T-T09-1/main/pull/230">#230</a> | <a href="https://github.com/AY1920S1-CS2103T-T09-1/main/pull/243">#243</a>
-| <a href="https://github.com/AY1920S1-CS2103T-T09-1/main/pull/269">#269</a></p>
+<p><strong>Functional Code Contributed</strong>: <a href="https://github.com/AY1920S1-CS2103T-T09-1/main/pull/112">Update 1</a> |
+<a href="https://github.com/AY1920S1-CS2103T-T09-1/main/pull/127">Update 2</a> | <a href="https://github.com/AY1920S1-CS2103T-T09-1/main/pull/133">Update 3</a>
+| <a href="https://github.com/AY1920S1-CS2103T-T09-1/main/pull/194">Update 4</a> | <a href="https://github.com/AY1920S1-CS2103T-T09-1/main/pull/220">Update 5</a>
+| <a href="https://github.com/AY1920S1-CS2103T-T09-1/main/pull/230">Update 6</a> | <a href="https://github.com/AY1920S1-CS2103T-T09-1/main/pull/243">Update 7</a>
+| <a href="https://github.com/AY1920S1-CS2103T-T09-1/main/pull/269">Final Update</a></p>
 </li>
 <li>
-<p><strong>Test Code Contributed</strong>:</p>
+<p><strong>Test Code Contributed</strong>: <a href="https://github.com/AY1920S1-CS2103T-T09-1/main/pull/277">Test 1</a> | <a href="https://github.com/AY1920S1-CS2103T-T09-1/main/pull/280">Test 2</a></p>
 </li>
 </ul>
 </div>
@@ -124,11 +124,11 @@ implementations when working with these components.</p>
 </div>
 </li>
 <li>
-<p><strong>Functional Code Contributed</strong>: <a href="https://github.com/AY1920S1-CS2103T-T09-1/main/pull/68">#68</a> |
-<a href="https://github.com/AY1920S1-CS2103T-T09-1/main/pull/73">#73</a> | <a href="https://github.com/AY1920S1-CS2103T-T09-1/main/pull/99">#99</a></p>
+<p><strong>Functional Code Contributed</strong>: <a href="https://github.com/AY1920S1-CS2103T-T09-1/main/pull/68">Update 1</a> |
+<a href="https://github.com/AY1920S1-CS2103T-T09-1/main/pull/73">Update 2</a> | <a href="https://github.com/AY1920S1-CS2103T-T09-1/main/pull/99">Final Update</a></p>
 </li>
 <li>
-<p><strong>Test Code Contributed</strong>:</p>
+<p><strong>Test Code Contributed</strong>: <a href="https://github.com/AY1920S1-CS2103T-T09-1/main/pull/111">Test</a></p>
 </li>
 </ul>
 </div>
@@ -196,24 +196,11 @@ targeting end-users.</em></p></td>
 <div class="sect2">
 <h3 id="undo-code-undo-code"><a class="link" href="#undo-code-undo-code">3.1. Undo: <code>undo</code></a></h3>
 <div class="paragraph">
-<p>Allows user to undo by one action. Only Undoable commands executed previously by the user can
+<p>Allows the user to undo by one action. Only Undoable commands executed previously can
 be undone. Refer to the list below for all possible undoable commands.<br></p>
 </div>
 <div class="paragraph">
 <p>Format: <code>undo</code><br></p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-undo command cannot be chained (i.e. 'undo undo undo' does not result in 3 undos applied), but typed
-one at a time.
-</td>
-</tr>
-</table>
 </div>
 <div class="paragraph">
 <p><strong>List of UndoableCommand:</strong></p>
@@ -253,8 +240,7 @@ one at a time.
 <div class="sect2">
 <h3 id="redo-code-redo-code"><a class="link" href="#redo-code-redo-code">3.2. Redo: <code>redo</code></a></h3>
 <div class="paragraph">
-<p>Redo by one action. Only to be used after undo has been called. This command is to revert
-the changes of the latest undo.<br></p>
+<p>Redo by one action. This command is to revert the changes of the latest undo.<br></p>
 </div>
 <div class="paragraph">
 <p>Format: <code>redo</code><br></p>
@@ -266,7 +252,7 @@ the changes of the latest undo.<br></p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-redo command cannot be called after an Undoable command is executed by the user.
+redo command can only be called after undo.
 </td>
 </tr>
 </table>
@@ -277,7 +263,7 @@ redo command cannot be called after an Undoable command is executed by the user.
 <div class="ulist">
 <ul>
 <li>
-<p>Before optimise</p>
+<p><code>Before executing 'optimise'</code></p>
 </li>
 </ul>
 </div>
@@ -285,12 +271,12 @@ redo command cannot be called after an Undoable command is executed by the user.
 <div class="content">
 <img src="../images/BeforeOptimise.png" alt="BeforeOptimise">
 </div>
-<div class="title">Figure 1. Day 2 has lots of overlapping activities</div>
+<div class="title">Figure 1. Day 2 contains overlapping activities</div>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>After optimise 2</p>
+<p><code>After executing 'optimise 2'</code></p>
 </li>
 </ul>
 </div>
@@ -303,7 +289,7 @@ redo command cannot be called after an Undoable command is executed by the user.
 <div class="ulist">
 <ul>
 <li>
-<p>After undo</p>
+<p><code>After executing 'undo'</code></p>
 </li>
 </ul>
 </div>
@@ -316,7 +302,7 @@ redo command cannot be called after an Undoable command is executed by the user.
 <div class="ulist">
 <ul>
 <li>
-<p>After redo</p>
+<p><code>After executing 'redo'</code></p>
 </li>
 </ul>
 </div>
@@ -679,4 +665,4 @@ in the list.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 15:37:40 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 15:39:08 UTC</div></div></div></body></html>
