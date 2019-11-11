@@ -45,10 +45,19 @@
 <ul class="sectlevel2">
 <li><a href="#launch-and-shutdown">F.1. Launch and Shutdown</a></li>
 <li><a href="#adding">F.2. Adding</a></li>
-<li><a href="#scheduling-activities">F.3. Scheduling activities</a></li>
-<li><a href="#unschedule-activity-from-day">F.4. Unschedule activity from day</a></li>
-<li><a href="#set">F.5. Set</a></li>
-<li><a href="#view">F.6. View</a></li>
+<li><a href="#editing-an-accommodation">F.3. Editing an accommodation</a></li>
+<li><a href="#editing-a-contact">F.4. Editing a contact</a></li>
+<li><a href="#deleting-a-contact">F.5. Deleting a contact</a></li>
+<li><a href="#deleting-an-activity">F.6. Deleting an activity</a></li>
+<li><a href="#deleting-an-accommodation">F.7. Deleting an accommodation</a></li>
+<li><a href="#autoschedule">F.8. Autoschedule</a></li>
+<li><a href="#scheduling-activities">F.9. Scheduling activities</a></li>
+<li><a href="#unschedule-activity-from-day">F.10. Unschedule activity from day</a></li>
+<li><a href="#undo-an-edit-command">F.11. Undo an edit command</a></li>
+<li><a href="#optimise-a-day">F.12. Optimise a day</a></li>
+<li><a href="#list-activity">F.13. List activity</a></li>
+<li><a href="#set">F.14. Set</a></li>
+<li><a href="#view">F.15. View</a></li>
 </ul>
 </li>
 </ul>
@@ -2070,7 +2079,30 @@ Expected: No days is added. Error details shown in the feedback display.</p>
 </li>
 <li>
 <p>Other incorrect add commands to try: <code>add days abc</code>, <code>add days -1</code><br>
-Expected: Similar to previous</p>
+Expected: Similar to previous
+=== Editing an activity</p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Editing an activity&#8217;s name</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Test case: <code>Edit activity 1 n/Visit Mount Fuji</code>
+Expected: The first activity in the activity list has its name being edited to <code>Visit Mount Fuji</code>.</p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Editing an activity&#8217;s address</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Test case: <code>Edit activity 1 a/Tokyo</code>
+Expected: The first activity in the activity list has its address being edited to <code>Tokyo</code>.</p>
 </li>
 </ol>
 </div>
@@ -2080,9 +2112,142 @@ Expected: Similar to previous</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="scheduling-activities"><a class="link" href="#scheduling-activities">F.3. Scheduling activities</a></h3>
+<h3 id="editing-an-accommodation"><a class="link" href="#editing-an-accommodation">F.3. Editing an accommodation</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Editing an accommodation&#8217;s name</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>Edit accommodation 1 n/Shinjuku hotel</code>
+Expected: The first activity in the activity list has its name being edited to <code>Shinjuku hotel</code>.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Editing an accommodation&#8217;s address</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>Edit accommodation 1 a/Tokyo</code>
+Expected: The first accommodation in the accommodation list has its address being edited to <code>Tokyo</code>.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="editing-a-contact"><a class="link" href="#editing-a-contact">F.4. Editing a contact</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Editing a contact&#8217;s name</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>Edit contact 1 n/Uncle Bob</code>
+Expected: The first contact in the contact list has its name being edited to <code>Uncle Bob</code>.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Editing a contact&#8217;s phone number</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>Edit contact 1 a/90001112</code>
+Expected: The first contact in the contact list has its phone number being edited to <code>90001112</code>.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="deleting-a-contact"><a class="link" href="#deleting-a-contact">F.5. Deleting a contact</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Removes a contact from contact list</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>delete contact 2</code>
+Expected: Deletes the 2nd contact in the contact list.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="deleting-an-activity"><a class="link" href="#deleting-an-activity">F.6. Deleting an activity</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Removes an activity from contact list</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>delete activity 2</code>
+Expected: Deletes the 2nd activity in the activity list.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="deleting-an-accommodation"><a class="link" href="#deleting-an-accommodation">F.7. Deleting an accommodation</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Removes an accommodation from accommodation list</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>delete accommodation 2</code>
+Expected: Deletes the 2nd accommodation in the accommodation list.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="autoschedule"><a class="link" href="#autoschedule">F.8. Autoschedule</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Generate a schedule for specified day(s) based on the tags or activity name given.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Ensure the tag or activity name is present in activity list.</p>
+</li>
+<li>
+<p>Test case: <code>autoschedule t/sightseeing 1030 t/dining 1200 d/1</code>
+Expected: An activity of sightseeing tagged has been scheduled at 1030 followed by another activity of dining tagged scheduled at 1200 on day 1.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="scheduling-activities"><a class="link" href="#scheduling-activities">F.9. Scheduling activities</a></h3>
 <div class="sect3">
-<h4 id="schedule"><a class="link" href="#schedule">F.3.1. Schedule</a></h4>
+<h4 id="schedule"><a class="link" href="#schedule">F.9.1. Schedule</a></h4>
 <div class="ulist">
 <ul>
 <li>
@@ -2102,7 +2267,24 @@ Expected: Nothing is scheduled. Invalid message shown.</p>
 </li>
 <li>
 <p>Other incorrect add commands to try: <code>schedule d/1 st/1111</code>, <code>schedule 1 d/1</code><br>
-Expected: Similar to previous</p>
+Expected: Similar to previous
+=== Undo a delete command</p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Retrieve the information that has been deleted.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Prerequisites: <code>Delete activity 1</code> has been executed.</p>
+</li>
+<li>
+<p>Test case: <code>undo</code></p>
+</li>
+<li>
+<p>Expected: The activity initially in the first index of the activity list has been added back to the activity list.</p>
 </li>
 </ol>
 </div>
@@ -2112,7 +2294,7 @@ Expected: Similar to previous</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="unschedule-activity-from-day"><a class="link" href="#unschedule-activity-from-day">F.4. Unschedule activity from day</a></h3>
+<h3 id="unschedule-activity-from-day"><a class="link" href="#unschedule-activity-from-day">F.10. Unschedule activity from day</a></h3>
 <div class="ulist">
 <ul>
 <li>
@@ -2132,7 +2314,24 @@ Expected: Nothing is unscheduled. Invalid message shown.</p>
 </li>
 <li>
 <p>Other incorrect add commands to try: <code>unschedule 1</code>, <code>unschedule 1 d/16</code><br>
-Expected: Similar to previous</p>
+Expected: Similar to previous
+=== Undo an add command</p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Delete the information that has been added.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Prerequisites: <code>add activity n/Visit Mount Fuji a/Tokyo du/30</code> has been executed.</p>
+</li>
+<li>
+<p>Test case: <code>undo</code></p>
+</li>
+<li>
+<p>Expected: The activity <code>Visit Mount Fuji</code> is deleted from the activity list.</p>
 </li>
 </ol>
 </div>
@@ -2141,7 +2340,73 @@ Expected: Similar to previous</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="set"><a class="link" href="#set">F.5. Set</a></h3>
+<h3 id="undo-an-edit-command"><a class="link" href="#undo-an-edit-command">F.11. Undo an edit command</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Return back to the original state before it has been edited.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: <code>edit contact n/Bob</code> has been executed.</p>
+</li>
+<li>
+<p>Test case: <code>undo</code></p>
+</li>
+<li>
+<p>Expected: The contact name of <code>Bob</code> is deleted and is replaced by the original name before it has been edited.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="optimise-a-day"><a class="link" href="#optimise-a-day">F.12. Optimise a day</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Remove all overlapping for the day and generate a schedule with the lowest budget for the day being optimised.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: There are activities scheduled for the specified day to optimise.</p>
+</li>
+<li>
+<p>Test case: <code>optimise 1</code></p>
+</li>
+<li>
+<p>Expected: Activities that are non-overlapping and they have the lowest cost in total are chosen for that day.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="list-activity"><a class="link" href="#list-activity">F.13. List activity</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>All activities in activity list are listed</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>list activity</code></p>
+</li>
+<li>
+<p>Expected: All activities are listed in the information panel.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="set"><a class="link" href="#set">F.14. Set</a></h3>
 <div class="ulist">
 <ul>
 <li>
@@ -2170,9 +2435,9 @@ Expected: Similar to previous</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="view"><a class="link" href="#view">F.6. View</a></h3>
+<h3 id="view"><a class="link" href="#view">F.15. View</a></h3>
 <div class="sect3">
-<h4 id="view-activity-accommodation-contact"><a class="link" href="#view-activity-accommodation-contact">F.6.1. View activity/accommodation/contact</a></h4>
+<h4 id="view-activity-accommodation-contact"><a class="link" href="#view-activity-accommodation-contact">F.15.1. View activity/accommodation/contact</a></h4>
 <div class="ulist">
 <ul>
 <li>
@@ -2197,7 +2462,7 @@ Expected: No information about activity/accommodation/contact appear. Invalid me
 </div>
 </div>
 <div class="sect3">
-<h4 id="view-itinerary-info-help"><a class="link" href="#view-itinerary-info-help">F.6.2. View itinerary/info/help</a></h4>
+<h4 id="view-itinerary-info-help"><a class="link" href="#view-itinerary-info-help">F.15.2. View itinerary/info/help</a></h4>
 <div class="ulist">
 <ul>
 <li>
@@ -2215,7 +2480,7 @@ Expected: Switches tab to itinerary/info/help.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="redo"><a class="link" href="#redo">F.6.3. Redo</a></h4>
+<h4 id="redo"><a class="link" href="#redo">F.15.3. Redo</a></h4>
 <div class="ulist">
 <ul>
 <li>
@@ -2237,4 +2502,4 @@ Expected: Redo the last undo command.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 15:39:08 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 15:42:00 UTC</div></div></div></body></html>
