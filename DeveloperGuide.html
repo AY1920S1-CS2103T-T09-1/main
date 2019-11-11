@@ -44,8 +44,11 @@
 <li><a href="#instructions-for-manual-testing">Appendix F: Instructions for Manual Testing</a>
 <ul class="sectlevel2">
 <li><a href="#launch-and-shutdown">F.1. Launch and Shutdown</a></li>
-<li><a href="#deleting-a-contact">F.2. Deleting a contact</a></li>
-<li><a href="#saving-data">F.3. Saving data</a></li>
+<li><a href="#adding">F.2. Adding</a></li>
+<li><a href="#scheduling-activities">F.3. Scheduling activities</a></li>
+<li><a href="#unschedule-activity-from-day">F.4. Unschedule activity from day</a></li>
+<li><a href="#set">F.5. Set</a></li>
+<li><a href="#view">F.6. View</a></li>
 </ul>
 </li>
 </ul>
@@ -1958,50 +1961,280 @@ Expected: Shows the GUI with a set of sample activities, accommodations, contact
 </div>
 </div>
 <div class="sect2">
-<h3 id="deleting-a-contact"><a class="link" href="#deleting-a-contact">F.2. Deleting a contact</a></h3>
-<div class="olist arabic">
-<ol class="arabic">
+<h3 id="adding"><a class="link" href="#adding">F.2. Adding</a></h3>
+<div class="sect3">
+<h4 id="adding-activities"><a class="link" href="#adding-activities">F.2.1. Adding activities</a></h4>
+<div class="ulist">
+<ul>
 <li>
-<p>Deleting a contact while all activities are listed</p>
+<p>Add a new activity to the planner</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>Prerequisites: List all activities using the <code>list</code> command. Multiple activities in the list.</p>
+<p>Prerequisites: Arguments are valid and compulsory parameters are provided.</p>
 </li>
 <li>
-<p>Test case: <code>delete 1</code><br>
-Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.</p>
+<p>Test case: <code>add activity n/Swim at the beach a/Glass Beach du/180 p/12345678 pr/1 t/Fun</code><br>
+Expected: Adds an activity named "Swim at the beach", with address "Glass Beach", a duration of 180 minutes, a contact with the phone number 12345678, a priority level of 1 and with the tag "Fun".</p>
 </li>
 <li>
-<p>Test case: <code>delete 0</code><br>
-Expected: No contact is deleted. Error details shown in the status message. Status bar remains the same.</p>
+<p>Test case: <code>add activity n/Swim at the beach</code><br>
+Expected: No activity is added. Error details shown in the feedback display.</p>
 </li>
 <li>
-<p>Other incorrect delete commands to try: <code>delete</code>, <code>delete x</code> (where x is larger than the list size) <em>{give more}</em><br>
-Expected: Similar to previous.</p>
+<p>Other incorrect add commands to try: <code>add activity a/Glass Beach</code>, <code>add activity n/Swimming du/120</code><br>
+Expected: Similar to previous</p>
 </li>
 </ol>
 </div>
 </li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="adding-accommodations"><a class="link" href="#adding-accommodations">F.2.2. Adding accommodations</a></h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Add a new activity to the planner</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Arguments are valid and compulsory parameters are provided.</p>
+</li>
+<li>
+<p>Test case: <code>add accommodation n/Hotel 87 a/Hilton Crescent p/12345678 t/Cozy</code><br>
+Expected: Adds an accommodation named "Hotel 87", with address "Hilton Crescent", a contact with phone number 12345678, and with the tag "Cozy".</p>
+</li>
+<li>
+<p>Test case: <code>add accommodation n/Hotel 123</code><br>
+Expected: No accommodation is added. Error details shown in the feedback display.</p>
+</li>
+<li>
+<p>Other incorrect add commands to try: <code>add accommodation a/Kappa street</code>, <code>add accommodation p/87654321 t/lmao</code><br>
+Expected: Similar to previous</p>
+</li>
 </ol>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="adding-contacts"><a class="link" href="#adding-contacts">F.2.3. Adding contacts</a></h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Add a new contact to the planner</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Arguments are valid and compulsory parameters are provided.</p>
+</li>
+<li>
+<p>Test case: <code>add contact n/Allan p/12345678 e/example@example.com t/Budz</code><br>
+Expected: Adds a contact named "Allan", with phone number 12345678, an email of "<a href="mailto:example@example.com">example@example.com</a>" and with the tag "Budz".</p>
+</li>
+<li>
+<p>Test case: <code>add contact n/Big Brother</code><br>
+Expected: No contact is added. Error details shown in the feedback display.</p>
+</li>
+<li>
+<p>Other incorrect add commands to try: <code>add contact a/Kappa street</code>, <code>add contact p/87654321 t/lmao</code><br>
+Expected: Similar to previous</p>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="adding-days"><a class="link" href="#adding-days">F.2.4. Adding days</a></h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Add days to the itinerary</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Arguments are valid, and NUMBER_OF_DAYS being added and number of days currently in itinerary do not exceed 15.</p>
+</li>
+<li>
+<p>Test case: <code>add days 2</code><br>
+Expected: Adds two days to the itinerary. Else, invalid message will be shown.</p>
+</li>
+<li>
+<p>Test case: <code>add days 16</code><br>
+Expected: No days is added. Error details shown in the feedback display.</p>
+</li>
+<li>
+<p>Other incorrect add commands to try: <code>add days abc</code>, <code>add days -1</code><br>
+Expected: Similar to previous</p>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-data"><a class="link" href="#saving-data">F.3. Saving data</a></h3>
-<div class="olist arabic">
-<ol class="arabic">
+<h3 id="scheduling-activities"><a class="link" href="#scheduling-activities">F.3. Scheduling activities</a></h3>
+<div class="sect3">
+<h4 id="schedule"><a class="link" href="#schedule">F.3.1. Schedule</a></h4>
+<div class="ulist">
+<ul>
 <li>
-<p>Dealing with missing/corrupted data files</p>
+<p>Schedule an activity to a day at a certain time</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p><em>{explain how to simulate a missing/corrupted file and the expected behavior}</em></p>
+<p>Prerequisites: Arguments are valid, and end date time of the activity must not be after the end of the trip. Also, the provided index for both activity and day must be less than or equal to the size of their respective list(activity list, itinerary).</p>
+</li>
+<li>
+<p>Test case: <code>schedule 1 d/1 st/1000</code><br>
+Expected: Schedules activity 1 into day 1 at time 10am.</p>
+</li>
+<li>
+<p>Test case: <code>schedule 1 d/16 st/1000</code><br>
+Expected: Nothing is scheduled. Invalid message shown.</p>
+</li>
+<li>
+<p>Other incorrect add commands to try: <code>schedule d/1 st/1111</code>, <code>schedule 1 d/1</code><br>
+Expected: Similar to previous</p>
 </li>
 </ol>
 </div>
 </li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="unschedule-activity-from-day"><a class="link" href="#unschedule-activity-from-day">F.4. Unschedule activity from day</a></h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Unschedules an activity from a day</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Arguments are valid. Also, the index for the preamble is the index of the activity within the day(as shown from list day). Day DAY_INDEX must exist in the itinerary.</p>
+</li>
+<li>
+<p>Test case: <code>unschedule 1 d/1</code><br>
+Expected: Unschedules the first activity in day 1.</p>
+</li>
+<li>
+<p>Test case: <code>unschedule d/16 st/1000</code><br>
+Expected: Nothing is unscheduled. Invalid message shown.</p>
+</li>
+<li>
+<p>Other incorrect add commands to try: <code>unschedule 1</code>, <code>unschedule 1 d/16</code><br>
+Expected: Similar to previous</p>
+</li>
 </ol>
 </div>
+</li>
+</ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 14:49:24 UTC</div></div></div></body></html>
+<div class="sect2">
+<h3 id="set"><a class="link" href="#set">F.5. Set</a></h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Sets the name or start date of the itinerary</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Arguments are valid. A minimum of either name or start date must be provided.</p>
+</li>
+<li>
+<p>Test case: <code>set n/Germany sd/25-12-2019</code><br>
+Expected: Sets the itinerary name to Germany and start date to 25th Dec 2019.</p>
+</li>
+<li>
+<p>Test case: <code>set</code><br>
+Expected: Nothing is set. Invalid message shown.</p>
+</li>
+<li>
+<p>Other incorrect add commands to try: <code>set sd/12/12/2019</code><br>
+Expected: Similar to previous</p>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="view"><a class="link" href="#view">F.6. View</a></h3>
+<div class="sect3">
+<h4 id="view-activity-accommodation-contact"><a class="link" href="#view-activity-accommodation-contact">F.6.1. View activity/accommodation/contact</a></h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Views information about an activity/accommodation/contact</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Argument is valid. The provided index for activity must be less than or equal to the size of the activity list.</p>
+</li>
+<li>
+<p>Test case: <code>view activity 1</code>/<code>view accommodation 1</code>/<code>view contact 1</code><br>
+Expected: Views the information about activity/accommodation/contact 1.</p>
+</li>
+<li>
+<p>Test case: <code>view activity abc</code>/<code>view accommodation abc</code>/<code>view contact abc</code><br>
+Expected: No information about activity/accommodation/contact appear. Invalid message shown.</p>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="view-itinerary-info-help"><a class="link" href="#view-itinerary-info-help">F.6.2. View itinerary/info/help</a></h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Switch tab to itinerary/info/help</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>view itinerary</code>/<code>view info</code>/<code>view help</code><br>
+Expected: Switches tab to itinerary/info/help.</p>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="redo"><a class="link" href="#redo">F.6.3. Redo</a></h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Redo the last undo command.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Only to be used if undo had been used.</p>
+</li>
+<li>
+<p>Test case: <code>redo</code><br>
+Expected: Redo the last undo command.</p>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 15:37:40 UTC</div></div></div></body></html>
