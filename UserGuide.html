@@ -1179,7 +1179,7 @@ The day to be optimised must not be empty.
 <div class="sect2">
 <h3 id="planning-a-new-trip-code-new-code"><a class="link" href="#planning-a-new-trip-code-new-code">3.26. Planning a new trip: <code>new</code></a></h3>
 <div class="paragraph">
-<p>Creates a new, empty trip plan with the desired name and saves it</p>
+<p>Creates and loads a new empty trip with desired name.</p>
 </div>
 <div class="paragraph">
 <p>Format: <code>new n/NAME</code></p>
@@ -1197,6 +1197,9 @@ The day to be optimised must not be empty.
 </li>
 <li>
 <p>Name of an existing saved trip cannot be used.</p>
+</li>
+<li>
+<p>Name is reflected as itinerary name.</p>
 </li>
 </ul>
 </div>
@@ -1217,7 +1220,7 @@ The day to be optimised must not be empty.
 <div class="sect2">
 <h3 id="review-an-existing-trip-code-load-code"><a class="link" href="#review-an-existing-trip-code-load-code">3.27. Review an existing trip: <code>load</code></a></h3>
 <div class="paragraph">
-<p>Loads an existing, saved trip plan with the desired name.</p>
+<p>Loads a saved trip with desired name.</p>
 </div>
 <div class="paragraph">
 <p>Format: <code>load n/NAME</code></p>
@@ -1231,7 +1234,10 @@ The day to be optimised must not be empty.
 <p>Unsaved trip plans cannot be loaded.</p>
 </li>
 <li>
-<p>A saved trip plan that is viewable cannot be reloaded.</p>
+<p>The current trip plan cannot be reloaded.</p>
+</li>
+<li>
+<p>Name is reflected as itinerary name.</p>
 </li>
 </ul>
 </div>
@@ -1252,7 +1258,7 @@ The day to be optimised must not be empty.
 <div class="sect2">
 <h3 id="make-a-copy-of-an-existing-trip-code-copyto-code"><a class="link" href="#make-a-copy-of-an-existing-trip-code-copyto-code">3.28. Make a copy of an existing trip: <code>copyto</code></a></h3>
 <div class="paragraph">
-<p>Creates a copy of an existing trip using a different name and saves it.</p>
+<p>Creates and loads a copy of current trip using desired name.</p>
 </div>
 <div class="paragraph">
 <p>Format: <code>copyto n/NAME</code></p>
@@ -1274,6 +1280,9 @@ The day to be optimised must not be empty.
 <li>
 <p>Name is the only visible difference between the copy and the original trip plan.</p>
 </li>
+<li>
+<p>Name is reflected as itinerary name.</p>
+</li>
 </ul>
 </div>
 <div class="paragraph">
@@ -1294,7 +1303,14 @@ name "London Trip".</p>
 <div class="sect2">
 <h3 id="clears-existing-trip-code-clear-code"><a class="link" href="#clears-existing-trip-code-clear-code">3.29. Clears existing trip: <code>clear</code></a></h3>
 <div class="paragraph">
-<p>Clears all information in existing trip plan, except for trip name and saves the cleared trip plan.</p>
+<p>Clears all current trip information except for name.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Name is reflected as itinerary name.</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
 <p>Format: <code>clear</code></p>
@@ -1714,4 +1730,4 @@ Format: <code>exit</code></p>
 </table>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 15:55:27 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-13 15:33:20 UTC</div></div></div></body></html>

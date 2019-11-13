@@ -22,15 +22,16 @@
 </li>
 <li><a href="#implementation">3. Implementation</a>
 <ul class="sectlevel2">
-<li><a href="#undo-redo-feature">3.1. Undo/Redo feature</a></li>
-<li><a href="#schedule-optimisation">3.2. Schedule optimisation</a></li>
-<li><a href="#schedule-feature">3.3. Schedule feature</a></li>
-<li><a href="#auto-schedule-feature">3.4. Auto Schedule feature</a></li>
-<li><a href="#implementation-4">3.5. Implementation</a></li>
-<li><a href="#auto-complete-feature">3.6. Auto Complete feature</a></li>
-<li><a href="#timetable">3.7. Timetable</a></li>
-<li><a href="#logging">3.8. Logging</a></li>
-<li><a href="#Implementation-Configuration">3.9. Configuration</a></li>
+<li><a href="#trip-management">3.1. Trip management</a></li>
+<li><a href="#undo-redo-feature">3.2. Undo/Redo feature</a></li>
+<li><a href="#schedule-optimisation">3.3. Schedule optimisation</a></li>
+<li><a href="#schedule-feature">3.4. Schedule feature</a></li>
+<li><a href="#auto-schedule-feature">3.5. Auto Schedule feature</a></li>
+<li><a href="#implementation-4">3.6. Implementation</a></li>
+<li><a href="#auto-complete-feature">3.7. Auto Complete feature</a></li>
+<li><a href="#timetable">3.8. Timetable</a></li>
+<li><a href="#logging">3.9. Logging</a></li>
+<li><a href="#Implementation-Configuration">3.10. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a></li>
@@ -57,7 +58,12 @@
 <li><a href="#optimise-a-day">F.12. Optimise a day</a></li>
 <li><a href="#list-activity">F.13. List activity</a></li>
 <li><a href="#set">F.14. Set</a></li>
-<li><a href="#view">F.15. View</a></li>
+</ul>
+</li>
+<li><a href="#copyto">7. Copyto</a></li>
+<li><a href="#load">8. Load</a>
+<ul class="sectlevel2">
+<li><a href="#view">8.1. View</a></li>
 </ul>
 </li>
 </ul>
@@ -439,13 +445,256 @@ Hence the association as shown in the diagram above.</p>
 <p>This section describes some noteworthy details on how certain features are implemented.</p>
 </div>
 <div class="sect2">
-<h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">3.1. Undo/Redo feature</a></h3>
+<h3 id="trip-management"><a class="link" href="#trip-management">3.1. Trip management</a></h3>
+<div class="paragraph">
+<p><strong><em>Plan²travel</em></strong> allows the user to create new trips, load and rename existing trips, make copies
+of existing trips and also clear existing trip information.</p>
+</div>
+<div class="paragraph">
+<p>List of commands that helps with trip management:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>new n/NAME</code> &#8201;&#8212;&#8201;Creates and loads a new empty trip with desired name</p>
+</li>
+<li>
+<p><code>copyto n/NAME</code> &#8201;&#8212;&#8201;Creates and loads a copy of current trip using desired name</p>
+</li>
+<li>
+<p><code>load n/NAME</code>&#8201;&#8212;&#8201;Loads a saved trip with desired name</p>
+</li>
+<li>
+<p><code>set n/NAME</code>&#8201;&#8212;&#8201;Renames current trip to desired name</p>
+</li>
+<li>
+<p><code>clear</code>&#8201;&#8212;&#8201;Clears all current trip information except for name</p>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="current-implementation"><a class="link" href="#current-implementation">3.1.1. Current Implementation</a></h4>
+<div class="paragraph">
+<p>A trip (or trip plan) will have a name that is identical to the directory name which it represents.
+The directory will be accessible via the <code>data/{Directory Name}</code> directory path of the home folder
+which the <code>plan2travel.jar</code> is stored in.</p>
+</div>
+<div class="paragraph">
+<p>For example, a trip named "Japan Trip" will represent a <code>Japan Trip</code> directory. This directory can
+be accessed using the <code>data/Japan Trip</code> directory path.</p>
+</div>
+<div class="paragraph">
+<p>The directory will contain the <code>accommodation.json</code>, <code>activity.json</code>, <code>contact.json</code> and
+<code>itinerary.json</code> of the current saved trip.</p>
+</div>
+<div class="paragraph">
+<p>The trip management mechanism is facilitated by <code>UserPrefs</code> where the desired directory path is
+stored internally as <code>plannerFilePath</code>.</p>
+</div>
+<div class="paragraph">
+<p>Operations to access <code>plannerFilePath</code> are exposed in the Model interface as <code>Model#getPlannerFilePath()</code>
+and <code>Model#setPlannerFilePath(Path)</code> respectively.</p>
+</div>
+<div class="paragraph">
+<p>Given below is the sequence diagram of how the <code>load</code> operation works:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/LoadSequenceDiagram.png" alt="LoadSequenceDiagram" width="90%">
+</div>
+<div class="title">Figure 13. Sequence diagram for <code>load</code> command</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The lifeline for <code>LoadCommand</code> should end at the destroy marker (X) but due to a limitation of PlantUML,
+the lifeline reaches the end of diagram.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The sequence diagram above can be described by the following sequence of events:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>LoadCommand</code> is executed</p>
+</li>
+<li>
+<p><code>LoadCommand</code> updates the <code>UserPrefs</code> <code>plannerFilePath</code> and the <code>Itinerary</code> <code>nameProperty</code></p>
+</li>
+<li>
+<p><code>LogicManager</code> updates the respective file paths (that have been updated due to changes in
+<code>plannerFilePath</code>) in the <code>Storage</code> component</p>
+</li>
+<li>
+<p><code>LogicManger</code> updates the respective lists in the <code>Model</code> component based on the new
+file paths</p>
+</li>
+<li>
+<p><code>LogicManager</code> saves the respective lists in json format in directory designated by
+<code>plannerFilePath</code> through the <code>Storage</code> component</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The following activity diagram summarizes what happens when a user executes a <code>copyto</code> command.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/CopyToActivityDiagram.png" alt="CopyToActivityDiagram">
+</div>
+<div class="title">Figure 14. Activity diagram for <code>copyto</code> command</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">3.1.2. Design Considerations</a></h4>
+<div class="paragraph">
+<p>Aspect: How the <code>Logic</code> component executes <code>set</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Current Choice: Deletes current directory before saving new directory containing previous
+json files</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Uses <code>File#delete()</code> which is platform-independent and helps in ensuring the stability of the
+application.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Cons:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>May seem less intuitive. Deletion methods are used instead of renaming methods (which
+may be more appropriate given that <code>set</code> helps to rename the current directory).</p>
+</li>
+<li>
+<p>Likely to be more costly in terms of execution as it involves deleting the previous directory
+and saving a new one.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Alternative: Rename current directory and avoid saving over the updated directory.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Likely to be less costly in terms of execution as it does not involve deletion and saving
+of directories.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Cons:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Uses <code>File#renameTo()</code> which is platform-dependent and may contribute to a less stable application.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Aspect: How the commands execute based on Java API methods</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Current Choice: Uses methods from <code>File</code> such as <code>File#delete()</code> and <code>File#exists()</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Methods used do not throw an <code>IOException</code> and may help ensure the stability of the application.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Cons:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>It may be difficult to diagnose issues that may arise.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Alternative: Uses methods from <code>Files</code> such as <code>Files#deleteIfExists()</code> and <code>Files#list(Path)</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Methods can throw an <code>IOException</code> which can help to diagnose issues.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Cons:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>However, certain usages of these methods can result in an <code>AccessDeniedException</code> which contributes to a
+less stable application.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">3.2. Undo/Redo feature</a></h3>
 <div class="paragraph">
 <p>The <code>undo</code> command allows user to undo by one command (if the command is <code>undoable</code>).
 The redo command allows user to return to the original state before latest undo.</p>
 </div>
 <div class="sect3">
-<h4 id="implementation-2"><a class="link" href="#implementation-2">3.1.1. Implementation</a></h4>
+<h4 id="implementation-2"><a class="link" href="#implementation-2">3.2.1. Implementation</a></h4>
 <div class="paragraph">
 <p>The undo/redo feature utilizes various classes to operate, such as <code>CommandHistory</code> class and the
 classes within the <code>events package</code> in the logic component.</p>
@@ -569,7 +818,7 @@ is <code>not</code> an <code>UndoableCommand</code>. This execution is similar t
 <div class="content">
 <img src="images/DeleteActivitySequenceDiagram.png" alt="DeleteActivitySequenceDiagram">
 </div>
-<div class="title">Figure 13. Executing delete activity</div>
+<div class="title">Figure 15. Executing delete activity</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -597,7 +846,7 @@ Both Activity and Index were stored in <code>DeleteActivityEvent</code>.<br></p>
 <div class="content">
 <img src="images/UndoDeleteActivitySequenceDiagram.png" alt="UndoDeleteActivitySequenceDiagram">
 </div>
-<div class="title">Figure 14. Executing undo for 'delete activity'</div>
+<div class="title">Figure 16. Executing undo for 'delete activity'</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -638,7 +887,7 @@ If the user does not execute an UndoableCommand, UndoCommand or RedoCommand, the
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations"><a class="link" href="#design-considerations">3.1.2. Design Considerations</a></h4>
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.2.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-how-undo-redo-executes"><a class="link" href="#aspect-how-undo-redo-executes">Aspect: How undo &amp; redo executes</a></h5>
 <div class="ulist">
@@ -775,9 +1024,9 @@ in the list.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="schedule-optimisation"><a class="link" href="#schedule-optimisation">3.2. Schedule optimisation</a></h3>
+<h3 id="schedule-optimisation"><a class="link" href="#schedule-optimisation">3.3. Schedule optimisation</a></h3>
 <div class="sect3">
-<h4 id="implementation-3"><a class="link" href="#implementation-3">3.2.1. Implementation</a></h4>
+<h4 id="implementation-3"><a class="link" href="#implementation-3">3.3.1. Implementation</a></h4>
 <div class="paragraph">
 <p>Scheduled activities in a day can be modeled as a <code>Directed Acyclic Graph (DAG)</code> where the <code>vertices</code> are the <code>activities</code> and an <code>edge</code> from 1 vertex to another means that the activities are <code>not overlapping</code>. Just like DAGs, there are <code>no cycles</code> within the schedule due to the linearity of time.
 When the command is executed, an <code>adjacency list</code> is formed from the existing activities within the schedule. The paths are then traced, with the help of a utility method, from the adjacency list to find <code>all possible combinations</code> of activities such that there are no overlaps between activities. The list of paths are then sorted
@@ -807,7 +1056,7 @@ a cost. Activities without a cost have a default cost of $0.00.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.2.2. Design considerations</a></h4>
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.3.2. Design considerations</a></h4>
 <div class="paragraph">
 <p>Aspect: Algorithm to de-conflict</p>
 </div>
@@ -936,7 +1185,7 @@ a cost. Activities without a cost have a default cost of $0.00.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="schedule-feature"><a class="link" href="#schedule-feature">3.3. Schedule feature</a></h3>
+<h3 id="schedule-feature"><a class="link" href="#schedule-feature">3.4. Schedule feature</a></h3>
 <div class="paragraph">
 <p><strong><em>Plan²travel</em></strong> allows user to schedule an activity from the activity list to a specified time of a day.
 This is accomplished by executing the <code>ScheduleCommand</code> with <code>activity index</code>, <code>start time</code> and  <code>day index</code>.</p>
@@ -945,7 +1194,7 @@ This is accomplished by executing the <code>ScheduleCommand</code> with <code>ac
 <p>Eg. <code>schedule ACTIVITY_INDEX st/START_TIME d/DAY_INDEX</code></p>
 </div>
 <div class="sect3">
-<h4 id="current-implementation"><a class="link" href="#current-implementation">3.3.1. Current Implementation</a></h4>
+<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">3.4.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The keywords from the command given by user is parsed using <code>ScheduleCommandParser</code> which converts the string variable of start time into a LocalDateTime object, while activity index and day index are converted into Index objects.
 These are then passed to the <code>ScheduleCommand</code> for execution later on.</p>
@@ -957,7 +1206,7 @@ These are then passed to the <code>ScheduleCommand</code> for execution later on
 <div class="content">
 <img src="images/ScheduleCommandCreation.png" alt="ScheduleCommandCreation">
 </div>
-<div class="title">Figure 15. Sequence diagram showing how ScheduleCommand is created.</div>
+<div class="title">Figure 17. Sequence diagram showing how ScheduleCommand is created.</div>
 </div>
 <div class="paragraph">
 <p>After the creation of <code>ScheduleCommand</code>, <code>LogicManager</code> will proceed to call the <code>execute()</code> method of <code>ScheduleCommand</code>.</p>
@@ -992,11 +1241,11 @@ and targeted <code>Day</code> from list of days.</p>
 <div class="content">
 <img src="images/ScheduleCommandExecution.png" alt="ScheduleCommandExecution">
 </div>
-<div class="title">Figure 16. Sequence diagram showing how ScheduleCommand executes.</div>
+<div class="title">Figure 18. Sequence diagram showing how ScheduleCommand executes.</div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-consideration"><a class="link" href="#design-consideration">3.3.2. Design Consideration</a></h4>
+<h4 id="design-consideration"><a class="link" href="#design-consideration">3.4.2. Design Consideration</a></h4>
 <div class="sect4">
 <h5 id="aspect-update-activities-for-that-particular-day"><a class="link" href="#aspect-update-activities-for-that-particular-day">Aspect: Update activities for that particular day</a></h5>
 <div class="ulist">
@@ -1033,15 +1282,15 @@ and targeted <code>Day</code> from list of days.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="auto-schedule-feature"><a class="link" href="#auto-schedule-feature">3.4. Auto Schedule feature</a></h3>
+<h3 id="auto-schedule-feature"><a class="link" href="#auto-schedule-feature">3.5. Auto Schedule feature</a></h3>
 <div class="sect3">
-<h4 id="rationale"><a class="link" href="#rationale">3.4.1. Rationale</a></h4>
+<h4 id="rationale"><a class="link" href="#rationale">3.5.1. Rationale</a></h4>
 <div class="paragraph">
 <p>There are times when users are planning for an overseas trip, there are so many activities in their activity list that they want to do but the problems faced are that they are unable to finish all the activities in the list or they are unable to find an optimal schedule plan.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="overview"><a class="link" href="#overview">3.4.2. Overview</a></h4>
+<h4 id="overview"><a class="link" href="#overview">3.5.2. Overview</a></h4>
 <div class="paragraph">
 <p>The <code>autoschedule</code> command requires user to specify either the <code>tag name</code> or the <code>activity name</code> itself in order of the type of activity that they want.
 For example, <code>t/shopping t/sightseeing t/dining</code> would means an activity of <code>shopping</code> type would be scheduled first followed by <code>sightseeing</code> and then <code>dining</code>.
@@ -1051,7 +1300,7 @@ Afterwards, <code>autoschedule</code> would serve to ensure that the activities 
 </div>
 </div>
 <div class="sect2">
-<h3 id="implementation-4"><a class="link" href="#implementation-4">3.5. Implementation</a></h3>
+<h3 id="implementation-4"><a class="link" href="#implementation-4">3.6. Implementation</a></h3>
 <div class="paragraph">
 <p>The keywords from the command given by the user is parsed using <code>AutoScheduleCommandParser</code> which converts all the <code>tag</code> or <code>name</code> prefix&#8217;s argument with their respective <code>start time</code> ,if given, in <code>NameOrTagWithTime</code> class and stores them in a list to maintain the same ordering as given by the user.</p>
 </div>
@@ -1066,7 +1315,7 @@ The <code>list of NameOrTagWithTime</code>, <code>address</code> and <code>list 
 <div class="content">
 <img src="images/AutoScheduleSequenceDiagram.png" alt="AutoScheduleSequenceDiagram">
 </div>
-<div class="title">Figure 17. Sequence diagram showing how <code>AutoScheduleCommand</code> is created.</div>
+<div class="title">Figure 19. Sequence diagram showing how <code>AutoScheduleCommand</code> is created.</div>
 </div>
 <div class="paragraph">
 <p>Below are the steps taken when executing of the <code>AutoScheduleCommand</code>:</p>
@@ -1087,7 +1336,7 @@ The <code>list of NameOrTagWithTime</code>, <code>address</code> and <code>list 
 <div class="content">
 <img src="images/AutoScheduleActivityDiagram1.png" alt="AutoScheduleActivityDiagram1">
 </div>
-<div class="title">Figure 18. Activity diagram showing how <code>AutoScheduleCommand</code> checks the requirement given by user:</div>
+<div class="title">Figure 20. Activity diagram showing how <code>AutoScheduleCommand</code> checks the requirement given by user:</div>
 </div>
 <div class="paragraph">
 <p>After filtering the activity list, <code>AutoScheduleCommand</code> will proceed to begin preparation for the scheduling of the first activity of those specified day(s).</p>
@@ -1102,7 +1351,7 @@ The <code>list of NameOrTagWithTime</code>, <code>address</code> and <code>list 
 <div class="content">
 <img src="images/AutoScheduleActivityDiagram2.png" alt="AutoScheduleActivityDiagram2">
 </div>
-<div class="title">Figure 19. Activity diagram showing how <code>AutoScheduleCommand</code> handles the preparation for the scheduling of the first activity:</div>
+<div class="title">Figure 21. Activity diagram showing how <code>AutoScheduleCommand</code> handles the preparation for the scheduling of the first activity:</div>
 </div>
 <div class="paragraph">
 <p><strong>Step 6.</strong> Next, <code>AutoScheduleCommand</code> will check if the chosen activity to be scheduled does not overlap with the start time of the next activity if user specify.</p>
@@ -1115,14 +1364,14 @@ The process will continue until it finds a suitable activity or it has finished 
 <div class="content">
 <img src="images/AutoScheduleActivityDiagram3.png" alt="AutoScheduleActivityDiagram3">
 </div>
-<div class="title">Figure 20. Activity diagram showing how <code>AutoScheduleCommand</code> finds an activity to schedule:</div>
+<div class="title">Figure 22. Activity diagram showing how <code>AutoScheduleCommand</code> finds an activity to schedule:</div>
 </div>
 <div class="paragraph">
 <p>Step 4 to Step 7 will repeat for the next activity to schedule for that day until it finished scheduling for that day or it could not find a suitable activity to schedule.
 If there other days to schedule, the steps taken will also be the same as Step 4 to Step 7.</p>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.5.1. Design Considerations</a></h4>
+<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">3.6.1. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-counting-the-number-of-times-similar-activity-of-the-same-name-or-tag-appears-in-the-list"><a class="link" href="#aspect-counting-the-number-of-times-similar-activity-of-the-same-name-or-tag-appears-in-the-list">Aspect: Counting the number of times similar activity of the same name or tag appears in the list</a></h5>
 <div class="ulist">
@@ -1192,15 +1441,15 @@ If there other days to schedule, the steps taken will also be the same as Step 4
 </div>
 </div>
 <div class="sect2">
-<h3 id="auto-complete-feature"><a class="link" href="#auto-complete-feature">3.6. Auto Complete feature</a></h3>
+<h3 id="auto-complete-feature"><a class="link" href="#auto-complete-feature">3.7. Auto Complete feature</a></h3>
 <div class="sect3">
-<h4 id="rationale-2"><a class="link" href="#rationale-2">3.6.1. Rationale</a></h4>
+<h4 id="rationale-2"><a class="link" href="#rationale-2">3.7.1. Rationale</a></h4>
 <div class="paragraph">
 <p>There are many commands to learn in our program and some of the commands can be wordy. In order to ease the learning curve and to help the user be productive as quickly as possible, autocomplete was implemented.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="implementation-5"><a class="link" href="#implementation-5">3.6.2. Implementation</a></h4>
+<h4 id="implementation-5"><a class="link" href="#implementation-5">3.7.2. Implementation</a></h4>
 <div class="paragraph">
 <p><strong>KEY IDEA:</strong></p>
 </div>
@@ -1269,13 +1518,13 @@ If there other days to schedule, the steps taken will also be the same as Step 4
 <div class="content">
 <img src="images/AutoCompleteSuggesterSequenceDiagram.png" alt="AutoCompleteSuggesterSequenceDiagram">
 </div>
-<div class="title">Figure 21. Sequence diagram showing the generation of suggestions.</div>
+<div class="title">Figure 23. Sequence diagram showing the generation of suggestions.</div>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/AutoCompleteSuggesterGetPossibilitiesSequenceDiagram.png" alt="AutoCompleteSuggesterGetPossibilitiesSequenceDiagram">
 </div>
-<div class="title">Figure 22. Sub diagram for getPossibilities</div>
+<div class="title">Figure 24. Sub diagram for getPossibilities</div>
 </div>
 <div class="paragraph">
 <p>Below is how the <code>autocomplete</code> feature is triggered:</p>
@@ -1296,7 +1545,7 @@ If there other days to schedule, the steps taken will also be the same as Step 4
 <div class="content">
 <img src="images/AutoCompleteActivityDiagram1.png" alt="AutoCompleteActivityDiagram1">
 </div>
-<div class="title">Figure 23. Activity diagram showing how the pop-up box containing the suggestions appears:</div>
+<div class="title">Figure 25. Activity diagram showing how the pop-up box containing the suggestions appears:</div>
 </div>
 <div class="paragraph">
 <p>Below is how entries for the pop-up box is obtained:</p>
@@ -1320,11 +1569,11 @@ If there other days to schedule, the steps taken will also be the same as Step 4
 <div class="content">
 <img src="images/AutoCompleteActivityDiagram2.png" alt="AutoCompleteActivityDiagram2">
 </div>
-<div class="title">Figure 24. Activity diagram showing how entries for the pop-up box is generated:</div>
+<div class="title">Figure 26. Activity diagram showing how entries for the pop-up box is generated:</div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">3.6.3. Design Considerations</a></h4>
+<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">3.7.3. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-underlying-data-structure-to-store-the-command-words"><a class="link" href="#aspect-underlying-data-structure-to-store-the-command-words">Aspect: Underlying data structure to store the command words</a></h5>
 <div class="ulist">
@@ -1397,15 +1646,15 @@ If there other days to schedule, the steps taken will also be the same as Step 4
 </div>
 </div>
 <div class="sect2">
-<h3 id="timetable"><a class="link" href="#timetable">3.7. Timetable</a></h3>
+<h3 id="timetable"><a class="link" href="#timetable">3.8. Timetable</a></h3>
 <div class="sect3">
-<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">3.7.1. Current Implementation</a></h4>
+<h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">3.8.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>Internally, Timetable is a List of ActivityWithTime. This gives the Timetable flexibility to accept Activities that start and end at any time instead of fixed intervals (e.g. 30 minute intervals) while allow for conflicting ActivityWithTime.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">3.7.2. Design considerations</a></h4>
+<h4 id="design-considerations-6"><a class="link" href="#design-considerations-6">3.8.2. Design considerations</a></h4>
 <div class="ulist">
 <ul>
 <li>
@@ -1452,14 +1701,14 @@ If there other days to schedule, the steps taken will also be the same as Step 4
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.8. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">3.9. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.9, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.10, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -1490,7 +1739,7 @@ If there other days to schedule, the steps taken will also be the same as Step 4
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.9. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.10. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g user prefs file location, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -2433,11 +2682,132 @@ Expected: Similar to previous</p>
 </li>
 </ul>
 </div>
+<div class="paragraph">
+<p>/// tag::tripmanagementtest[]
+=== New
+* Creates and loads a new empty trip with desired name
+.. Prerequisites: Arguments are valid and no existing saved trips have the same name.
+A name must be provided.
+.. Test case: <code>new n/Japan Trip</code><br>
+Expected: Creates a new empty trip named "Japan Trip". The name is reflected as the itinerary name.
+.. Test case: <code>new</code><br>
+Expected: Planner name not specified
+.. Test case: <code>new n/Iceland Trip</code>, <code>new n/Iceland Trip</code><br>
+Expected: This planner already exists</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="copyto"><a class="link" href="#copyto">7. Copyto</a></h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Creates and loads a copy of current trip using desired name</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Arguments are valid and no existing saved trips have the same name.
+A name must be provided.</p>
+</li>
+<li>
+<p>Prerequisites: Populate a new trip using the following commands:</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p><code>new n/China v1</code></p>
+</li>
+<li>
+<p><code>add activity n/Visit QinShiHuang&#8217;s Tomb a/Xi An du/240 t/history</code></p>
+</li>
+<li>
+<p><code>add accommodation n/China World Hotel a/Beijing t/5star</code></p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Test case: <code>copyto n/China v2</code><br>
+Expected: Creates a copy of the current trip named "China v2".
+The name is reflected as the itinerary name and is the only visible difference when compared
+to the original trip.</p>
+</li>
+<li>
+<p>Test case: <code>copyto</code><br>
+Expected: Planner name not specified</p>
+</li>
+<li>
+<p>Test case: <code>copyto n/China v1</code><br>
+Expected: This planner already exists</p>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="load"><a class="link" href="#load">8. Load</a></h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Loads a saved trip with desired name</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Arguments are valid and no existing saved trips have the same name.
+A name must be provided.</p>
+</li>
+<li>
+<p>Prerequisites: Populate 2 new trips using the following commands:</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p><code>new n/China</code></p>
+</li>
+<li>
+<p><code>add activity n/Visit QinShiHuang&#8217;s Tomb a/Xi An du/240 t/history</code></p>
+</li>
+<li>
+<p><code>add accommodation n/China World Hotel a/Beijing t/5star</code></p>
+</li>
+<li>
+<p><code>new n/Japan</code></p>
+</li>
+<li>
+<p><code>add accommodation n/Crowne Hotel a/Tokyo p/8137973142 t/5stars</code></p>
+</li>
+<li>
+<p><code>add activity n/Visit Aquarium a/Tokyo p/812487941 du/120 c/20.00 pr/3 t/marine</code></p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Test case: <code>load n/China</code><br>
+Expected: Loads the existing trip that has the name "China".
+The name is reflected as the itinerary name.</p>
+</li>
+<li>
+<p>Test case: <code>load</code><br>
+Expected: Planner name not specified</p>
+</li>
+<li>
+<p>Test case: <code>load n/China</code><br>
+Expected: This planner has already been loaded</p>
+</li>
+</ol>
+</div>
+</li>
+</ul>
 </div>
 <div class="sect2">
-<h3 id="view"><a class="link" href="#view">F.15. View</a></h3>
+<h3 id="view"><a class="link" href="#view">8.1. View</a></h3>
 <div class="sect3">
-<h4 id="view-activity-accommodation-contact"><a class="link" href="#view-activity-accommodation-contact">F.15.1. View activity/accommodation/contact</a></h4>
+<h4 id="view-activity-accommodation-contact"><a class="link" href="#view-activity-accommodation-contact">8.1.1. View activity/accommodation/contact</a></h4>
 <div class="ulist">
 <ul>
 <li>
@@ -2462,7 +2832,7 @@ Expected: No information about activity/accommodation/contact appear. Invalid me
 </div>
 </div>
 <div class="sect3">
-<h4 id="view-itinerary-info-help"><a class="link" href="#view-itinerary-info-help">F.15.2. View itinerary/info/help</a></h4>
+<h4 id="view-itinerary-info-help"><a class="link" href="#view-itinerary-info-help">8.1.2. View itinerary/info/help</a></h4>
 <div class="ulist">
 <ul>
 <li>
@@ -2480,7 +2850,7 @@ Expected: Switches tab to itinerary/info/help.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="redo"><a class="link" href="#redo">F.15.3. Redo</a></h4>
+<h4 id="redo"><a class="link" href="#redo">8.1.3. Redo</a></h4>
 <div class="ulist">
 <ul>
 <li>
@@ -2502,4 +2872,4 @@ Expected: Redo the last undo command.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 15:55:27 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-13 15:33:20 UTC</div></div></div></body></html>
